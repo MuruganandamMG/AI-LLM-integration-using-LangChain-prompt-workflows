@@ -4,6 +4,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from app.config import settings
 from app.database import init_db
 from app.api.v1.router import api_v1_router
+from app.middleware.correlation import RequestCorrelationMiddleware
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
@@ -17,6 +18,7 @@ app = FastAPI(
     redoc_url="/redoc"
 )
 
+app.add_middleware(RequestCorrelationMiddleware)
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
