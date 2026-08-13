@@ -1,0 +1,19 @@
+version: "3.8"
+
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: self_improvement_ai_platform
+    ports:
+      - "8000:8000"
+    environment:
+      - PROJECT_NAME=AI Self-Improvement Platform
+      - DATABASE_URL=sqlite+aiosqlite:///./platform.db
+      - DEFAULT_LLM_PROVIDER=gemini
+      - OPENAI_API_KEY=${OPENAI_API_KEY:-}
+      - GOOGLE_API_KEY=${GOOGLE_API_KEY:-}
+    volumes:
+      - ./data:/app/data
+    restart: unless-stopped
