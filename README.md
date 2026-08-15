@@ -1,19 +1,21 @@
 # AI-Driven Self-Improvement & Productivity Platform
 
-An AI-driven backend API platform built with **FastAPI**, **Async SQLAlchemy 2.0**, and **LangChain** featuring dual LLM providers (**Google Gemini** & **OpenAI**). The platform powers personalized growth recommendations, habit tracking, daily logging, and AI productivity analytics.
+An AI-driven backend API platform built with **FastAPI**, **Async SQLAlchemy 2.0**, and **LangChain** featuring dual LLM providers (**Google Gemini** & **OpenAI**). The platform powers personalized growth recommendations, habit tracking, daily logging, AI productivity analytics, gamification leveling, and AI weekly coaching reviews.
 
 ---
 
 ## Key Features
 
-- **FastAPI Core**: Async REST API architecture with auto-generated Swagger UI (`/docs`).
+- **FastAPI Core**: Async REST API architecture with auto-generated Swagger UI (`/docs`) and correlation ID tracking.
 - **User Authentication**: Secure JWT Bearer tokens with password hashing.
 - **Habit & Log Tracking**: Full CRUD for habits along with daily progress and mood logs.
+- **Gamification Engine**: XP leveling tiers (Bronze, Silver, Gold, Diamond) and milestone badges.
 - **LangChain AI Workflows**:
   - **Growth Recommendations**: Evaluates active habits and generates actionable steps using Gemini / OpenAI.
   - **Productivity Analytics**: Evaluates 30-day consistency stats and delivers performance insights and burnout risk warnings.
+  - **Weekly Coaching Reviews**: Executive AI debrief generating weekly performance assessments and next week's SMART goals.
 - **Dual LLM Provider Support**: Supports Google Gemini (`gemini-1.5-flash`) and OpenAI (`gpt-4o-mini`) with automatic fallback handling.
-- **Backdated Git Commit Generator**: Includes a python utility script (`scripts/seed_git_history.py`) to simulate realistic past commit history for GitHub portfolios.
+- **CI/CD & Docker**: Automated GitHub Actions testing matrix and multi-stage Docker containerization.
 
 ---
 
@@ -39,6 +41,12 @@ An AI-driven backend API platform built with **FastAPI**, **Async SQLAlchemy 2.0
 - `POST /generate-report`: Trigger LangChain analytics workflow.
 - `GET /reports`: List past analytics reports.
 
+### Gamification Router (`/api/v1/gamification`)
+- `GET /profile`: Get user level, XP score, tier status, and unlocked badges.
+
+### AI Weekly Reviews (`/api/v1/reviews`)
+- `POST /weekly`: Generate an AI weekly debrief with SMART goals.
+
 ---
 
 ## Setup & Local Installation
@@ -61,12 +69,17 @@ An AI-driven backend API platform built with **FastAPI**, **Async SQLAlchemy 2.0
    ```
    Access API documentation at `http://127.0.0.1:8000/docs`.
 
-4. **Run Test Suite**:
+4. **Run with Docker Compose**:
+   ```bash
+   docker-compose up --build
+   ```
+
+5. **Run Test Suite**:
    ```bash
    pytest -v
    ```
 
-5. **Generate Backdated Git Commit History for GitHub**:
+6. **Export OpenAPI Schema**:
    ```bash
-   python scripts/seed_git_history.py
+   python scripts/export_openapi.py
    ```
