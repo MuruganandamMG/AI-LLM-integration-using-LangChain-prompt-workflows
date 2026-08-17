@@ -6,12 +6,18 @@ class HabitCreate(BaseModel):
     description: str | None = None
     category: str = "General"
     frequency: str = "daily"
+    time_of_day: str = "morning"
+    estimated_minutes: int = 15
+    priority: str = "medium"
 
 class HabitUpdate(BaseModel):
     title: str | None = None
     description: str | None = None
     category: str | None = None
     frequency: str | None = None
+    time_of_day: str | None = None
+    estimated_minutes: int | None = None
+    priority: str | None = None
 
 class HabitLogCreate(BaseModel):
     notes: str | None = None
@@ -34,6 +40,9 @@ class HabitOut(BaseModel):
     description: str | None
     category: str
     frequency: str
+    time_of_day: str = "morning"
+    estimated_minutes: int = 15
+    priority: str = "medium"
     created_at: datetime
     logs: list[HabitLogOut] = []
 

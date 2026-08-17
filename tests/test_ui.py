@@ -9,7 +9,7 @@ async def test_root_serves_html_ui():
         assert response.status_code == 200
         assert "text/html" in response.headers.get("content-type", "")
         assert "Aura AI" in response.text
-        assert "Active Habits" in response.text
+        assert "Daily Habit Planner" in response.text
 
 @pytest.mark.asyncio
 async def test_favicon_endpoint():

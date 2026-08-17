@@ -13,6 +13,9 @@ class Habit(Base):
     description: Mapped[str] = mapped_column(Text, nullable=True)
     category: Mapped[str] = mapped_column(String, nullable=False, default="General")
     frequency: Mapped[str] = mapped_column(String, nullable=False, default="daily")
+    time_of_day: Mapped[str] = mapped_column(String, nullable=False, default="morning")
+    estimated_minutes: Mapped[int] = mapped_column(Integer, nullable=False, default=15)
+    priority: Mapped[str] = mapped_column(String, nullable=False, default="medium")
     created_at: Mapped[datetime] = mapped_column(DateTime, default=lambda: datetime.now(timezone.utc))
 
     user = relationship("User", back_populates="habits")

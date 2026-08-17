@@ -12,7 +12,10 @@ class HabitService:
             title=habit_in.title,
             description=habit_in.description,
             category=habit_in.category,
-            frequency=habit_in.frequency
+            frequency=habit_in.frequency,
+            time_of_day=habit_in.time_of_day,
+            estimated_minutes=habit_in.estimated_minutes,
+            priority=habit_in.priority
         )
         db.add(habit)
         await db.commit()
@@ -47,6 +50,12 @@ class HabitService:
             habit.category = habit_in.category
         if habit_in.frequency is not None:
             habit.frequency = habit_in.frequency
+        if habit_in.time_of_day is not None:
+            habit.time_of_day = habit_in.time_of_day
+        if habit_in.estimated_minutes is not None:
+            habit.estimated_minutes = habit_in.estimated_minutes
+        if habit_in.priority is not None:
+            habit.priority = habit_in.priority
         await db.commit()
         await db.refresh(habit)
         return habit

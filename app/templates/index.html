@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en" class="dark">
+<html lang="en" class="light">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Aura AI — Intelligent Habit & Self-Improvement Platform</title>
+  <title>Aura AI — Intentional Habit Architecture & Focus Suite</title>
   
-  <!-- Fonts -->
+  <!-- Premium Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -18,234 +18,268 @@
       theme: {
         extend: {
           fontFamily: {
-            sans: ['Plus Jakarta Sans', 'sans-serif'],
+            sans: ['Plus Jakarta Sans', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
             mono: ['JetBrains Mono', 'monospace'],
           },
           colors: {
             brand: {
-              50: '#ecfdf5',
-              100: '#d1fae5',
-              400: '#34d399',
-              500: '#10b981',
-              600: '#059669',
-              700: '#047857',
+              50: '#eef2ff',
+              100: '#e0e7ff',
+              500: '#6366f1',
+              600: '#4f46e5',
+              700: '#4338ca',
+              800: '#3730a3',
+              900: '#312e81',
+            },
+            surface: {
+              canvas: '#ffffff',
+              subtle: '#f8fafc',
+              elevated: '#ffffff',
+              border: '#e2e8f0',
+              borderLight: '#f1f5f9',
             }
+          },
+          boxShadow: {
+            subtle: '0 1px 2px 0 rgba(0, 0, 0, 0.04)',
+            card: '0 1px 3px 0 rgba(0, 0, 0, 0.05), 0 6px 16px -4px rgba(0, 0, 0, 0.04)',
+            elevated: '0 12px 32px -8px rgba(15, 23, 42, 0.08), 0 4px 12px -2px rgba(15, 23, 42, 0.03)',
+            bezel: 'inset 0 1px 1px 0 rgba(255, 255, 255, 0.9), 0 1px 3px 0 rgba(0, 0, 0, 0.04)',
           }
         }
       }
     }
   </script>
 
-  <!-- Phosphor Icons -->
+  <!-- Phosphor Icons (Light & Regular) -->
   <script src="https://unpkg.com/@phosphor-icons/web"></script>
 
   <style>
-    body { font-family: 'Plus Jakarta Sans', sans-serif; }
-    ::-webkit-scrollbar { width: 6px; height: 6px; }
-    ::-webkit-scrollbar-track { background: rgba(0,0,0,0.02); }
-    .dark ::-webkit-scrollbar-track { background: #09090b; }
-    ::-webkit-scrollbar-thumb { background: rgba(160,160,160,0.3); border-radius: 9999px; }
-    .dark ::-webkit-scrollbar-thumb { background: #27272a; }
-    ::-webkit-scrollbar-thumb:hover { background: rgba(160,160,160,0.5); }
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
+      background-color: #ffffff;
+      color: #0f172a;
+      -webkit-font-smoothing: antialiased;
+    }
+    
+    /* Precision Scrollbar */
+    ::-webkit-scrollbar { width: 5px; height: 5px; }
+    ::-webkit-scrollbar-track { background: #f8fafc; }
+    ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 9999px; }
+    ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
 
+    /* Floating XP Particle */
     @keyframes float-up {
-      0% { opacity: 0; transform: translateY(10px) scale(0.9); }
-      20% { opacity: 1; transform: translateY(0) scale(1.05); }
-      80% { opacity: 1; transform: translateY(-12px) scale(1); }
-      100% { opacity: 0; transform: translateY(-24px) scale(0.95); }
+      0% { opacity: 0; transform: translateY(12px) scale(0.92); }
+      20% { opacity: 1; transform: translateY(0) scale(1.02); }
+      80% { opacity: 1; transform: translateY(-10px) scale(1); }
+      100% { opacity: 0; transform: translateY(-24px) scale(0.96); }
     }
     .animate-float-up { animation: float-up 1.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
 
-    .heatmap-cell { width: 13px; height: 13px; border-radius: 3px; transition: transform 0.15s ease; }
-    .heatmap-cell:hover { transform: scale(1.3); }
+    /* Heatmap Square */
+    .heatmap-cell {
+      width: 13px;
+      height: 13px;
+      border-radius: 3px;
+      transition: transform 0.12s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.2s ease;
+    }
+    .heatmap-cell:hover { transform: scale(1.35); }
 
-    /* Chat bubble markdown styling */
-    .chat-bubble p { margin-bottom: 0.5rem; }
+    /* Double Bezel Hardware Component Architecture */
+    .bezel-card {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 1.25rem;
+      padding: 0.375rem;
+    }
+    .bezel-inner {
+      background: #ffffff;
+      border: 1px solid rgba(226, 232, 240, 0.8);
+      border-radius: calc(1.25rem - 0.375rem);
+      box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.03);
+    }
+
+    /* Markdown chat formatting */
+    .chat-bubble p { margin-bottom: 0.5rem; line-height: 1.6; }
     .chat-bubble p:last-child { margin-bottom: 0; }
     .chat-bubble ul, .chat-bubble ol { margin-left: 1.25rem; margin-bottom: 0.5rem; }
     .chat-bubble ul { list-style-type: disc; }
     .chat-bubble ol { list-style-type: decimal; }
     .chat-bubble li { margin-bottom: 0.25rem; }
-    .chat-bubble strong { font-weight: 700; }
-    .chat-bubble em { font-style: italic; }
+    .chat-bubble strong { font-weight: 700; color: #0f172a; }
   </style>
 </head>
-<body class="bg-zinc-50 dark:bg-[#09090b] text-zinc-900 dark:text-zinc-100 min-h-screen transition-colors duration-200 flex flex-col antialiased">
+<body class="bg-white text-slate-900 min-h-screen flex flex-col selection:bg-indigo-100 selection:text-indigo-900">
 
   <!-- Toast Notification Container -->
-  <div id="toast-container" class="fixed bottom-6 right-6 z-50 flex flex-col gap-2 pointer-events-none"></div>
+  <div id="toast-container" class="fixed bottom-6 right-6 z-50 flex flex-col gap-2.5 pointer-events-none"></div>
 
   <!-- Floating XP popup container -->
   <div id="xp-floating-container" class="fixed pointer-events-none z-50 inset-0 flex items-center justify-center"></div>
 
-  <!-- Top Navigation Bar -->
-  <header class="sticky top-0 z-40 w-full border-b border-zinc-200 dark:border-zinc-800/80 bg-white/80 dark:bg-[#09090b]/80 backdrop-blur-md">
+  <!-- Top Floating Header -->
+  <header class="sticky top-0 z-40 w-full bg-white/90 backdrop-blur-md border-b border-slate-200/80">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
       
-      <!-- Brand & Health status -->
+      <!-- Brand & Status -->
       <div class="flex items-center gap-3">
-        <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-emerald-600 via-teal-500 to-emerald-400 flex items-center justify-center text-white shadow-md shadow-emerald-500/20">
-          <i class="ph-bold ph-sparkle text-lg"></i>
+        <div class="w-8 h-8 rounded-lg bg-slate-900 flex items-center justify-center text-white shadow-sm">
+          <i class="ph-bold ph-compass text-base text-indigo-300"></i>
         </div>
         <div class="flex items-center gap-2">
-          <span class="font-extrabold text-lg tracking-tight bg-gradient-to-r from-zinc-900 to-zinc-600 dark:from-white dark:to-zinc-300 bg-clip-text text-transparent">Aura AI</span>
-          <span class="hidden sm:inline-flex items-center gap-1 text-[11px] font-mono px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20">
-            <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span> v1.1.0
+          <span class="font-bold text-base tracking-tight text-slate-900">Aura AI</span>
+          <span class="text-slate-400 font-normal">/</span>
+          <span class="text-xs font-mono px-2 py-0.5 rounded-full bg-slate-100 text-slate-600 border border-slate-200/80">
+            v1.2.0 • Production
           </span>
         </div>
       </div>
 
-      <!-- Tab Navigation (Desktop) -->
-      <nav id="desktop-nav" class="hidden md:flex items-center gap-1 bg-zinc-100 dark:bg-zinc-900/90 p-1 rounded-xl border border-zinc-200 dark:border-zinc-800">
-        <button onclick="switchTab('habits')" class="tab-btn active px-3.5 py-1.5 rounded-lg text-sm font-medium transition-all" data-tab="habits">
-          <i class="ph ph-check-circle mr-1.5"></i> Habits
+      <!-- Desktop Navigation Tabs -->
+      <nav id="desktop-nav" class="hidden md:flex items-center gap-1 bg-slate-100/90 p-1 rounded-xl border border-slate-200/70">
+        <button onclick="switchTab('habits')" class="tab-btn active px-3.5 py-1.5 rounded-lg text-xs font-semibold tracking-tight transition-all" data-tab="habits">
+          <i class="ph ph-check-circle mr-1.5"></i> Daily Planner
         </button>
-        <button onclick="switchTab('focus')" class="tab-btn px-3.5 py-1.5 rounded-lg text-sm font-medium text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-all" data-tab="focus">
-          <i class="ph ph-timer mr-1.5"></i> Focus & Timer
+        <button onclick="switchTab('focus')" class="tab-btn px-3.5 py-1.5 rounded-lg text-xs font-semibold text-slate-600 hover:text-slate-900 transition-all" data-tab="focus">
+          <i class="ph ph-timer mr-1.5"></i> Focus Studio
         </button>
-        <button onclick="switchTab('coach-chat')" class="tab-btn px-3.5 py-1.5 rounded-lg text-sm font-medium text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-all" data-tab="coach-chat">
-          <i class="ph ph-chat-circle-dots mr-1.5"></i> AI Live Coach
+        <button onclick="switchTab('coach-chat')" class="tab-btn px-3.5 py-1.5 rounded-lg text-xs font-semibold text-slate-600 hover:text-slate-900 transition-all" data-tab="coach-chat">
+          <i class="ph ph-sparkle mr-1.5"></i> AI Mentor
         </button>
-        <button onclick="switchTab('analytics')" class="tab-btn px-3.5 py-1.5 rounded-lg text-sm font-medium text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-all" data-tab="analytics">
+        <button onclick="switchTab('analytics')" class="tab-btn px-3.5 py-1.5 rounded-lg text-xs font-semibold text-slate-600 hover:text-slate-900 transition-all" data-tab="analytics">
           <i class="ph ph-chart-line-up mr-1.5"></i> Analytics
         </button>
-        <button onclick="switchTab('gamification')" class="tab-btn px-3.5 py-1.5 rounded-lg text-sm font-medium text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-all" data-tab="gamification">
-          <i class="ph ph-trophy mr-1.5"></i> Quests & XP
+        <button onclick="switchTab('gamification')" class="tab-btn px-3.5 py-1.5 rounded-lg text-xs font-semibold text-slate-600 hover:text-slate-900 transition-all" data-tab="gamification">
+          <i class="ph ph-trophy mr-1.5"></i> Quests & Ranks
         </button>
       </nav>
 
-      <!-- Right Controls: Theme Toggle & User Auth -->
-      <div class="flex items-center gap-2.5">
-        <button onclick="toggleDarkMode()" title="Toggle Theme" class="p-2 rounded-xl text-zinc-600 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors">
-          <i id="theme-icon" class="ph ph-sun text-lg"></i>
-        </button>
-
-        <!-- Auth State: Logged Out -->
+      <!-- Right Controls: Profile & Auth -->
+      <div class="flex items-center gap-3">
+        <!-- Auth Logged Out -->
         <div id="auth-logged-out" class="flex items-center gap-2">
-          <button onclick="openAuthModal('login')" class="px-3.5 py-1.5 text-sm font-medium text-zinc-700 dark:text-zinc-300 hover:text-zinc-900 dark:hover:text-white transition-colors">
+          <button onclick="openAuthModal('login')" class="px-3.5 py-1.5 text-xs font-semibold text-slate-700 hover:text-slate-900 transition-colors">
             Sign In
           </button>
-          <button onclick="openAuthModal('register')" class="px-3.5 py-1.5 text-sm font-semibold bg-emerald-600 hover:bg-emerald-500 text-white rounded-xl shadow-sm shadow-emerald-600/20 transition-all">
+          <button onclick="openAuthModal('register')" class="px-3.5 py-1.5 text-xs font-semibold bg-slate-900 hover:bg-slate-800 text-white rounded-lg shadow-sm transition-all">
             Get Started
           </button>
         </div>
 
-        <!-- Auth State: Logged In -->
+        <!-- Auth Logged In -->
         <div id="auth-logged-in" class="hidden flex items-center gap-2.5">
-          <div class="flex items-center gap-2 px-3 py-1 bg-zinc-100 dark:bg-zinc-800/80 rounded-xl border border-zinc-200 dark:border-zinc-700/60">
-            <div class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-bold text-xs">
+          <div class="flex items-center gap-2 px-3 py-1 bg-slate-50 rounded-lg border border-slate-200/80">
+            <div class="w-5 h-5 rounded-full bg-indigo-100 text-indigo-700 flex items-center justify-center font-bold text-[10px]">
               <span id="user-avatar-initial">U</span>
             </div>
-            <div class="text-left">
-              <span id="user-display-name" class="text-xs font-semibold block leading-tight truncate max-w-[90px]">User</span>
-              <span id="user-badge" class="text-[10px] font-mono text-emerald-600 dark:text-emerald-400">Lvl 1 • 0 XP</span>
-            </div>
+            <span id="user-display-name" class="text-xs font-semibold text-slate-800 truncate max-w-[100px]">User</span>
+            <span id="user-badge" class="text-[10px] font-mono text-indigo-600 font-medium">Lvl 1 • 0 XP</span>
           </div>
-          <button onclick="logout()" title="Sign Out" class="p-2 rounded-xl text-zinc-500 hover:text-rose-500 hover:bg-rose-500/10 transition-colors">
-            <i class="ph ph-sign-out text-lg"></i>
+          <button onclick="logout()" title="Sign Out" class="p-1.5 rounded-lg text-slate-400 hover:text-rose-600 hover:bg-rose-50 transition-colors">
+            <i class="ph ph-sign-out text-base"></i>
           </button>
         </div>
       </div>
     </div>
 
     <!-- Mobile Nav Bar -->
-    <div class="md:hidden flex items-center justify-around border-t border-zinc-200 dark:border-zinc-800/80 py-1.5 px-2 bg-zinc-100/60 dark:bg-zinc-900/60">
+    <div class="md:hidden flex items-center justify-around border-t border-slate-200 py-1.5 px-2 bg-slate-50">
       <button onclick="switchTab('habits')" class="tab-btn active flex flex-col items-center gap-0.5 text-[11px] font-medium py-1 px-2 rounded-lg" data-tab="habits">
-        <i class="ph ph-check-circle text-lg"></i>
-        <span>Habits</span>
+        <i class="ph ph-check-circle text-base"></i>
+        <span>Planner</span>
       </button>
-      <button onclick="switchTab('focus')" class="tab-btn flex flex-col items-center gap-0.5 text-[11px] font-medium text-zinc-500 dark:text-zinc-400 py-1 px-2 rounded-lg" data-tab="focus">
-        <i class="ph ph-timer text-lg"></i>
+      <button onclick="switchTab('focus')" class="tab-btn flex flex-col items-center gap-0.5 text-[11px] font-medium text-slate-500 py-1 px-2 rounded-lg" data-tab="focus">
+        <i class="ph ph-timer text-base"></i>
         <span>Focus</span>
       </button>
-      <button onclick="switchTab('coach-chat')" class="tab-btn flex flex-col items-center gap-0.5 text-[11px] font-medium text-zinc-500 dark:text-zinc-400 py-1 px-2 rounded-lg" data-tab="coach-chat">
-        <i class="ph ph-chat-circle-dots text-lg"></i>
-        <span>AI Coach</span>
+      <button onclick="switchTab('coach-chat')" class="tab-btn flex flex-col items-center gap-0.5 text-[11px] font-medium text-slate-500 py-1 px-2 rounded-lg" data-tab="coach-chat">
+        <i class="ph ph-sparkle text-base"></i>
+        <span>Mentor</span>
       </button>
-      <button onclick="switchTab('analytics')" class="tab-btn flex flex-col items-center gap-0.5 text-[11px] font-medium text-zinc-500 dark:text-zinc-400 py-1 px-2 rounded-lg" data-tab="analytics">
-        <i class="ph ph-chart-line-up text-lg"></i>
-        <span>Analytics</span>
+      <button onclick="switchTab('analytics')" class="tab-btn flex flex-col items-center gap-0.5 text-[11px] font-medium text-slate-500 py-1 px-2 rounded-lg" data-tab="analytics">
+        <i class="ph ph-chart-line-up text-base"></i>
+        <span>Stats</span>
       </button>
-      <button onclick="switchTab('gamification')" class="tab-btn flex flex-col items-center gap-0.5 text-[11px] font-medium text-zinc-500 dark:text-zinc-400 py-1 px-2 rounded-lg" data-tab="gamification">
-        <i class="ph ph-trophy text-lg"></i>
+      <button onclick="switchTab('gamification')" class="tab-btn flex flex-col items-center gap-0.5 text-[11px] font-medium text-slate-500 py-1 px-2 rounded-lg" data-tab="gamification">
+        <i class="ph ph-trophy text-base"></i>
         <span>Quests</span>
       </button>
     </div>
   </header>
 
-  <!-- Main Content Area -->
-  <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-6">
+  <!-- Main Content Viewport -->
+  <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
 
-    <!-- Guest Welcome Banner (Shown if not logged in) -->
-    <div id="guest-banner" class="p-6 rounded-2xl bg-gradient-to-r from-emerald-500/10 via-teal-500/5 to-transparent border border-emerald-500/20 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-      <div>
-        <h2 class="text-xl font-bold tracking-tight text-zinc-900 dark:text-white flex items-center gap-2">
-          <i class="ph-bold ph-lightning text-emerald-500"></i> Welcome to Aura AI Platform
-        </h2>
-        <p class="text-sm text-zinc-600 dark:text-zinc-400 mt-1 max-w-2xl">
-          Powered by LangChain & dual LLMs (Gemini & OpenAI). Build consistency, chat with your AI coach, run audio-enhanced focus sessions, and level up your productivity rank.
-        </p>
-      </div>
-      <div class="flex items-center gap-2 flex-wrap">
-        <button onclick="loginAsDemoUser()" class="px-4 py-2 text-sm font-semibold bg-emerald-600 hover:bg-emerald-500 text-white rounded-xl shadow-md shadow-emerald-600/20 transition-all flex items-center gap-1.5">
-          <i class="ph-bold ph-user-check"></i> Instant Demo Login
+    <!-- Guest Welcome Banner -->
+    <div id="guest-banner" class="bezel-card">
+      <div class="bezel-inner p-6 sm:p-7 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-5 bg-gradient-to-r from-slate-50 to-white">
+        <div class="space-y-1">
+          <div class="flex items-center gap-2">
+            <span class="px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold uppercase tracking-wider bg-indigo-50 text-indigo-700 border border-indigo-200">
+              Welcome to Aura
+            </span>
+          </div>
+          <h2 class="text-xl font-bold text-slate-900 tracking-tight">An intentional habit operating system.</h2>
+          <p class="text-xs sm:text-sm text-slate-500 max-w-2xl leading-relaxed">
+            Organize routines by time of day, engage deep-work focus sessions with binaural audio, and receive AI-synthesized weekly performance assessments.
+          </p>
+        </div>
+        <button onclick="loginAsDemoUser()" class="px-4 py-2.5 text-xs font-semibold bg-slate-900 hover:bg-slate-800 text-white rounded-xl shadow-sm transition-all flex items-center gap-1.5 whitespace-nowrap">
+          <i class="ph-bold ph-lightning text-amber-300"></i> Instant Demo Login
         </button>
       </div>
     </div>
 
-    <!-- Daily AI Motivational Quote Card -->
-    <div id="daily-quote-card" class="p-5 rounded-2xl bg-white dark:bg-zinc-900/90 border border-zinc-200 dark:border-zinc-800 shadow-sm relative overflow-hidden flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
-      <div class="flex items-start gap-3.5">
-        <div class="w-10 h-10 rounded-xl bg-amber-500/10 text-amber-500 flex items-center justify-center shrink-0 font-bold">
-          <i class="ph-bold ph-quotes text-xl"></i>
-        </div>
-        <div>
-          <blockquote id="quote-text" class="text-sm sm:text-base font-semibold text-zinc-900 dark:text-zinc-100 italic">
-            "We are what we repeatedly do. Excellence, then, is not an act, but a habit."
-          </blockquote>
-          <div class="flex items-center gap-2 mt-1 text-xs text-zinc-500 dark:text-zinc-400 flex-wrap">
-            <span id="quote-author" class="font-medium">— Will Durant</span>
-            <span>•</span>
-            <span id="quote-reflection" class="italic text-emerald-600 dark:text-emerald-400">What small step can you take today?</span>
+    <!-- Daily Reflection Quote Banner -->
+    <div class="bezel-card" id="quote-container-card">
+      <div class="bezel-inner p-5 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+        <div class="flex items-start gap-3.5">
+          <div class="w-8 h-8 rounded-lg bg-slate-100 flex items-center justify-center text-slate-700 shrink-0 mt-0.5">
+            <i class="ph-bold ph-quotes text-base"></i>
+          </div>
+          <div class="space-y-1">
+            <blockquote id="quote-text" class="text-sm font-semibold text-slate-900 italic">
+              "We are what we repeatedly do. Excellence, then, is not an act, but a habit."
+            </blockquote>
+            <div class="flex items-center gap-2 text-xs text-slate-500 flex-wrap">
+              <span id="quote-author" class="font-medium">— Will Durant</span>
+              <span>•</span>
+              <span id="quote-reflection" class="text-indigo-600 font-medium">What small step can you take today?</span>
+            </div>
           </div>
         </div>
+        <button onclick="fetchDailyQuote()" title="Refresh AI Quote" class="px-3 py-1.5 text-xs font-medium rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 transition-colors flex items-center gap-1.5 shrink-0 self-end md:self-center">
+          <i class="ph ph-arrows-clockwise text-xs"></i> New Prompt
+        </button>
       </div>
-      <button onclick="fetchDailyQuote()" title="Refresh AI Quote" class="self-end md:self-center px-3 py-1.5 text-xs font-semibold rounded-xl bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-300 hover:bg-zinc-200 dark:hover:bg-zinc-700 transition-colors flex items-center gap-1 shrink-0">
-        <i class="ph ph-arrows-clockwise"></i> New Quote
-      </button>
     </div>
 
-    <!-- ==================== TAB 1: HABITS ==================== -->
+    <!-- ==================== TAB 1: DAILY PLANNER / HABITS ==================== -->
     <section id="tab-habits" class="tab-content block space-y-6">
       
-      <!-- Habit Header & Actions -->
+      <!-- Top Action Bar -->
       <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 class="text-2xl font-bold tracking-tight">Active Habits</h1>
-          <p class="text-sm text-zinc-500 dark:text-zinc-400">Track daily consistency, log reflections, and sync to your calendar.</p>
+          <h1 class="text-2xl font-bold text-slate-900 tracking-tight">Daily Habit Planner</h1>
+          <p class="text-xs sm:text-sm text-slate-500">Execute structured daily routines with time-of-day blocks.</p>
         </div>
         
         <div class="flex items-center gap-2 flex-wrap">
-          <!-- View Toggle (Grid vs Checklist) -->
-          <div class="flex items-center bg-zinc-100 dark:bg-zinc-900 p-1 rounded-xl border border-zinc-200 dark:border-zinc-800">
-            <button id="view-mode-grid" onclick="setViewMode('grid')" title="Card Grid View" class="px-2.5 py-1 text-xs font-semibold rounded-lg bg-white dark:bg-zinc-800 text-zinc-900 dark:text-white shadow-sm transition-all">
-              <i class="ph-bold ph-squares-four"></i> Grid
+          <!-- View Toggle -->
+          <div class="flex items-center bg-slate-100 p-1 rounded-xl border border-slate-200/80">
+            <button id="view-mode-grouped" onclick="setHabitViewMode('grouped')" class="px-3 py-1 text-xs font-semibold rounded-lg bg-white text-slate-900 shadow-sm transition-all">
+              <i class="ph-bold ph-clock mr-1"></i> Time Blocks
             </button>
-            <button id="view-mode-checklist" onclick="setViewMode('checklist')" title="Today's Fast Checklist View" class="px-2.5 py-1 text-xs font-semibold rounded-lg text-zinc-500 hover:text-zinc-900 dark:hover:text-white transition-all">
-              <i class="ph-bold ph-list-checks"></i> Checklist
+            <button id="view-mode-grid" onclick="setHabitViewMode('grid')" class="px-3 py-1 text-xs font-semibold rounded-lg text-slate-500 hover:text-slate-900 transition-all">
+              <i class="ph-bold ph-squares-four mr-1"></i> Card Grid
             </button>
           </div>
-
-          <!-- Quick Templates Button -->
-          <button onclick="openPresetsModal()" class="px-3 py-2 text-xs font-semibold rounded-xl bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 text-zinc-700 dark:text-zinc-300 hover:text-emerald-500 transition-colors flex items-center gap-1">
-            <i class="ph-bold ph-sparkle text-amber-500"></i> Templates
-          </button>
 
           <!-- Category filter -->
           <select 
             id="habit-category-filter" 
             onchange="filterHabits()"
-            class="px-3 py-2 text-xs rounded-xl bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 focus:outline-none focus:ring-2 focus:ring-emerald-500/50 transition-all"
+            class="px-3 py-1.5 text-xs rounded-xl bg-white border border-slate-200 text-slate-700 focus:outline-none focus:ring-2 focus:ring-slate-900 transition-all"
           >
             <option value="">All Categories</option>
             <option value="Productivity">Productivity</option>
@@ -256,163 +290,215 @@
             <option value="General">General</option>
           </select>
 
-          <!-- Export Dropdown -->
-          <div class="flex items-center gap-1 bg-zinc-100 dark:bg-zinc-900 p-1 rounded-xl border border-zinc-200 dark:border-zinc-800">
-            <button onclick="exportHabitsICS()" title="Export to Apple/Google/Outlook Calendar (.ics)" class="px-2 py-1 text-xs font-semibold text-zinc-600 dark:text-zinc-300 hover:text-emerald-500 flex items-center gap-1 transition-colors">
-              <i class="ph-bold ph-calendar-plus text-sm"></i> .ICS
+          <!-- Export Options -->
+          <div class="flex items-center bg-slate-100 p-1 rounded-xl border border-slate-200">
+            <button onclick="exportHabitsICS()" title="Export .ICS for Apple/Google Calendar" class="px-2.5 py-1 text-xs font-semibold text-slate-700 hover:text-indigo-600 transition-colors flex items-center gap-1">
+              <i class="ph-bold ph-calendar text-xs"></i> .ICS
             </button>
-            <button onclick="exportHabitsCSV()" title="Export to CSV Spreadsheet" class="px-2 py-1 text-xs font-semibold text-zinc-600 dark:text-zinc-300 hover:text-emerald-500 flex items-center gap-1 transition-colors">
-              <i class="ph-bold ph-file-csv text-sm"></i> .CSV
+            <button onclick="exportHabitsCSV()" title="Export .CSV Spreadsheet" class="px-2.5 py-1 text-xs font-semibold text-slate-700 hover:text-indigo-600 transition-colors flex items-center gap-1">
+              <i class="ph-bold ph-file-csv text-xs"></i> .CSV
             </button>
           </div>
 
+          <!-- Popular Templates -->
+          <button onclick="openPresetsModal()" class="px-3.5 py-1.5 text-xs font-semibold bg-slate-100 hover:bg-slate-200 text-slate-800 rounded-xl border border-slate-200 transition-colors flex items-center gap-1.5">
+            <i class="ph-bold ph-sparkle text-indigo-600"></i> Templates
+          </button>
+
           <!-- New Habit Button -->
-          <button onclick="openCreateHabitModal()" class="px-3.5 py-2 text-xs font-semibold bg-emerald-600 hover:bg-emerald-500 text-white rounded-xl shadow-sm shadow-emerald-600/20 transition-all flex items-center gap-1 whitespace-nowrap">
+          <button onclick="openCreateHabitModal()" class="px-4 py-1.5 text-xs font-semibold bg-slate-900 hover:bg-slate-800 text-white rounded-xl shadow-sm transition-all flex items-center gap-1.5 whitespace-nowrap">
             <i class="ph-bold ph-plus"></i> New Habit
           </button>
         </div>
       </div>
 
-      <!-- Quick 30-Day Activity Heatmap (GitHub-Style) -->
-      <div class="p-5 rounded-2xl bg-white dark:bg-zinc-900/90 border border-zinc-200 dark:border-zinc-800 shadow-sm">
-        <div class="flex items-center justify-between mb-3">
-          <div class="flex items-center gap-2">
-            <i class="ph-bold ph-grid-four text-emerald-500"></i>
-            <h3 class="text-xs font-bold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">Consistency Grid (Last 30 Days)</h3>
+      <!-- 30-Day Activity Heatmap -->
+      <div class="bezel-card">
+        <div class="bezel-inner p-5 space-y-3">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-2">
+              <i class="ph-bold ph-calendar-check text-slate-700"></i>
+              <span class="text-xs font-bold uppercase tracking-wider text-slate-500">30-Day Consistency Grid</span>
+            </div>
+            <span class="text-xs font-mono text-slate-500" id="heatmap-streak-label">Active Consistency: 0 days</span>
           </div>
-          <span class="text-xs font-mono text-zinc-400" id="heatmap-streak-label">Active Streak: 0 days</span>
+          <div id="activity-heatmap" class="flex flex-wrap gap-1.5 items-center"></div>
         </div>
-        <div id="activity-heatmap" class="flex flex-wrap gap-1.5 items-center"></div>
       </div>
 
-      <!-- Habits Grid View -->
-      <div id="habits-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5"></div>
+      <!-- Grouped Time-Block View (Morning / Afternoon / Evening) -->
+      <div id="habits-grouped-view" class="space-y-6">
+        <!-- Morning Block -->
+        <div class="space-y-3">
+          <div class="flex items-center gap-2 border-b border-slate-100 pb-2">
+            <i class="ph-bold ph-sun-horizon text-amber-500 text-base"></i>
+            <h3 class="text-xs font-bold uppercase tracking-wider text-slate-700">Morning Rituals</h3>
+            <span class="text-xs font-mono text-slate-400" id="count-morning">(0)</span>
+          </div>
+          <div id="habits-morning-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"></div>
+        </div>
 
-      <!-- Habits Fast Checklist View (Hidden by default) -->
-      <div id="habits-checklist" class="hidden space-y-3"></div>
+        <!-- Afternoon Block -->
+        <div class="space-y-3">
+          <div class="flex items-center gap-2 border-b border-slate-100 pb-2">
+            <i class="ph-bold ph-sun text-orange-500 text-base"></i>
+            <h3 class="text-xs font-bold uppercase tracking-wider text-slate-700">Afternoon Deep Work</h3>
+            <span class="text-xs font-mono text-slate-400" id="count-afternoon">(0)</span>
+          </div>
+          <div id="habits-afternoon-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"></div>
+        </div>
+
+        <!-- Evening Block -->
+        <div class="space-y-3">
+          <div class="flex items-center gap-2 border-b border-slate-100 pb-2">
+            <i class="ph-bold ph-moon-stars text-indigo-500 text-base"></i>
+            <h3 class="text-xs font-bold uppercase tracking-wider text-slate-700">Evening Wind-Down</h3>
+            <span class="text-xs font-mono text-slate-400" id="count-evening">(0)</span>
+          </div>
+          <div id="habits-evening-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"></div>
+        </div>
+      </div>
+
+      <!-- Grid View (Optional toggle) -->
+      <div id="habits-grid-view" class="hidden grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"></div>
 
       <!-- Empty State -->
-      <div id="habits-empty" class="hidden py-16 text-center rounded-2xl border border-dashed border-zinc-300 dark:border-zinc-800 bg-white/40 dark:bg-zinc-900/40">
-        <div class="w-12 h-12 mx-auto mb-3 rounded-2xl bg-zinc-100 dark:bg-zinc-800 flex items-center justify-center text-zinc-400">
-          <i class="ph ph-target text-2xl"></i>
+      <div id="habits-empty" class="hidden py-16 text-center rounded-2xl border border-dashed border-slate-200 bg-slate-50/50">
+        <div class="w-10 h-10 mx-auto mb-3 rounded-xl bg-white border border-slate-200 flex items-center justify-center text-slate-400">
+          <i class="ph ph-target text-xl"></i>
         </div>
-        <h3 class="text-base font-semibold">No habits found</h3>
-        <p class="text-sm text-zinc-500 dark:text-zinc-400 mt-1 mb-4">Start your journey by choosing a template or creating a new habit.</p>
-        <button onclick="openPresetsModal()" class="px-4 py-2 text-sm font-semibold bg-emerald-600 hover:bg-emerald-500 text-white rounded-xl shadow-sm transition-all">
-          Browse Templates
+        <h3 class="text-sm font-bold text-slate-800">No habits tracked yet</h3>
+        <p class="text-xs text-slate-500 mt-1 mb-4">Start by selecting a proven template or creating a custom routine.</p>
+        <button onclick="openPresetsModal()" class="px-4 py-2 text-xs font-semibold bg-slate-900 hover:bg-slate-800 text-white rounded-xl shadow-sm transition-all">
+          Browse Habit Templates
         </button>
       </div>
     </section>
 
-    <!-- ==================== TAB 2: FOCUS & TIMER ==================== -->
+    <!-- ==================== TAB 2: FOCUS STUDIO ==================== -->
     <section id="tab-focus" class="tab-content hidden space-y-6">
-      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-        <div>
-          <h1 class="text-2xl font-bold tracking-tight">AI Deep Work & Focus Studio</h1>
-          <p class="text-sm text-zinc-500 dark:text-zinc-400">Pomodoro flow state paired with synthesized ambient soundscapes & AI strategy.</p>
-        </div>
+      <div>
+        <h1 class="text-2xl font-bold text-slate-900 tracking-tight">Focus Studio & Deep Work</h1>
+        <p class="text-xs sm:text-sm text-slate-500">Pomodoro flow blocks with browser-synthesized acoustic soundscapes.</p>
       </div>
 
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
-        <!-- Timer Card (5 Cols) -->
-        <div class="lg:col-span-5 p-6 sm:p-8 rounded-2xl bg-white dark:bg-zinc-900/90 border border-zinc-200 dark:border-zinc-800 shadow-sm flex flex-col items-center justify-center text-center">
-          <div class="relative w-56 h-56 flex items-center justify-center my-2">
-            <svg class="w-full h-full transform -rotate-90" viewBox="0 0 100 100">
-              <circle cx="50" cy="50" r="42" stroke="currentColor" stroke-width="6" class="text-zinc-100 dark:text-zinc-800" fill="transparent"></circle>
-              <circle id="timer-progress-circle" cx="50" cy="50" r="42" stroke="currentColor" stroke-width="6" stroke-dasharray="264" stroke-dashoffset="0" stroke-linecap="round" class="text-emerald-500 transition-all duration-1000" fill="transparent"></circle>
-            </svg>
-            <div class="absolute flex flex-col items-center">
-              <span id="timer-display" class="text-4xl font-extrabold font-mono tracking-tight">25:00</span>
-              <span id="timer-mode-label" class="text-xs uppercase tracking-widest text-zinc-400 mt-1 font-semibold">Focus Session</span>
+        <!-- Timer Card -->
+        <div class="lg:col-span-5 bezel-card">
+          <div class="bezel-inner p-6 sm:p-8 flex flex-col items-center justify-center text-center space-y-5">
+            <div class="relative w-52 h-52 flex items-center justify-center my-2">
+              <svg class="w-full h-full transform -rotate-90" viewBox="0 0 100 100">
+                <circle cx="50" cy="50" r="42" stroke="currentColor" stroke-width="5" class="text-slate-100" fill="transparent"></circle>
+                <circle id="timer-progress-circle" cx="50" cy="50" r="42" stroke="currentColor" stroke-width="5" stroke-dasharray="264" stroke-dashoffset="0" stroke-linecap="round" class="text-slate-900 transition-all duration-1000" fill="transparent"></circle>
+              </svg>
+              <div class="absolute flex flex-col items-center">
+                <span id="timer-display" class="text-4xl font-extrabold font-mono tracking-tight text-slate-900">25:00</span>
+                <span id="timer-mode-label" class="text-[10px] uppercase tracking-widest text-slate-400 mt-1 font-semibold">Deep Focus</span>
+              </div>
             </div>
-          </div>
 
-          <!-- Controls -->
-          <div class="flex items-center gap-3 mt-3">
-            <button id="btn-timer-toggle" onclick="toggleFocusTimer()" class="px-6 py-2.5 rounded-xl font-bold text-sm bg-emerald-600 hover:bg-emerald-500 text-white shadow-md shadow-emerald-600/20 transition-all flex items-center gap-1.5">
-              <i class="ph-bold ph-play" id="timer-btn-icon"></i> <span id="timer-btn-label">Start Focus</span>
-            </button>
-            <button onclick="resetFocusTimer()" class="px-4 py-2.5 rounded-xl font-semibold text-sm bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 hover:bg-zinc-200 dark:hover:bg-zinc-700 transition-colors">
-              Reset
-            </button>
-          </div>
-
-          <div class="flex items-center gap-2 mt-4">
-            <button onclick="setTimerDuration(25)" class="px-3 py-1 text-xs rounded-lg bg-zinc-100 dark:bg-zinc-800 font-mono font-medium hover:text-emerald-500">25m</button>
-            <button onclick="setTimerDuration(50)" class="px-3 py-1 text-xs rounded-lg bg-zinc-100 dark:bg-zinc-800 font-mono font-medium hover:text-emerald-500">50m</button>
-            <button onclick="setTimerDuration(5)" class="px-3 py-1 text-xs rounded-lg bg-zinc-100 dark:bg-zinc-800 font-mono font-medium hover:text-emerald-500">5m break</button>
-          </div>
-
-          <!-- Ambient Soundscapes Synthesizer -->
-          <div class="w-full mt-6 pt-5 border-t border-zinc-200 dark:border-zinc-800 text-left">
-            <div class="flex items-center justify-between mb-3">
-              <span class="text-xs font-bold uppercase tracking-wider text-zinc-500 dark:text-zinc-400 flex items-center gap-1.5">
-                <i class="ph-bold ph-headphones text-purple-500"></i> Ambient Soundscape
-              </span>
-              <button id="btn-sound-toggle" onclick="toggleSoundscape()" class="px-2.5 py-1 text-xs font-semibold rounded-lg bg-purple-500/10 text-purple-600 dark:text-purple-400 border border-purple-500/20 hover:bg-purple-500/20 transition-all flex items-center gap-1">
-                <i class="ph-bold ph-play" id="sound-btn-icon"></i> <span id="sound-btn-label">Play Audio</span>
+            <!-- Controls -->
+            <div class="flex items-center gap-3">
+              <button id="btn-timer-toggle" onclick="toggleFocusTimer()" class="px-6 py-2.5 rounded-xl font-bold text-xs bg-slate-900 hover:bg-slate-800 text-white shadow-sm transition-all flex items-center gap-1.5">
+                <i class="ph-bold ph-play" id="timer-btn-icon"></i> <span id="timer-btn-label">Start Session</span>
               </button>
-            </div>
-            
-            <div class="grid grid-cols-3 gap-2 mb-3">
-              <button onclick="setSoundType('binaural')" id="sound-btn-binaural" class="sound-type-btn active px-2 py-1.5 rounded-lg text-xs font-medium bg-zinc-100 dark:bg-zinc-800 text-emerald-500 text-center transition-all">40Hz Binaural</button>
-              <button onclick="setSoundType('brown')" id="sound-btn-brown" class="sound-type-btn px-2 py-1.5 rounded-lg text-xs font-medium text-zinc-500 hover:text-zinc-900 dark:hover:text-white text-center transition-all">Brown Noise</button>
-              <button onclick="setSoundType('rain')" id="sound-btn-rain" class="sound-type-btn px-2 py-1.5 rounded-lg text-xs font-medium text-zinc-500 hover:text-zinc-900 dark:hover:text-white text-center transition-all">Gentle Rain</button>
+              <button onclick="resetFocusTimer()" class="px-4 py-2.5 rounded-xl font-semibold text-xs bg-slate-100 text-slate-700 hover:bg-slate-200 transition-colors">
+                Reset
+              </button>
             </div>
 
             <div class="flex items-center gap-2">
-              <i class="ph ph-speaker-low text-zinc-400 text-sm"></i>
-              <input type="range" id="sound-volume" min="0" max="1" step="0.05" value="0.5" oninput="setSoundVolume(this.value)" class="w-full accent-emerald-500 h-1.5 bg-zinc-200 dark:bg-zinc-700 rounded-lg cursor-pointer">
-              <i class="ph ph-speaker-high text-zinc-400 text-sm"></i>
+              <button onclick="setTimerDuration(25)" class="px-3 py-1 text-xs rounded-lg bg-slate-100 font-mono font-medium text-slate-700 hover:text-indigo-600">25m</button>
+              <button onclick="setTimerDuration(50)" class="px-3 py-1 text-xs rounded-lg bg-slate-100 font-mono font-medium text-slate-700 hover:text-indigo-600">50m</button>
+              <button onclick="setTimerDuration(5)" class="px-3 py-1 text-xs rounded-lg bg-slate-100 font-mono font-medium text-slate-700 hover:text-indigo-600">5m break</button>
+            </div>
+
+            <!-- Synthesized Soundscapes -->
+            <div class="w-full pt-4 border-t border-slate-100 text-left space-y-3">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-bold uppercase tracking-wider text-slate-600 flex items-center gap-1.5">
+                  <i class="ph-bold ph-headphones text-indigo-600"></i> Ambient Soundscape
+                </span>
+                <button id="btn-sound-toggle" onclick="toggleSoundscape()" class="px-2.5 py-1 text-xs font-semibold rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-800 transition-all flex items-center gap-1">
+                  <i class="ph-bold ph-play" id="sound-btn-icon"></i> <span id="sound-btn-label">Play Sound</span>
+                </button>
+              </div>
+              
+              <div class="grid grid-cols-3 gap-2">
+                <button onclick="setSoundType('binaural')" id="sound-btn-binaural" class="sound-type-btn active px-2 py-1.5 rounded-lg text-xs font-medium bg-slate-900 text-white text-center transition-all">40Hz Binaural</button>
+                <button onclick="setSoundType('brown')" id="sound-btn-brown" class="sound-type-btn px-2 py-1.5 rounded-lg text-xs font-medium text-slate-600 hover:bg-slate-100 text-center transition-all">Brown Noise</button>
+                <button onclick="setSoundType('rain')" id="sound-btn-rain" class="sound-type-btn px-2 py-1.5 rounded-lg text-xs font-medium text-slate-600 hover:bg-slate-100 text-center transition-all">Gentle Rain</button>
+              </div>
+
+              <div class="flex items-center gap-2 pt-1">
+                <i class="ph ph-speaker-low text-slate-400 text-sm"></i>
+                <input type="range" id="sound-volume" min="0" max="1" step="0.05" value="0.5" oninput="setSoundVolume(this.value)" class="w-full accent-slate-900 h-1.5 bg-slate-200 rounded-lg cursor-pointer">
+                <i class="ph ph-speaker-high text-slate-400 text-sm"></i>
+              </div>
             </div>
           </div>
         </div>
 
-        <!-- AI Focus Strategy Assistant (7 Cols) -->
-        <div class="lg:col-span-7 p-6 sm:p-8 rounded-2xl bg-white dark:bg-zinc-900/90 border border-zinc-200 dark:border-zinc-800 shadow-sm flex flex-col justify-between">
-          <div>
-            <div class="flex items-center gap-2 mb-3">
-              <div class="w-8 h-8 rounded-xl bg-purple-500/10 text-purple-500 flex items-center justify-center font-bold">
-                <i class="ph-bold ph-lightning"></i>
+        <!-- AI Focus Strategy Assistant & History (7 Cols) -->
+        <div class="lg:col-span-7 space-y-6">
+          <div class="bezel-card">
+            <div class="bezel-inner p-6 space-y-4">
+              <div class="flex items-center gap-2.5">
+                <div class="w-7 h-7 rounded-lg bg-indigo-50 text-indigo-600 flex items-center justify-center font-bold">
+                  <i class="ph-bold ph-lightning"></i>
+                </div>
+                <div>
+                  <h3 class="font-bold text-sm text-slate-900">Task Priming & Distraction Defense</h3>
+                  <p class="text-xs text-slate-500">Formulate cognitive priming steps before beginning work.</p>
+                </div>
               </div>
-              <div>
-                <h3 class="font-bold text-base">AI Deep-Work Strategy Assistant</h3>
-                <p class="text-xs text-zinc-500 dark:text-zinc-400">Generate custom priming steps and anti-distraction defense before starting.</p>
+
+              <div class="flex gap-2">
+                <input 
+                  type="text" 
+                  id="focus-task-input" 
+                  placeholder="Task title (e.g. Write Q3 Engineering Roadmap)..." 
+                  class="flex-1 px-3.5 py-2 text-xs rounded-xl bg-slate-50 border border-slate-200 focus:outline-none focus:ring-2 focus:ring-slate-900"
+                >
+                <button onclick="generateFocusStrategy()" id="btn-focus-strategy" class="px-4 py-2 text-xs font-semibold bg-slate-900 hover:bg-slate-800 text-white rounded-xl shadow-sm transition-all whitespace-nowrap flex items-center gap-1.5">
+                  <i class="ph-bold ph-brain"></i> Strategize
+                </button>
+              </div>
+
+              <div id="focus-strategy-result" class="space-y-3 pt-2">
+                <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200/80">
+                  <span class="text-[11px] font-bold uppercase tracking-wider text-slate-700 block mb-1.5">Priming Steps</span>
+                  <ul id="focus-priming-list" class="space-y-1 text-xs text-slate-600">
+                    <li class="flex items-start gap-1.5"><i class="ph-bold ph-check text-emerald-600 mt-0.5"></i> Clear all background tabs except work in progress.</li>
+                    <li class="flex items-start gap-1.5"><i class="ph-bold ph-check text-emerald-600 mt-0.5"></i> Define 1 single objective for the session.</li>
+                  </ul>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  <div class="p-3 rounded-xl bg-amber-50/50 border border-amber-200/60">
+                    <span class="text-[10px] font-bold uppercase tracking-wider text-amber-800 block mb-0.5">Anti-Distraction Tip</span>
+                    <p id="focus-defense-tip" class="text-xs text-amber-900">Jot wandering thoughts onto paper and return immediately to work.</p>
+                  </div>
+                  <div class="p-3 rounded-xl bg-indigo-50/50 border border-indigo-200/60">
+                    <span class="text-[10px] font-bold uppercase tracking-wider text-indigo-800 block mb-0.5">Suggested Audio</span>
+                    <p id="focus-music-tip" class="text-xs text-indigo-900 font-mono">Binaural 40Hz Gamma</p>
+                  </div>
+                </div>
               </div>
             </div>
+          </div>
 
-            <div class="flex gap-2 mt-4">
-              <input 
-                type="text" 
-                id="focus-task-input" 
-                placeholder="What task are you working on? (e.g. Write RFC Architecture Doc)" 
-                class="flex-1 px-3.5 py-2.5 text-sm rounded-xl bg-zinc-50 dark:bg-zinc-800/80 border border-zinc-200 dark:border-zinc-700 focus:outline-none focus:ring-2 focus:ring-purple-500/50"
-              >
-              <button onclick="generateFocusStrategy()" id="btn-focus-strategy" class="px-4 py-2.5 text-sm font-semibold bg-purple-600 hover:bg-purple-500 text-white rounded-xl shadow-sm transition-all whitespace-nowrap flex items-center gap-1.5">
-                <i class="ph-bold ph-brain"></i> Strategize
-              </button>
-            </div>
-
-            <div id="focus-strategy-result" class="mt-6 space-y-4">
-              <div class="p-4 rounded-xl bg-zinc-50 dark:bg-zinc-800/40 border border-zinc-200/80 dark:border-zinc-700/50">
-                <h4 class="text-xs font-bold uppercase tracking-wider text-purple-600 dark:text-purple-400 mb-2 flex items-center gap-1.5">
-                  <i class="ph-bold ph-steps"></i> Priming Sequence
-                </h4>
-                <ul id="focus-priming-list" class="space-y-1.5 text-sm text-zinc-700 dark:text-zinc-300">
-                  <li class="flex items-start gap-2"><i class="ph-bold ph-check text-emerald-500 mt-1 shrink-0"></i><span>Clear physical desktop and mute phone notifications.</span></li>
-                  <li class="flex items-start gap-2"><i class="ph-bold ph-check text-emerald-500 mt-1 shrink-0"></i><span>Define a single crisp outcome before the timer expires.</span></li>
-                </ul>
+          <!-- Session Log History -->
+          <div class="bezel-card">
+            <div class="bezel-inner p-5 space-y-3">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-bold uppercase tracking-wider text-slate-700 flex items-center gap-1.5">
+                  <i class="ph-bold ph-history text-slate-500"></i> Recent Focus Sessions
+                </span>
+                <span class="text-xs font-mono text-slate-500" id="total-focus-mins-label">Total: 0 mins</span>
               </div>
-
-              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                <div class="p-3.5 rounded-xl bg-amber-500/5 border border-amber-500/20">
-                  <span class="text-xs font-bold uppercase tracking-wider text-amber-600 dark:text-amber-400 block mb-1">Anti-Distraction Shield</span>
-                  <p id="focus-defense-tip" class="text-xs text-zinc-600 dark:text-zinc-300">If unrelated ideas pop up, jot them onto a scratchpad and immediately refocus.</p>
-                </div>
-                <div class="p-3.5 rounded-xl bg-blue-500/5 border border-blue-500/20">
-                  <span class="text-xs font-bold uppercase tracking-wider text-blue-600 dark:text-blue-400 block mb-1">Soundscape Recommendation</span>
-                  <p id="focus-music-tip" class="text-xs text-zinc-600 dark:text-zinc-300 font-mono">Binaural 40Hz / Brown Noise</p>
-                </div>
+              <div id="focus-sessions-list" class="space-y-2 max-h-48 overflow-y-auto">
+                <p class="text-xs text-slate-400 italic">No completed focus sessions logged today yet.</p>
               </div>
             </div>
           </div>
@@ -420,58 +506,57 @@
       </div>
     </section>
 
-    <!-- ==================== TAB 3: AI LIVE COACH CHAT ==================== -->
+    <!-- ==================== TAB 3: AI LIVE MENTOR CHAT ==================== -->
     <section id="tab-coach-chat" class="tab-content hidden space-y-6">
-      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-        <div>
-          <h1 class="text-2xl font-bold tracking-tight">AI Growth Coach — Live Mentor</h1>
-          <p class="text-sm text-zinc-500 dark:text-zinc-400">Contextual advice, behavioral psychology, and routine adjustments in real time.</p>
-        </div>
+      <div>
+        <h1 class="text-2xl font-bold text-slate-900 tracking-tight">AI Growth Mentor</h1>
+        <p class="text-xs sm:text-sm text-slate-500">Direct conversational coaching aware of your routines and consistency history.</p>
       </div>
 
-      <div class="p-6 rounded-2xl bg-white dark:bg-zinc-900/90 border border-zinc-200 dark:border-zinc-800 shadow-sm flex flex-col h-[600px]">
-        <!-- Chat messages container -->
-        <div id="chat-messages" class="flex-1 overflow-y-auto space-y-4 pr-2">
-          <!-- Initial greeting message -->
-          <div class="flex items-start gap-3">
-            <div class="w-8 h-8 rounded-xl bg-emerald-500/20 text-emerald-500 flex items-center justify-center font-bold text-sm shrink-0">
-              <i class="ph-bold ph-sparkle"></i>
-            </div>
-            <div class="chat-bubble p-4 rounded-2xl rounded-tl-sm bg-zinc-100 dark:bg-zinc-800/80 max-w-xl text-sm text-zinc-800 dark:text-zinc-200">
-              <p>Hello! I'm Aura, your personal growth mentor. I have full context on your active habits, streak, and progress metrics.</p>
-              <p class="mt-1">How can I help you today? Choose a prompt below or ask me anything about optimizing your discipline and routines!</p>
+      <div class="bezel-card">
+        <div class="bezel-inner p-6 flex flex-col h-[600px]">
+          <!-- Chat messages container -->
+          <div id="chat-messages" class="flex-1 overflow-y-auto space-y-4 pr-2">
+            <div class="flex items-start gap-3">
+              <div class="w-7 h-7 rounded-lg bg-slate-900 text-white flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">
+                <i class="ph-bold ph-sparkle text-indigo-300"></i>
+              </div>
+              <div class="chat-bubble p-4 rounded-2xl bg-slate-50 border border-slate-200/80 max-w-xl text-xs sm:text-sm text-slate-800">
+                <p>Hello! I am Aura, your personal habit mentor. I have access to your active routines, completion velocity, and streak data.</p>
+                <p class="mt-1">How can I assist you with your schedule or discipline today?</p>
+              </div>
             </div>
           </div>
-        </div>
 
-        <!-- Quick prompts chips -->
-        <div class="flex items-center gap-2 py-3 overflow-x-auto text-xs shrink-0">
-          <button onclick="sendQuickPrompt('How do I stop procrastinating and start right now?')" class="px-3 py-1.5 rounded-xl bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 hover:border-emerald-500 border border-transparent transition-all whitespace-nowrap">
-            ⚡ Beat Procrastination
-          </button>
-          <button onclick="sendQuickPrompt('How can I optimize my early morning wake-up routine?')" class="px-3 py-1.5 rounded-xl bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 hover:border-emerald-500 border border-transparent transition-all whitespace-nowrap">
-            🌅 Morning Routine Tips
-          </button>
-          <button onclick="sendQuickPrompt('Review my active habits and suggest 1 high-leverage improvement.')" class="px-3 py-1.5 rounded-xl bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 hover:border-emerald-500 border border-transparent transition-all whitespace-nowrap">
-            🎯 Review My Habits
-          </button>
-          <button onclick="sendQuickPrompt('Teach me how to stack habits effectively using the 2-minute rule.')" class="px-3 py-1.5 rounded-xl bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 hover:border-emerald-500 border border-transparent transition-all whitespace-nowrap">
-            📚 Habit Stacking Rule
-          </button>
-        </div>
+          <!-- Suggested prompt chips -->
+          <div class="flex items-center gap-2 py-3 overflow-x-auto text-xs shrink-0 border-t border-slate-100 mt-2">
+            <button onclick="sendQuickPrompt('How do I break through resistance and begin right now?')" class="px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 transition-colors whitespace-nowrap">
+              ⚡ Overcome Resistance
+            </button>
+            <button onclick="sendQuickPrompt('Help me design a realistic morning routine.')" class="px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 transition-colors whitespace-nowrap">
+              🌅 Morning Architecture
+            </button>
+            <button onclick="sendQuickPrompt('Evaluate my active habits and suggest 1 high-leverage improvement.')" class="px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 transition-colors whitespace-nowrap">
+              🎯 Routine Audit
+            </button>
+            <button onclick="sendQuickPrompt('How do I maintain habit momentum when traveling or busy?')" class="px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 transition-colors whitespace-nowrap">
+              🧳 Travel Consistency
+            </button>
+          </div>
 
-        <!-- Input Box -->
-        <form onsubmit="handleChatSubmit(event)" class="flex gap-2 pt-2 border-t border-zinc-200 dark:border-zinc-800 shrink-0">
-          <input 
-            type="text" 
-            id="chat-input" 
-            placeholder="Ask your coach anything (e.g. 'I feel low on energy today, what should I do?')..." 
-            class="flex-1 px-4 py-2.5 rounded-xl bg-zinc-50 dark:bg-zinc-800/80 border border-zinc-200 dark:border-zinc-700 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500"
-          >
-          <button type="submit" id="chat-send-btn" class="px-5 py-2.5 bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-sm rounded-xl shadow-md shadow-emerald-600/20 transition-all flex items-center gap-1.5">
-            <i class="ph-bold ph-paper-plane-right"></i> Send
-          </button>
-        </form>
+          <!-- Chat Input Bar -->
+          <form onsubmit="handleChatSubmit(event)" class="flex gap-2 pt-2 shrink-0">
+            <input 
+              type="text" 
+              id="chat-input" 
+              placeholder="Ask your mentor anything about routines, focus, or mindset..." 
+              class="flex-1 px-4 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-slate-900"
+            >
+            <button type="submit" id="chat-send-btn" class="px-4 py-2.5 bg-slate-900 hover:bg-slate-800 text-white font-semibold text-xs rounded-xl shadow-sm transition-all flex items-center gap-1.5">
+              <i class="ph-bold ph-paper-plane-right"></i> Send
+            </button>
+          </form>
+        </div>
       </div>
     </section>
 
@@ -479,184 +564,169 @@
     <section id="tab-analytics" class="tab-content hidden space-y-6">
       <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 class="text-2xl font-bold tracking-tight">Productivity Analytics & Mood Insights</h1>
-          <p class="text-sm text-zinc-500 dark:text-zinc-400">AI-driven trends, streak calculations, and weekly synthesis.</p>
+          <h1 class="text-2xl font-bold text-slate-900 tracking-tight">Performance Analytics & Synthesis</h1>
+          <p class="text-xs sm:text-sm text-slate-500">Longitudinal consistency metrics and AI weekly debriefs.</p>
         </div>
-        <div class="flex items-center gap-2">
-          <button onclick="generateWeeklyReview()" id="btn-generate-review" class="px-4 py-2 text-sm font-semibold bg-emerald-600 hover:bg-emerald-500 text-white rounded-xl shadow-md shadow-emerald-600/20 transition-all flex items-center gap-1.5">
-            <i class="ph-bold ph-sparkle"></i> Generate Weekly Review
-          </button>
-        </div>
+        <button onclick="generateWeeklyReview()" id="btn-generate-review" class="px-4 py-2 text-xs font-semibold bg-slate-900 hover:bg-slate-800 text-white rounded-xl shadow-sm transition-all flex items-center gap-1.5">
+          <i class="ph-bold ph-sparkle text-indigo-300"></i> Generate AI Weekly Review
+        </button>
       </div>
 
       <!-- Stat Cards -->
       <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
-        <div class="p-5 rounded-2xl bg-white dark:bg-zinc-900/90 border border-zinc-200 dark:border-zinc-800 shadow-sm">
-          <div class="flex items-center justify-between text-zinc-500 dark:text-zinc-400 mb-2">
-            <span class="text-xs font-semibold uppercase tracking-wider">Total Habits</span>
-            <i class="ph ph-check-square-offset text-lg text-emerald-500"></i>
+        <div class="bezel-card">
+          <div class="bezel-inner p-5 space-y-1">
+            <span class="text-[10px] font-bold uppercase tracking-wider text-slate-400">Total Habits</span>
+            <div class="text-2xl font-bold font-mono text-slate-900" id="stat-total-habits">0</div>
+            <span class="text-[11px] text-slate-500">Active routine targets</span>
           </div>
-          <div class="text-2xl sm:text-3xl font-extrabold font-mono" id="stat-total-habits">0</div>
-          <span class="text-xs text-zinc-400 mt-1 block">Active tracking targets</span>
         </div>
 
-        <div class="p-5 rounded-2xl bg-white dark:bg-zinc-900/90 border border-zinc-200 dark:border-zinc-800 shadow-sm">
-          <div class="flex items-center justify-between text-zinc-500 dark:text-zinc-400 mb-2">
-            <span class="text-xs font-semibold uppercase tracking-wider">Total Logs</span>
-            <i class="ph ph-calendar-check text-lg text-teal-500"></i>
+        <div class="bezel-card">
+          <div class="bezel-inner p-5 space-y-1">
+            <span class="text-[10px] font-bold uppercase tracking-wider text-slate-400">Total Check-Ins</span>
+            <div class="text-2xl font-bold font-mono text-slate-900" id="stat-total-logs">0</div>
+            <span class="text-[11px] text-slate-500">Logged completions</span>
           </div>
-          <div class="text-2xl sm:text-3xl font-extrabold font-mono" id="stat-total-logs">0</div>
-          <span class="text-xs text-zinc-400 mt-1 block">Completed activities</span>
         </div>
 
-        <div class="p-5 rounded-2xl bg-white dark:bg-zinc-900/90 border border-zinc-200 dark:border-zinc-800 shadow-sm">
-          <div class="flex items-center justify-between text-zinc-500 dark:text-zinc-400 mb-2">
-            <span class="text-xs font-semibold uppercase tracking-wider">Completion Rate</span>
-            <i class="ph ph-percent text-lg text-blue-500"></i>
+        <div class="bezel-card">
+          <div class="bezel-inner p-5 space-y-1">
+            <span class="text-[10px] font-bold uppercase tracking-wider text-slate-400">Consistency Index</span>
+            <div class="text-2xl font-bold font-mono text-emerald-600" id="stat-completion-rate">0%</div>
+            <span class="text-[11px] text-slate-500">Completion rate</span>
           </div>
-          <div class="text-2xl sm:text-3xl font-extrabold font-mono" id="stat-completion-rate">0%</div>
-          <span class="text-xs text-zinc-400 mt-1 block">Consistency index</span>
         </div>
 
-        <div class="p-5 rounded-2xl bg-white dark:bg-zinc-900/90 border border-zinc-200 dark:border-zinc-800 shadow-sm">
-          <div class="flex items-center justify-between text-zinc-500 dark:text-zinc-400 mb-2">
-            <span class="text-xs font-semibold uppercase tracking-wider">Longest Streak</span>
-            <i class="ph ph-fire text-lg text-amber-500"></i>
+        <div class="bezel-card">
+          <div class="bezel-inner p-5 space-y-1">
+            <span class="text-[10px] font-bold uppercase tracking-wider text-slate-400">Longest Streak</span>
+            <div class="text-2xl font-bold font-mono text-amber-600" id="stat-longest-streak">0 days</div>
+            <span class="text-[11px] text-slate-500">Peak consecutive days</span>
           </div>
-          <div class="text-2xl sm:text-3xl font-extrabold font-mono" id="stat-longest-streak">0 days</div>
-          <span class="text-xs text-zinc-400 mt-1 block">Peak daily consistency</span>
         </div>
       </div>
 
-      <!-- Mood & Category Analytics Breakdown -->
-      <div class="p-6 rounded-2xl bg-white dark:bg-zinc-900/90 border border-zinc-200 dark:border-zinc-800 shadow-sm">
-        <h3 class="text-base font-bold mb-4 flex items-center gap-2">
-          <i class="ph-bold ph-smiley text-amber-500"></i> Category Mood Impact & Energy Index
-        </h3>
-        <div id="mood-category-grid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3">
-          <!-- Dynamically populated via loadMoodTrends() -->
+      <!-- Category Mood Impact -->
+      <div class="bezel-card">
+        <div class="bezel-inner p-6 space-y-4">
+          <h3 class="text-xs font-bold uppercase tracking-wider text-slate-700 flex items-center gap-1.5">
+            <i class="ph-bold ph-smiley text-amber-500"></i> Category Energy & Mood Impact
+          </h3>
+          <div id="mood-category-grid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3"></div>
         </div>
       </div>
 
-      <!-- Weekly Review Showcase Card -->
-      <div id="weekly-review-card" class="p-6 sm:p-8 rounded-2xl bg-gradient-to-br from-white to-zinc-50 dark:from-zinc-900 dark:to-zinc-900/60 border border-zinc-200 dark:border-zinc-800 shadow-sm">
-        <div class="flex items-center justify-between mb-4 border-b border-zinc-200 dark:border-zinc-800 pb-4">
-          <div class="flex items-center gap-2">
-            <div class="w-8 h-8 rounded-xl bg-emerald-500/10 text-emerald-500 flex items-center justify-center font-bold">
-              <i class="ph-bold ph-brain"></i>
-            </div>
+      <!-- Weekly Review Debrief -->
+      <div class="bezel-card">
+        <div class="bezel-inner p-6 space-y-4">
+          <div class="flex items-center justify-between border-b border-slate-100 pb-3">
             <div>
-              <h2 class="text-lg font-bold">AI Weekly Review & Synthesis</h2>
-              <p class="text-xs text-zinc-500 dark:text-zinc-400" id="review-date-label">Generated via LLM Chain</p>
+              <h2 class="text-base font-bold text-slate-900">AI Weekly Performance Review</h2>
+              <span class="text-xs text-slate-400" id="review-date-label">Synthesized via LangChain</span>
+            </div>
+            <span id="review-sentiment-badge" class="px-3 py-1 rounded-full text-xs font-medium bg-emerald-50 text-emerald-700 border border-emerald-200">
+              Sentiment: Positive
+            </span>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="p-4 rounded-xl bg-slate-50 border border-slate-200/80 space-y-2">
+              <span class="text-xs font-bold uppercase tracking-wider text-emerald-700 flex items-center gap-1">
+                <i class="ph-bold ph-check"></i> Key Wins
+              </span>
+              <ul id="review-wins-list" class="space-y-1 text-xs text-slate-700">
+                <li class="text-slate-400 italic">Generate review to view your weekly accomplishments.</li>
+              </ul>
+            </div>
+
+            <div class="p-4 rounded-xl bg-slate-50 border border-slate-200/80 space-y-2">
+              <span class="text-xs font-bold uppercase tracking-wider text-amber-700 flex items-center gap-1">
+                <i class="ph-bold ph-trend-up"></i> Focus Areas
+              </span>
+              <ul id="review-improvements-list" class="space-y-1 text-xs text-slate-700">
+                <li class="text-slate-400 italic">Generate review to view personalized focus recommendations.</li>
+              </ul>
             </div>
           </div>
-          <span id="review-sentiment-badge" class="px-3 py-1 rounded-full text-xs font-medium bg-emerald-500/10 text-emerald-500 border border-emerald-500/20">
-            Sentiment: Positive
-          </span>
-        </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
-          <div class="p-4 rounded-xl bg-zinc-50 dark:bg-zinc-800/40 border border-zinc-200/80 dark:border-zinc-700/50">
-            <h4 class="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400 flex items-center gap-1.5 mb-2">
-              <i class="ph-bold ph-check"></i> Key Wins
-            </h4>
-            <ul id="review-wins-list" class="space-y-1.5 text-sm text-zinc-700 dark:text-zinc-300">
-              <li class="text-zinc-400 italic">Generate a review to see your weekly achievements.</li>
+          <div class="p-4 rounded-xl bg-slate-50 border border-slate-200/80 space-y-2">
+            <span class="text-xs font-bold uppercase tracking-wider text-indigo-700 flex items-center gap-1">
+              <i class="ph-bold ph-target"></i> Next Week SMART Goals
+            </span>
+            <ul id="review-goals-list" class="space-y-1 text-xs text-slate-700">
+              <li class="text-slate-400 italic">SMART objectives formulated by the mentor.</li>
             </ul>
           </div>
 
-          <div class="p-4 rounded-xl bg-zinc-50 dark:bg-zinc-800/40 border border-zinc-200/80 dark:border-zinc-700/50">
-            <h4 class="text-xs font-bold uppercase tracking-wider text-amber-600 dark:text-amber-400 flex items-center gap-1.5 mb-2">
-              <i class="ph-bold ph-trend-up"></i> Focus Areas
-            </h4>
-            <ul id="review-improvements-list" class="space-y-1.5 text-sm text-zinc-700 dark:text-zinc-300">
-              <li class="text-zinc-400 italic">Generate a review to see personalized improvement areas.</li>
-            </ul>
+          <div class="p-4 rounded-xl bg-indigo-50/40 border border-indigo-100">
+            <span class="text-[10px] font-bold uppercase tracking-wider text-indigo-700 block mb-1">Mentor's Note</span>
+            <p id="review-coach-note" class="text-xs text-slate-700 italic">
+              "Consistency is the compound interest of self-improvement. Execute today's smallest high-leverage action."
+            </p>
           </div>
-        </div>
-
-        <div class="mt-4 p-4 rounded-xl bg-zinc-50 dark:bg-zinc-800/40 border border-zinc-200/80 dark:border-zinc-700/50">
-          <h4 class="text-xs font-bold uppercase tracking-wider text-blue-600 dark:text-blue-400 flex items-center gap-1.5 mb-2">
-            <i class="ph-bold ph-target"></i> Next Week SMART Goals
-          </h4>
-          <ul id="review-goals-list" class="space-y-1.5 text-sm text-zinc-700 dark:text-zinc-300">
-            <li class="text-zinc-400 italic">SMART goals will be formulated by the AI coach.</li>
-          </ul>
-        </div>
-
-        <div class="mt-4 p-4 rounded-xl bg-emerald-500/5 border border-emerald-500/20">
-          <h4 class="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400 mb-1">Coach's Perspective</h4>
-          <p id="review-coach-note" class="text-sm text-zinc-700 dark:text-zinc-300">
-            "Consistency is the compound interest of self-improvement. Click the button above to synthesize your latest habit entries."
-          </p>
         </div>
       </div>
     </section>
 
     <!-- ==================== TAB 5: GAMIFICATION & QUESTS ==================== -->
     <section id="tab-gamification" class="tab-content hidden space-y-6">
-      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-        <div>
-          <h1 class="text-2xl font-bold tracking-tight">Quests & XP Milestones</h1>
-          <p class="text-sm text-zinc-500 dark:text-zinc-400">Complete daily quests, earn XP bonuses, and unlock achievement tiers.</p>
-        </div>
+      <div>
+        <h1 class="text-2xl font-bold text-slate-900 tracking-tight">Quests & Level Progression</h1>
+        <p class="text-xs sm:text-sm text-slate-500">Complete daily milestones and unlock productivity rank tiers.</p>
       </div>
 
-      <!-- Gamification Stats Header Card -->
-      <div class="p-6 sm:p-8 rounded-2xl bg-gradient-to-r from-zinc-900 to-zinc-800 text-white border border-zinc-700 shadow-xl relative overflow-hidden">
-        <div class="absolute right-0 top-0 translate-x-10 -translate-y-10 w-64 h-64 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none"></div>
-
-        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-6 relative z-10">
-          <div class="flex items-center gap-4">
-            <div class="w-16 h-16 rounded-2xl bg-emerald-500/20 border border-emerald-400/30 flex items-center justify-center text-emerald-400 text-3xl font-extrabold shadow-inner">
-              <i class="ph-bold ph-shield-star"></i>
-            </div>
-            <div>
-              <div class="flex items-center gap-2">
-                <h2 class="text-2xl font-black tracking-tight" id="game-tier-label">Bronze Explorer</h2>
-                <span class="px-2.5 py-0.5 rounded-full text-xs font-mono font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30" id="game-level-badge">
-                  Level 1
-                </span>
+      <!-- Rank Banner -->
+      <div class="bezel-card">
+        <div class="bezel-inner p-6 sm:p-8 space-y-6 bg-gradient-to-r from-slate-900 to-slate-800 text-white">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-6">
+            <div class="flex items-center gap-4">
+              <div class="w-14 h-14 rounded-2xl bg-white/10 border border-white/20 flex items-center justify-center text-amber-300 text-2xl font-bold">
+                <i class="ph-bold ph-shield-check"></i>
               </div>
-              <p class="text-sm text-zinc-400 mt-0.5">Total Accumulated XP: <span id="game-total-xp" class="font-mono font-bold text-white">0</span></p>
+              <div>
+                <div class="flex items-center gap-2">
+                  <h2 class="text-xl font-black" id="game-tier-label">Bronze Explorer</h2>
+                  <span class="px-2.5 py-0.5 rounded-full text-xs font-mono font-bold bg-white/20 text-white" id="game-level-badge">Level 1</span>
+                </div>
+                <p class="text-xs text-slate-300 mt-1">Total Accumulated XP: <span id="game-total-xp" class="font-mono font-bold text-white">0</span></p>
+              </div>
             </div>
-          </div>
 
-          <div class="flex items-center gap-4">
-            <div class="text-right">
-              <span class="text-xs text-zinc-400 block font-medium">Streak Multiplier</span>
-              <span class="text-xl font-mono font-bold text-amber-400 flex items-center justify-end gap-1">
+            <div class="text-left sm:text-right">
+              <span class="text-xs text-slate-400 block font-medium">Consecutive Consistency</span>
+              <span class="text-xl font-mono font-bold text-amber-300 flex items-center sm:justify-end gap-1">
                 <i class="ph-fill ph-fire"></i> <span id="game-streak-days">0</span> Days
               </span>
             </div>
           </div>
-        </div>
 
-        <div class="mt-6 relative z-10">
-          <div class="flex justify-between text-xs text-zinc-300 mb-1.5 font-medium">
-            <span>XP Progress to Next Level</span>
-            <span id="game-xp-ratio" class="font-mono">0 / 250 XP</span>
-          </div>
-          <div class="w-full h-3 rounded-full bg-zinc-950/60 p-0.5 border border-zinc-700">
-            <div id="game-xp-bar" class="h-full rounded-full bg-gradient-to-r from-emerald-500 to-teal-400 transition-all duration-500" style="width: 0%"></div>
+          <div>
+            <div class="flex justify-between text-xs text-slate-300 mb-1.5 font-medium">
+              <span>XP to Next Rank</span>
+              <span id="game-xp-ratio" class="font-mono">0 / 250 XP</span>
+            </div>
+            <div class="w-full h-2.5 rounded-full bg-slate-950 p-0.5">
+              <div id="game-xp-bar" class="h-full rounded-full bg-indigo-400 transition-all duration-500" style="width: 0%"></div>
+            </div>
           </div>
         </div>
       </div>
 
-      <!-- Daily Quests Grid -->
-      <div>
-        <h3 class="text-lg font-bold mb-3 flex items-center gap-2">
-          <i class="ph-bold ph-lightning text-emerald-500"></i> Daily Quests
+      <!-- Quests -->
+      <div class="space-y-3">
+        <h3 class="text-sm font-bold text-slate-900 flex items-center gap-1.5">
+          <i class="ph-bold ph-lightning text-indigo-600"></i> Daily Quests
         </h3>
-        <div id="quests-container" class="space-y-3"></div>
+        <div id="quests-container" class="space-y-2.5"></div>
       </div>
 
-      <!-- Badges Showcase Grid -->
-      <div>
-        <h3 class="text-lg font-bold mb-3 flex items-center gap-2">
-          <i class="ph-bold ph-medal text-amber-500"></i> Achievement Badges
+      <!-- Badges -->
+      <div class="space-y-3">
+        <h3 class="text-sm font-bold text-slate-900 flex items-center gap-1.5">
+          <i class="ph-bold ph-medal text-amber-500"></i> Milestone Badges
         </h3>
-        <div id="badges-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"></div>
+        <div id="badges-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3"></div>
       </div>
     </section>
 
@@ -664,114 +734,31 @@
 
   <!-- ==================== MODALS ==================== -->
 
-  <!-- Habit Presets Modal -->
-  <div id="modal-presets" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden flex items-center justify-center p-4">
-    <div class="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-2xl w-full max-w-lg p-6 shadow-2xl relative">
-      <button onclick="closePresetsModal()" class="absolute top-4 right-4 p-2 text-zinc-400 hover:text-zinc-600 dark:hover:text-white rounded-lg">
-        <i class="ph ph-x text-lg"></i>
-      </button>
-      <h3 class="text-lg font-bold mb-1">Popular Habit Presets</h3>
-      <p class="text-xs text-zinc-500 dark:text-zinc-400 mb-4">Click any template to add it directly to your tracking routine.</p>
-
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-        <button onclick="addPresetHabit('💧 Drink 2.5L Water', 'Hydration target throughout the day', 'Health', 'daily')" class="p-3.5 rounded-xl border border-zinc-200 dark:border-zinc-800 hover:border-emerald-500 text-left transition-all">
-          <h4 class="font-bold text-sm">💧 Drink 2.5L Water</h4>
-          <p class="text-xs text-zinc-500 mt-1">Health • Daily target</p>
-        </button>
-        <button onclick="addPresetHabit('💻 30m Deep Coding Sprint', 'Focused single-task programming block', 'Productivity', 'daily')" class="p-3.5 rounded-xl border border-zinc-200 dark:border-zinc-800 hover:border-emerald-500 text-left transition-all">
-          <h4 class="font-bold text-sm">💻 30m Deep Coding</h4>
-          <p class="text-xs text-zinc-500 mt-1">Productivity • Daily target</p>
-        </button>
-        <button onclick="addPresetHabit('🧘 10m Mindful Meditation', 'Breathwork and mental clarity', 'Mindfulness', 'daily')" class="p-3.5 rounded-xl border border-zinc-200 dark:border-zinc-800 hover:border-emerald-500 text-left transition-all">
-          <h4 class="font-bold text-sm">🧘 10m Meditation</h4>
-          <p class="text-xs text-zinc-500 mt-1">Mindfulness • Daily target</p>
-        </button>
-        <button onclick="addPresetHabit('🏃 10,000 Steps Daily', 'Physical movement and walk breaks', 'Fitness', 'daily')" class="p-3.5 rounded-xl border border-zinc-200 dark:border-zinc-800 hover:border-emerald-500 text-left transition-all">
-          <h4 class="font-bold text-sm">🏃 10,000 Steps</h4>
-          <p class="text-xs text-zinc-500 mt-1">Fitness • Daily target</p>
-        </button>
-        <button onclick="addPresetHabit('📖 Read 20 Pages Non-Fiction', 'Books on business, engineering, or psychology', 'Learning', 'daily')" class="p-3.5 rounded-xl border border-zinc-200 dark:border-zinc-800 hover:border-emerald-500 text-left transition-all">
-          <h4 class="font-bold text-sm">📖 Read 20 Pages</h4>
-          <p class="text-xs text-zinc-500 mt-1">Learning • Daily target</p>
-        </button>
-        <button onclick="addPresetHabit('✍️ Evening Reflection & Journal', '3 key wins and gratitude log', 'Mindfulness', 'daily')" class="p-3.5 rounded-xl border border-zinc-200 dark:border-zinc-800 hover:border-emerald-500 text-left transition-all">
-          <h4 class="font-bold text-sm">✍️ Evening Journal</h4>
-          <p class="text-xs text-zinc-500 mt-1">Mindfulness • Daily target</p>
-        </button>
-      </div>
-    </div>
-  </div>
-
-  <!-- Auth Modal -->
-  <div id="modal-auth" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden flex items-center justify-center p-4">
-    <div class="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-2xl w-full max-w-md p-6 shadow-2xl relative">
-      <button onclick="closeAuthModal()" class="absolute top-4 right-4 p-2 text-zinc-400 hover:text-zinc-600 dark:hover:text-white rounded-lg">
-        <i class="ph ph-x text-lg"></i>
-      </button>
-
-      <div class="flex items-center gap-2 mb-4 border-b border-zinc-200 dark:border-zinc-800 pb-3">
-        <button id="auth-tab-login" onclick="setAuthTab('login')" class="font-bold text-base pb-1 border-b-2 border-emerald-500 text-emerald-600 dark:text-emerald-400">
-          Sign In
-        </button>
-        <button id="auth-tab-register" onclick="setAuthTab('register')" class="font-bold text-base pb-1 text-zinc-400 hover:text-zinc-600 dark:hover:text-white">
-          Create Account
-        </button>
-      </div>
-
-      <form id="auth-form" onsubmit="handleAuthSubmit(event)" class="space-y-4">
-        <div id="auth-name-field" class="hidden">
-          <label class="block text-xs font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400 mb-1">Full Name</label>
-          <input type="text" id="auth-name" class="w-full px-3.5 py-2.5 rounded-xl bg-zinc-50 dark:bg-zinc-800/80 border border-zinc-200 dark:border-zinc-700 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500" placeholder="Alex Morgan">
-        </div>
-
-        <div>
-          <label class="block text-xs font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400 mb-1">Email Address</label>
-          <input type="email" id="auth-email" required class="w-full px-3.5 py-2.5 rounded-xl bg-zinc-50 dark:bg-zinc-800/80 border border-zinc-200 dark:border-zinc-700 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500" placeholder="alex@example.com">
-        </div>
-
-        <div>
-          <label class="block text-xs font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400 mb-1">Password</label>
-          <input type="password" id="auth-password" required minlength="6" class="w-full px-3.5 py-2.5 rounded-xl bg-zinc-50 dark:bg-zinc-800/80 border border-zinc-200 dark:border-zinc-700 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500" placeholder="••••••••">
-        </div>
-
-        <button type="submit" id="auth-submit-btn" class="w-full py-2.5 bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-sm rounded-xl shadow-md shadow-emerald-600/20 transition-all">
-          Sign In
-        </button>
-      </form>
-
-      <div class="mt-4 pt-4 border-t border-zinc-200 dark:border-zinc-800 text-center">
-        <button onclick="loginAsDemoUser()" class="text-xs text-emerald-600 dark:text-emerald-400 hover:underline font-semibold">
-          Or continue with one-click Demo Account →
-        </button>
-      </div>
-    </div>
-  </div>
-
   <!-- Create Habit Modal -->
-  <div id="modal-create-habit" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden flex items-center justify-center p-4">
-    <div class="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-2xl w-full max-w-md p-6 shadow-2xl relative">
-      <button onclick="closeCreateHabitModal()" class="absolute top-4 right-4 p-2 text-zinc-400 hover:text-zinc-600 dark:hover:text-white rounded-lg">
-        <i class="ph ph-x text-lg"></i>
+  <div id="modal-create-habit" class="fixed inset-0 z-50 bg-slate-900/40 backdrop-blur-sm hidden flex items-center justify-center p-4">
+    <div class="bg-white border border-slate-200 rounded-2xl w-full max-w-lg p-6 shadow-elevated relative">
+      <button onclick="closeCreateHabitModal()" class="absolute top-4 right-4 p-1.5 text-slate-400 hover:text-slate-600 rounded-lg">
+        <i class="ph ph-x text-base"></i>
       </button>
 
-      <h3 class="text-lg font-bold mb-1">Create New Habit</h3>
-      <p class="text-xs text-zinc-500 dark:text-zinc-400 mb-4">Set up a daily or weekly routine to track.</p>
+      <h3 class="text-base font-bold text-slate-900 mb-0.5">Define New Habit</h3>
+      <p class="text-xs text-slate-500 mb-4">Set up a daily or weekly routine to track.</p>
 
       <form id="create-habit-form" onsubmit="handleCreateHabit(event)" class="space-y-4">
         <div>
-          <label class="block text-xs font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400 mb-1">Habit Title</label>
-          <input type="text" id="habit-title" required class="w-full px-3.5 py-2.5 rounded-xl bg-zinc-50 dark:bg-zinc-800/80 border border-zinc-200 dark:border-zinc-700 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500" placeholder="e.g. Read 20 Pages of Non-Fiction">
+          <label class="block text-xs font-semibold text-slate-700 mb-1">Habit Title</label>
+          <input type="text" id="habit-title" required class="w-full px-3.5 py-2 rounded-xl bg-slate-50 border border-slate-200 text-xs focus:outline-none focus:ring-2 focus:ring-slate-900" placeholder="e.g. Read 20 Pages of Non-Fiction">
         </div>
 
         <div>
-          <label class="block text-xs font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400 mb-1">Description (Optional)</label>
-          <textarea id="habit-desc" rows="2" class="w-full px-3.5 py-2.5 rounded-xl bg-zinc-50 dark:bg-zinc-800/80 border border-zinc-200 dark:border-zinc-700 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500" placeholder="Focus on high-leverage business or engineering literature"></textarea>
+          <label class="block text-xs font-semibold text-slate-700 mb-1">Description (Optional)</label>
+          <textarea id="habit-desc" rows="2" class="w-full px-3.5 py-2 rounded-xl bg-slate-50 border border-slate-200 text-xs focus:outline-none focus:ring-2 focus:ring-slate-900" placeholder="Focus on high-leverage business or engineering literature"></textarea>
         </div>
 
-        <div class="grid grid-cols-2 gap-3">
+        <div class="grid grid-cols-3 gap-3">
           <div>
-            <label class="block text-xs font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400 mb-1">Category</label>
-            <select id="habit-cat" class="w-full px-3.5 py-2.5 rounded-xl bg-zinc-50 dark:bg-zinc-800/80 border border-zinc-200 dark:border-zinc-700 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500">
+            <label class="block text-xs font-semibold text-slate-700 mb-1">Category</label>
+            <select id="habit-cat" class="w-full px-3 py-2 rounded-xl bg-slate-50 border border-slate-200 text-xs focus:outline-none focus:ring-2 focus:ring-slate-900">
               <option value="Productivity">Productivity</option>
               <option value="Health">Health</option>
               <option value="Mindfulness">Mindfulness</option>
@@ -782,47 +769,60 @@
           </div>
 
           <div>
-            <label class="block text-xs font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400 mb-1">Frequency</label>
-            <select id="habit-freq" class="w-full px-3.5 py-2.5 rounded-xl bg-zinc-50 dark:bg-zinc-800/80 border border-zinc-200 dark:border-zinc-700 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500">
-              <option value="daily">Daily</option>
-              <option value="weekly">Weekly</option>
+            <label class="block text-xs font-semibold text-slate-700 mb-1">Time Block</label>
+            <select id="habit-time-of-day" class="w-full px-3 py-2 rounded-xl bg-slate-50 border border-slate-200 text-xs focus:outline-none focus:ring-2 focus:ring-slate-900">
+              <option value="morning">Morning</option>
+              <option value="afternoon">Afternoon</option>
+              <option value="evening">Evening</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="block text-xs font-semibold text-slate-700 mb-1">Duration</label>
+            <select id="habit-est-mins" class="w-full px-3 py-2 rounded-xl bg-slate-50 border border-slate-200 text-xs focus:outline-none focus:ring-2 focus:ring-slate-900">
+              <option value="5">5 min</option>
+              <option value="15" selected>15 min</option>
+              <option value="30">30 min</option>
+              <option value="45">45 min</option>
+              <option value="60">60 min</option>
             </select>
           </div>
         </div>
 
-        <button type="submit" class="w-full py-2.5 bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-sm rounded-xl shadow-md shadow-emerald-600/20 transition-all mt-2">
-          Save Habit
+        <button type="submit" class="w-full py-2.5 bg-slate-900 hover:bg-slate-800 text-white font-semibold text-xs rounded-xl shadow-sm transition-all mt-2">
+          Create Habit
         </button>
       </form>
     </div>
   </div>
 
   <!-- Edit Habit Modal -->
-  <div id="modal-edit-habit" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden flex items-center justify-center p-4">
-    <div class="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-2xl w-full max-w-md p-6 shadow-2xl relative">
-      <button onclick="closeEditHabitModal()" class="absolute top-4 right-4 p-2 text-zinc-400 hover:text-zinc-600 dark:hover:text-white rounded-lg">
-        <i class="ph ph-x text-lg"></i>
+  <div id="modal-edit-habit" class="fixed inset-0 z-50 bg-slate-900/40 backdrop-blur-sm hidden flex items-center justify-center p-4">
+    <div class="bg-white border border-slate-200 rounded-2xl w-full max-w-lg p-6 shadow-elevated relative">
+      <button onclick="closeEditHabitModal()" class="absolute top-4 right-4 p-1.5 text-slate-400 hover:text-slate-600 rounded-lg">
+        <i class="ph ph-x text-base"></i>
       </button>
-      <h3 class="text-lg font-bold mb-1">Edit Habit</h3>
-      <p class="text-xs text-zinc-500 dark:text-zinc-400 mb-4">Modify your habit title, category, or schedule.</p>
+
+      <h3 class="text-base font-bold text-slate-900 mb-0.5">Edit Habit</h3>
+      <p class="text-xs text-slate-500 mb-4">Modify routine specifications and scheduling.</p>
 
       <form id="edit-habit-form" onsubmit="handleUpdateHabit(event)" class="space-y-4">
         <input type="hidden" id="edit-habit-id">
 
         <div>
-          <label class="block text-xs font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400 mb-1">Habit Title</label>
-          <input type="text" id="edit-habit-title" required class="w-full px-3.5 py-2.5 rounded-xl bg-zinc-50 dark:bg-zinc-800/80 border border-zinc-200 dark:border-zinc-700 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500">
+          <label class="block text-xs font-semibold text-slate-700 mb-1">Habit Title</label>
+          <input type="text" id="edit-habit-title" required class="w-full px-3.5 py-2 rounded-xl bg-slate-50 border border-slate-200 text-xs focus:outline-none focus:ring-2 focus:ring-slate-900">
         </div>
 
         <div>
-          <label class="block text-xs font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400 mb-1">Description</label>
-          <textarea id="edit-habit-desc" rows="2" class="w-full px-3.5 py-2.5 rounded-xl bg-zinc-50 dark:bg-zinc-800/80 border border-zinc-200 dark:border-zinc-700 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500"></textarea>
+          <label class="block text-xs font-semibold text-slate-700 mb-1">Description</label>
+          <textarea id="edit-habit-desc" rows="2" class="w-full px-3.5 py-2 rounded-xl bg-slate-50 border border-slate-200 text-xs focus:outline-none focus:ring-2 focus:ring-slate-900"></textarea>
         </div>
 
-        <div class="grid grid-cols-2 gap-3">
+        <div class="grid grid-cols-3 gap-3">
           <div>
-            <label class="block text-xs font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400 mb-1">Category</label>
-            <select id="edit-habit-cat" class="w-full px-3.5 py-2.5 rounded-xl bg-zinc-50 dark:bg-zinc-800/80 border border-zinc-200 dark:border-zinc-700 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500">
+            <label class="block text-xs font-semibold text-slate-700 mb-1">Category</label>
+            <select id="edit-habit-cat" class="w-full px-3 py-2 rounded-xl bg-slate-50 border border-slate-200 text-xs focus:outline-none focus:ring-2 focus:ring-slate-900">
               <option value="Productivity">Productivity</option>
               <option value="Health">Health</option>
               <option value="Mindfulness">Mindfulness</option>
@@ -833,97 +833,191 @@
           </div>
 
           <div>
-            <label class="block text-xs font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400 mb-1">Frequency</label>
-            <select id="edit-habit-freq" class="w-full px-3.5 py-2.5 rounded-xl bg-zinc-50 dark:bg-zinc-800/80 border border-zinc-200 dark:border-zinc-700 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500">
-              <option value="daily">Daily</option>
-              <option value="weekly">Weekly</option>
+            <label class="block text-xs font-semibold text-slate-700 mb-1">Time Block</label>
+            <select id="edit-habit-time-of-day" class="w-full px-3 py-2 rounded-xl bg-slate-50 border border-slate-200 text-xs focus:outline-none focus:ring-2 focus:ring-slate-900">
+              <option value="morning">Morning</option>
+              <option value="afternoon">Afternoon</option>
+              <option value="evening">Evening</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="block text-xs font-semibold text-slate-700 mb-1">Duration</label>
+            <select id="edit-habit-est-mins" class="w-full px-3 py-2 rounded-xl bg-slate-50 border border-slate-200 text-xs focus:outline-none focus:ring-2 focus:ring-slate-900">
+              <option value="5">5 min</option>
+              <option value="15">15 min</option>
+              <option value="30">30 min</option>
+              <option value="45">45 min</option>
+              <option value="60">60 min</option>
             </select>
           </div>
         </div>
 
-        <button type="submit" class="w-full py-2.5 bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-sm rounded-xl shadow-md shadow-emerald-600/20 transition-all mt-2">
-          Update Habit
+        <button type="submit" class="w-full py-2.5 bg-slate-900 hover:bg-slate-800 text-white font-semibold text-xs rounded-xl shadow-sm transition-all mt-2">
+          Save Changes
         </button>
       </form>
     </div>
   </div>
 
   <!-- Log Habit Completion Modal -->
-  <div id="modal-log-habit" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden flex items-center justify-center p-4">
-    <div class="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-2xl w-full max-w-md p-6 shadow-2xl relative">
-      <button onclick="closeLogHabitModal()" class="absolute top-4 right-4 p-2 text-zinc-400 hover:text-zinc-600 dark:hover:text-white rounded-lg">
-        <i class="ph ph-x text-lg"></i>
+  <div id="modal-log-habit" class="fixed inset-0 z-50 bg-slate-900/40 backdrop-blur-sm hidden flex items-center justify-center p-4">
+    <div class="bg-white border border-slate-200 rounded-2xl w-full max-w-md p-6 shadow-elevated relative">
+      <button onclick="closeLogHabitModal()" class="absolute top-4 right-4 p-1.5 text-slate-400 hover:text-slate-600 rounded-lg">
+        <i class="ph ph-x text-base"></i>
       </button>
 
-      <h3 class="text-lg font-bold mb-1">Log Habit Completion</h3>
-      <p class="text-xs text-zinc-500 dark:text-zinc-400 mb-4" id="log-habit-title">Record your effort and reflection.</p>
+      <h3 class="text-base font-bold text-slate-900 mb-0.5">Log Completion</h3>
+      <p class="text-xs text-slate-500 mb-4" id="log-habit-title">Record your effort and reflection.</p>
 
       <form id="log-habit-form" onsubmit="handleLogHabit(event)" class="space-y-4">
         <input type="hidden" id="log-habit-id">
 
         <div>
-          <label class="block text-xs font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400 mb-1">Mood / Energy Rating (1 to 5)</label>
-          <div class="flex items-center justify-between gap-2 px-2 py-2 rounded-xl bg-zinc-50 dark:bg-zinc-800/80 border border-zinc-200 dark:border-zinc-700">
+          <label class="block text-xs font-semibold text-slate-700 mb-1">Energy / Mood Rating (1 to 5)</label>
+          <div class="flex items-center justify-between gap-2 px-3 py-2 rounded-xl bg-slate-50 border border-slate-200">
             <label class="flex flex-col items-center cursor-pointer">
               <input type="radio" name="mood_score" value="1" class="hidden peer">
-              <span class="text-xl peer-checked:scale-125 transition-transform">😫</span>
-              <span class="text-[10px] text-zinc-400 mt-1">1</span>
+              <span class="text-lg peer-checked:scale-125 transition-transform">😫</span>
+              <span class="text-[10px] text-slate-400 mt-0.5">1</span>
             </label>
             <label class="flex flex-col items-center cursor-pointer">
               <input type="radio" name="mood_score" value="2" class="hidden peer">
-              <span class="text-xl peer-checked:scale-125 transition-transform">😕</span>
-              <span class="text-[10px] text-zinc-400 mt-1">2</span>
+              <span class="text-lg peer-checked:scale-125 transition-transform">😕</span>
+              <span class="text-[10px] text-slate-400 mt-0.5">2</span>
             </label>
             <label class="flex flex-col items-center cursor-pointer">
               <input type="radio" name="mood_score" value="3" checked class="hidden peer">
-              <span class="text-xl peer-checked:scale-125 transition-transform">😊</span>
-              <span class="text-[10px] text-zinc-400 mt-1">3</span>
+              <span class="text-lg peer-checked:scale-125 transition-transform">😊</span>
+              <span class="text-[10px] text-slate-400 mt-0.5">3</span>
             </label>
             <label class="flex flex-col items-center cursor-pointer">
               <input type="radio" name="mood_score" value="4" class="hidden peer">
-              <span class="text-xl peer-checked:scale-125 transition-transform">🔥</span>
-              <span class="text-[10px] text-zinc-400 mt-1">4</span>
+              <span class="text-lg peer-checked:scale-125 transition-transform">🔥</span>
+              <span class="text-[10px] text-slate-400 mt-0.5">4</span>
             </label>
             <label class="flex flex-col items-center cursor-pointer">
               <input type="radio" name="mood_score" value="5" class="hidden peer">
-              <span class="text-xl peer-checked:scale-125 transition-transform">⚡</span>
-              <span class="text-[10px] text-zinc-400 mt-1">5</span>
+              <span class="text-lg peer-checked:scale-125 transition-transform">⚡</span>
+              <span class="text-[10px] text-slate-400 mt-0.5">5</span>
             </label>
           </div>
         </div>
 
         <div>
-          <label class="block text-xs font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400 mb-1">Reflection Notes (Optional)</label>
-          <textarea id="log-notes" rows="2" class="w-full px-3.5 py-2.5 rounded-xl bg-zinc-50 dark:bg-zinc-800/80 border border-zinc-200 dark:border-zinc-700 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500" placeholder="Finished 25 pages, great flow on chapter 4"></textarea>
+          <label class="block text-xs font-semibold text-slate-700 mb-1">Reflection Note (Optional)</label>
+          <textarea id="log-notes" rows="2" class="w-full px-3.5 py-2 rounded-xl bg-slate-50 border border-slate-200 text-xs focus:outline-none focus:ring-2 focus:ring-slate-900" placeholder="Smooth flow, felt energized"></textarea>
         </div>
 
-        <button type="submit" class="w-full py-2.5 bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-sm rounded-xl shadow-md shadow-emerald-600/20 transition-all">
-          Confirm Completion (+10 XP)
+        <button type="submit" class="w-full py-2.5 bg-slate-900 hover:bg-slate-800 text-white font-semibold text-xs rounded-xl shadow-sm transition-all">
+          Record Completion (+10 XP)
         </button>
       </form>
     </div>
   </div>
 
+  <!-- Presets Modal -->
+  <div id="modal-presets" class="fixed inset-0 z-50 bg-slate-900/40 backdrop-blur-sm hidden flex items-center justify-center p-4">
+    <div class="bg-white border border-slate-200 rounded-2xl w-full max-w-lg p-6 shadow-elevated relative">
+      <button onclick="closePresetsModal()" class="absolute top-4 right-4 p-1.5 text-slate-400 hover:text-slate-600 rounded-lg">
+        <i class="ph ph-x text-base"></i>
+      </button>
+      <h3 class="text-base font-bold text-slate-900 mb-0.5">Proven Habit Templates</h3>
+      <p class="text-xs text-slate-500 mb-4">Click any template to add it directly to your routine.</p>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+        <button onclick="addPresetHabit('💧 Drink 2.5L Water', 'Hydration target throughout the morning', 'Health', 'morning', 5)" class="p-3.5 rounded-xl border border-slate-200 hover:border-slate-900 text-left transition-all bg-slate-50/50">
+          <h4 class="font-bold text-xs text-slate-900">💧 Drink 2.5L Water</h4>
+          <p class="text-[11px] text-slate-500 mt-1">Health • Morning • 5 min</p>
+        </button>
+        <button onclick="addPresetHabit('💻 30m Deep Coding Sprint', 'Focused single-task programming block', 'Productivity', 'afternoon', 30)" class="p-3.5 rounded-xl border border-slate-200 hover:border-slate-900 text-left transition-all bg-slate-50/50">
+          <h4 class="font-bold text-xs text-slate-900">💻 30m Deep Coding</h4>
+          <p class="text-[11px] text-slate-500 mt-1">Productivity • Afternoon • 30 min</p>
+        </button>
+        <button onclick="addPresetHabit('🧘 10m Mindful Meditation', 'Breathwork and mental clarity', 'Mindfulness', 'morning', 10)" class="p-3.5 rounded-xl border border-slate-200 hover:border-slate-900 text-left transition-all bg-slate-50/50">
+          <h4 class="font-bold text-xs text-slate-900">🧘 10m Meditation</h4>
+          <p class="text-[11px] text-slate-500 mt-1">Mindfulness • Morning • 10 min</p>
+        </button>
+        <button onclick="addPresetHabit('🏃 10,000 Steps Daily', 'Physical movement and walk breaks', 'Fitness', 'afternoon', 45)" class="p-3.5 rounded-xl border border-slate-200 hover:border-slate-900 text-left transition-all bg-slate-50/50">
+          <h4 class="font-bold text-xs text-slate-900">🏃 10,000 Steps</h4>
+          <p class="text-[11px] text-slate-500 mt-1">Fitness • Afternoon • 45 min</p>
+        </button>
+        <button onclick="addPresetHabit('📖 Read 20 Pages Non-Fiction', 'Books on business, engineering, or psychology', 'Learning', 'evening', 20)" class="p-3.5 rounded-xl border border-slate-200 hover:border-slate-900 text-left transition-all bg-slate-50/50">
+          <h4 class="font-bold text-xs text-slate-900">📖 Read 20 Pages</h4>
+          <p class="text-[11px] text-slate-500 mt-1">Learning • Evening • 20 min</p>
+        </button>
+        <button onclick="addPresetHabit('✍️ Evening Reflection & Gratitude', '3 key wins and gratitude log', 'Mindfulness', 'evening', 10)" class="p-3.5 rounded-xl border border-slate-200 hover:border-slate-900 text-left transition-all bg-slate-50/50">
+          <h4 class="font-bold text-xs text-slate-900">✍️ Evening Gratitude</h4>
+          <p class="text-[11px] text-slate-500 mt-1">Mindfulness • Evening • 10 min</p>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Auth Modal -->
+  <div id="modal-auth" class="fixed inset-0 z-50 bg-slate-900/40 backdrop-blur-sm hidden flex items-center justify-center p-4">
+    <div class="bg-white border border-slate-200 rounded-2xl w-full max-w-md p-6 shadow-elevated relative">
+      <button onclick="closeAuthModal()" class="absolute top-4 right-4 p-1.5 text-slate-400 hover:text-slate-600 rounded-lg">
+        <i class="ph ph-x text-base"></i>
+      </button>
+
+      <div class="flex items-center gap-2 mb-4 border-b border-slate-100 pb-3">
+        <button id="auth-tab-login" onclick="setAuthTab('login')" class="font-bold text-sm pb-1 border-b-2 border-slate-900 text-slate-900">
+          Sign In
+        </button>
+        <button id="auth-tab-register" onclick="setAuthTab('register')" class="font-bold text-sm pb-1 text-slate-400 hover:text-slate-600">
+          Create Account
+        </button>
+      </div>
+
+      <form id="auth-form" onsubmit="handleAuthSubmit(event)" class="space-y-4">
+        <div id="auth-name-field" class="hidden">
+          <label class="block text-xs font-semibold text-slate-700 mb-1">Full Name</label>
+          <input type="text" id="auth-name" class="w-full px-3.5 py-2 rounded-xl bg-slate-50 border border-slate-200 text-xs focus:outline-none focus:ring-2 focus:ring-slate-900" placeholder="Alex Morgan">
+        </div>
+
+        <div>
+          <label class="block text-xs font-semibold text-slate-700 mb-1">Email Address</label>
+          <input type="email" id="auth-email" required class="w-full px-3.5 py-2 rounded-xl bg-slate-50 border border-slate-200 text-xs focus:outline-none focus:ring-2 focus:ring-slate-900" placeholder="alex@example.com">
+        </div>
+
+        <div>
+          <label class="block text-xs font-semibold text-slate-700 mb-1">Password</label>
+          <input type="password" id="auth-password" required minlength="6" class="w-full px-3.5 py-2 rounded-xl bg-slate-50 border border-slate-200 text-xs focus:outline-none focus:ring-2 focus:ring-slate-900" placeholder="••••••••">
+        </div>
+
+        <button type="submit" id="auth-submit-btn" class="w-full py-2.5 bg-slate-900 hover:bg-slate-800 text-white font-semibold text-xs rounded-xl shadow-sm transition-all">
+          Sign In
+        </button>
+      </form>
+
+      <div class="mt-4 pt-4 border-t border-slate-100 text-center">
+        <button onclick="loginAsDemoUser()" class="text-xs text-indigo-600 hover:underline font-semibold">
+          Or continue with 1-click Demo Account →
+        </button>
+      </div>
+    </div>
+  </div>
+
   <!-- Footer -->
-  <footer class="mt-auto border-t border-zinc-200 dark:border-zinc-800/80 py-6 text-center text-xs text-zinc-500">
+  <footer class="mt-auto border-t border-slate-200 py-6 text-center text-xs text-slate-500">
     <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-2">
-      <span>Aura AI • Built with FastAPI, LangChain, and SQLite</span>
+      <span>Aura • High-Performance Habit Architecture</span>
       <div class="flex items-center gap-4">
-        <a href="/docs" target="_blank" class="hover:text-emerald-500 transition-colors">API Docs (Swagger)</a>
-        <a href="/redoc" target="_blank" class="hover:text-emerald-500 transition-colors">ReDoc</a>
-        <a href="/healthcheck" target="_blank" class="hover:text-emerald-500 transition-colors">Healthcheck</a>
+        <a href="/docs" target="_blank" class="hover:text-slate-900 transition-colors">API Docs (Swagger)</a>
+        <a href="/redoc" target="_blank" class="hover:text-slate-900 transition-colors">ReDoc</a>
+        <a href="/healthcheck" target="_blank" class="hover:text-slate-900 transition-colors">Healthcheck</a>
       </div>
     </div>
   </footer>
 
   <!-- Frontend JavaScript Logic -->
   <script>
-    // State
     let authToken = localStorage.getItem('aura_token') || '';
     let currentUser = null;
     let habitsList = [];
     let activeTab = 'habits';
-    let viewMode = 'grid'; // 'grid' | 'checklist'
+    let habitViewMode = 'grouped'; // 'grouped' | 'grid'
 
     // Focus Timer State
     let timerDuration = 25 * 60;
@@ -934,13 +1028,11 @@
     // Web Audio Synthesizer State
     let audioCtx = null;
     let soundPlaying = false;
-    let soundType = 'binaural'; // 'binaural' | 'brown' | 'rain'
+    let soundType = 'binaural';
     let soundNodes = [];
     let masterGain = null;
 
-    // Initialization
     document.addEventListener('DOMContentLoaded', async () => {
-      initTheme();
       renderHeatmap();
       if (authToken) {
         await fetchCurrentUser();
@@ -951,25 +1043,24 @@
       await refreshAllData();
     });
 
-    // Theme toggle
-    function initTheme() {
-      const isDark = localStorage.getItem('aura_theme') !== 'light';
-      if (isDark) {
-        document.documentElement.classList.add('dark');
-        document.getElementById('theme-icon').className = 'ph ph-sun text-lg';
-      } else {
-        document.documentElement.classList.remove('dark');
-        document.getElementById('theme-icon').className = 'ph ph-moon text-lg';
-      }
+    // Subtle audio chime for habit completion
+    function playChimeSound() {
+      try {
+        const ctx = getAudioContext();
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(587.33, ctx.currentTime); // D5
+        osc.frequency.exponentialRampToValueAtTime(880, ctx.currentTime + 0.15); // A5
+        gain.gain.setValueAtTime(0.1, ctx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.35);
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.start();
+        osc.stop(ctx.currentTime + 0.35);
+      } catch(e) {}
     }
 
-    function toggleDarkMode() {
-      const isDark = document.documentElement.classList.toggle('dark');
-      localStorage.setItem('aura_theme', isDark ? 'dark' : 'light');
-      document.getElementById('theme-icon').className = isDark ? 'ph ph-sun text-lg' : 'ph ph-moon text-lg';
-    }
-
-    // Tabs
     function switchTab(tabId) {
       activeTab = tabId;
       document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
@@ -978,52 +1069,46 @@
 
       document.querySelectorAll('.tab-btn').forEach(btn => {
         if (btn.dataset.tab === tabId) {
-          btn.className = 'tab-btn active px-3.5 py-1.5 rounded-lg text-sm font-medium bg-white dark:bg-zinc-800 text-zinc-900 dark:text-white shadow-sm transition-all';
+          btn.className = 'tab-btn active px-3.5 py-1.5 rounded-lg text-xs font-semibold bg-white text-slate-900 shadow-sm transition-all';
         } else {
-          btn.className = 'tab-btn px-3.5 py-1.5 rounded-lg text-sm font-medium text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-all';
+          btn.className = 'tab-btn px-3.5 py-1.5 rounded-lg text-xs font-semibold text-slate-600 hover:text-slate-900 transition-all';
         }
       });
 
-      if (tabId === 'analytics') {
-        loadAnalytics();
-        loadMoodTrends();
-      }
-      if (tabId === 'gamification') {
-        loadGamification();
-        loadQuests();
-      }
+      if (tabId === 'focus') loadFocusSessions();
+      if (tabId === 'analytics') { loadAnalytics(); loadMoodTrends(); }
+      if (tabId === 'gamification') { loadGamification(); loadQuests(); }
     }
 
-    function setViewMode(mode) {
-      viewMode = mode;
+    function setHabitViewMode(mode) {
+      habitViewMode = mode;
+      const groupedBtn = document.getElementById('view-mode-grouped');
       const gridBtn = document.getElementById('view-mode-grid');
-      const checkBtn = document.getElementById('view-mode-checklist');
-      const gridEl = document.getElementById('habits-grid');
-      const checkEl = document.getElementById('habits-checklist');
+      const groupedEl = document.getElementById('habits-grouped-view');
+      const gridEl = document.getElementById('habits-grid-view');
 
-      if (mode === 'grid') {
-        gridBtn.className = 'px-2.5 py-1 text-xs font-semibold rounded-lg bg-white dark:bg-zinc-800 text-zinc-900 dark:text-white shadow-sm transition-all';
-        checkBtn.className = 'px-2.5 py-1 text-xs font-semibold rounded-lg text-zinc-500 hover:text-zinc-900 dark:hover:text-white transition-all';
-        gridEl.classList.remove('hidden');
-        checkEl.classList.add('hidden');
-      } else {
-        checkBtn.className = 'px-2.5 py-1 text-xs font-semibold rounded-lg bg-white dark:bg-zinc-800 text-zinc-900 dark:text-white shadow-sm transition-all';
-        gridBtn.className = 'px-2.5 py-1 text-xs font-semibold rounded-lg text-zinc-500 hover:text-zinc-900 dark:hover:text-white transition-all';
-        checkEl.classList.remove('hidden');
+      if (mode === 'grouped') {
+        groupedBtn.className = 'px-3 py-1 text-xs font-semibold rounded-lg bg-white text-slate-900 shadow-sm transition-all';
+        gridBtn.className = 'px-3 py-1 text-xs font-semibold rounded-lg text-slate-500 hover:text-slate-900 transition-all';
+        groupedEl.classList.remove('hidden');
         gridEl.classList.add('hidden');
+      } else {
+        gridBtn.className = 'px-3 py-1 text-xs font-semibold rounded-lg bg-white text-slate-900 shadow-sm transition-all';
+        groupedBtn.className = 'px-3 py-1 text-xs font-semibold rounded-lg text-slate-500 hover:text-slate-900 transition-all';
+        gridEl.classList.remove('hidden');
+        groupedEl.classList.add('hidden');
       }
       renderHabits();
     }
 
-    // Toast notifications
     function showToast(message, type = 'info') {
       const container = document.getElementById('toast-container');
       const toast = document.createElement('div');
-      const bg = type === 'success' ? 'bg-emerald-600 text-white' : type === 'error' ? 'bg-rose-600 text-white' : 'bg-zinc-900 text-white dark:bg-zinc-800';
-      const icon = type === 'success' ? 'ph-check-circle' : type === 'error' ? 'ph-warning-circle' : 'ph-info';
+      const bg = type === 'success' ? 'bg-slate-900 text-white' : type === 'error' ? 'bg-rose-600 text-white' : 'bg-slate-800 text-white';
+      const icon = type === 'success' ? 'ph-check-circle text-emerald-400' : type === 'error' ? 'ph-warning-circle text-rose-300' : 'ph-info text-slate-300';
       
-      toast.className = `${bg} pointer-events-auto px-4 py-3 rounded-xl shadow-lg flex items-center gap-2 text-sm font-medium transition-all duration-300 transform translate-y-2 opacity-0`;
-      toast.innerHTML = `<i class="ph-bold ${icon} text-lg"></i> <span>${message}</span>`;
+      toast.className = `${bg} pointer-events-auto px-4 py-2.5 rounded-xl shadow-elevated flex items-center gap-2 text-xs font-medium transition-all duration-300 transform translate-y-2 opacity-0 border border-slate-700/50`;
+      toast.innerHTML = `<i class="ph-bold ${icon} text-base"></i> <span>${message}</span>`;
       
       container.appendChild(toast);
       requestAnimationFrame(() => toast.classList.remove('translate-y-2', 'opacity-0'));
@@ -1031,29 +1116,26 @@
       setTimeout(() => {
         toast.classList.add('opacity-0', 'translate-y-2');
         setTimeout(() => toast.remove(), 300);
-      }, 3500);
+      }, 3200);
     }
 
     function triggerXPAnimation(amount = 10) {
       const container = document.getElementById('xp-floating-container');
       const badge = document.createElement('div');
-      badge.className = 'animate-float-up px-4 py-2 rounded-2xl bg-emerald-500 text-white font-extrabold text-lg shadow-xl flex items-center gap-1.5';
-      badge.innerHTML = `<i class="ph-bold ph-sparkle text-xl"></i> +${amount} XP Earned!`;
+      badge.className = 'animate-float-up px-4 py-2 rounded-xl bg-slate-900 text-white font-extrabold text-xs shadow-elevated flex items-center gap-1.5 border border-slate-700';
+      badge.innerHTML = `<i class="ph-bold ph-sparkle text-amber-300 text-sm"></i> +${amount} XP Earned`;
       container.appendChild(badge);
       setTimeout(() => badge.remove(), 1800);
     }
 
-    // Auth Handling
+    // Auth
     let authMode = 'login';
     function openAuthModal(mode = 'login') {
       authMode = mode;
       setAuthTab(mode);
       document.getElementById('modal-auth').classList.remove('hidden');
     }
-
-    function closeAuthModal() {
-      document.getElementById('modal-auth').classList.add('hidden');
-    }
+    function closeAuthModal() { document.getElementById('modal-auth').classList.add('hidden'); }
 
     function setAuthTab(mode) {
       authMode = mode;
@@ -1063,13 +1145,13 @@
       const submitBtn = document.getElementById('auth-submit-btn');
 
       if (mode === 'login') {
-        loginTab.className = 'font-bold text-base pb-1 border-b-2 border-emerald-500 text-emerald-600 dark:text-emerald-400';
-        regTab.className = 'font-bold text-base pb-1 text-zinc-400 hover:text-zinc-600 dark:hover:text-white';
+        loginTab.className = 'font-bold text-sm pb-1 border-b-2 border-slate-900 text-slate-900';
+        regTab.className = 'font-bold text-sm pb-1 text-slate-400 hover:text-slate-600';
         nameField.classList.add('hidden');
         submitBtn.textContent = 'Sign In';
       } else {
-        regTab.className = 'font-bold text-base pb-1 border-b-2 border-emerald-500 text-emerald-600 dark:text-emerald-400';
-        loginTab.className = 'font-bold text-base pb-1 text-zinc-400 hover:text-zinc-600 dark:hover:text-white';
+        regTab.className = 'font-bold text-sm pb-1 border-b-2 border-slate-900 text-slate-900';
+        loginTab.className = 'font-bold text-sm pb-1 text-slate-400 hover:text-slate-600';
         nameField.classList.remove('hidden');
         submitBtn.textContent = 'Create Account';
       }
@@ -1086,7 +1168,7 @@
           const regRes = await fetch('/api/v1/auth/register', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ email, password, full_name: fullName || 'Aura Explorer' })
+            body: JSON.stringify({ email, password, full_name: fullName || 'Aura Member' })
           });
           if (!regRes.ok) {
             const err = await regRes.json();
@@ -1104,23 +1186,18 @@
           body: params
         });
 
-        if (!loginRes.ok) {
-          const err = await loginRes.json();
-          throw new Error(err.detail || 'Login failed');
-        }
+        if (!loginRes.ok) throw new Error('Incorrect credentials');
 
         const data = await loginRes.json();
         authToken = data.access_token;
         localStorage.setItem('aura_token', authToken);
 
-        showToast('Successfully logged in!', 'success');
+        showToast('Logged in successfully', 'success');
         closeAuthModal();
         await fetchCurrentUser();
         await fetchDailyQuote();
         await refreshAllData();
-      } catch (err) {
-        showToast(err.message, 'error');
-      }
+      } catch (err) { showToast(err.message, 'error'); }
     }
 
     async function loginAsDemoUser() {
@@ -1141,7 +1218,7 @@
           await fetch('/api/v1/auth/register', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ email: demoEmail, password: demoPassword, full_name: 'Demo Explorer' })
+            body: JSON.stringify({ email: demoEmail, password: demoPassword, full_name: 'Demo Member' })
           });
 
           res = await fetch('/api/v1/auth/login', {
@@ -1154,14 +1231,12 @@
         const data = await res.json();
         authToken = data.access_token;
         localStorage.setItem('aura_token', authToken);
-        showToast('Logged in as Demo Explorer', 'success');
+        showToast('Logged in as Demo Member', 'success');
         closeAuthModal();
         await fetchCurrentUser();
         await fetchDailyQuote();
         await refreshAllData();
-      } catch (err) {
-        showToast('Demo login error: ' + err.message, 'error');
-      }
+      } catch (err) { showToast('Demo error: ' + err.message, 'error'); }
     }
 
     async function fetchCurrentUser() {
@@ -1174,12 +1249,8 @@
           currentUser = await res.json();
           updateAuthUI();
           loadGamificationHeader();
-        } else {
-          logout();
-        }
-      } catch (err) {
-        console.error(err);
-      }
+        } else { logout(); }
+      } catch (err) { console.error(err); }
     }
 
     function logout() {
@@ -1214,11 +1285,12 @@
     async function refreshAllData() {
       if (!authToken) return;
       await fetchHabits();
-      if (activeTab === 'analytics') { loadAnalytics(); loadMoodTrends(); }
-      if (activeTab === 'gamification') { loadGamification(); loadQuests(); }
+      if (activeTab === 'focus') await loadFocusSessions();
+      if (activeTab === 'analytics') { await loadAnalytics(); await loadMoodTrends(); }
+      if (activeTab === 'gamification') { await loadGamification(); await loadQuests(); }
     }
 
-    // ==================== DAILY QUOTE ====================
+    // Daily Quote
     async function fetchDailyQuote() {
       if (!authToken) return;
       try {
@@ -1231,10 +1303,10 @@
           if (data.author) document.getElementById('quote-author').textContent = `— ${data.author}`;
           if (data.reflection_prompt) document.getElementById('quote-reflection').textContent = data.reflection_prompt;
         }
-      } catch (e) { console.error(e); }
+      } catch (e) {}
     }
 
-    // ==================== 30-DAY HEATMAP ====================
+    // Heatmap
     function renderHeatmap() {
       const heatmapEl = document.getElementById('activity-heatmap');
       if (!heatmapEl) return;
@@ -1259,22 +1331,18 @@
 
         const cell = document.createElement('div');
         cell.className = 'heatmap-cell cursor-pointer';
-        cell.title = `${dateStr}: ${count} completed habits`;
+        cell.title = `${dateStr}: ${count} completed routines`;
 
-        if (count === 0) {
-          cell.className += ' bg-zinc-200 dark:bg-zinc-800';
-        } else if (count === 1) {
-          cell.className += ' bg-emerald-400/50';
-        } else if (count === 2) {
-          cell.className += ' bg-emerald-500';
-        } else {
-          cell.className += ' bg-emerald-400 font-bold ring-1 ring-emerald-300';
-        }
+        if (count === 0) cell.className += ' bg-slate-100';
+        else if (count === 1) cell.className += ' bg-indigo-200';
+        else if (count === 2) cell.className += ' bg-indigo-400';
+        else cell.className += ' bg-indigo-600';
+
         heatmapEl.appendChild(cell);
       }
 
       const streakLabel = document.getElementById('heatmap-streak-label');
-      if (streakLabel) streakLabel.textContent = `Active 30d Activity: ${totalActive} days`;
+      if (streakLabel) streakLabel.textContent = `Active 30d Velocity: ${totalActive} days`;
     }
 
     // ==================== HABITS LOGIC ====================
@@ -1289,14 +1357,10 @@
           renderHabits();
           renderHeatmap();
         }
-      } catch (err) {
-        console.error('Fetch habits error:', err);
-      }
+      } catch (err) { console.error(err); }
     }
 
     function renderHabits() {
-      const grid = document.getElementById('habits-grid');
-      const checklist = document.getElementById('habits-checklist');
       const empty = document.getElementById('habits-empty');
       const cat = document.getElementById('habit-category-filter')?.value || '';
       const todayDate = new Date().toISOString().split('T')[0];
@@ -1304,164 +1368,145 @@
       const filtered = habitsList.filter(h => !cat || h.category === cat);
 
       if (!filtered.length) {
-        grid.innerHTML = '';
-        checklist.innerHTML = '';
+        document.getElementById('habits-morning-container').innerHTML = '';
+        document.getElementById('habits-afternoon-container').innerHTML = '';
+        document.getElementById('habits-evening-container').innerHTML = '';
+        document.getElementById('habits-grid-view').innerHTML = '';
         empty.classList.remove('hidden');
         return;
       }
 
       empty.classList.add('hidden');
 
-      // 1. Render Grid View
-      grid.innerHTML = filtered.map(h => {
-        const logCount = h.logs ? h.logs.length : 0;
-        const isCompletedToday = h.logs && h.logs.some(l => l.completed_at && l.completed_at.startsWith(todayDate));
+      const morning = filtered.filter(h => (h.time_of_day || 'morning') === 'morning');
+      const afternoon = filtered.filter(h => h.time_of_day === 'afternoon');
+      const evening = filtered.filter(h => h.time_of_day === 'evening');
 
-        const catBadgeColors = {
-          'Productivity': 'bg-blue-500/10 text-blue-600 dark:text-blue-400 border-blue-500/20',
-          'Health': 'bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-500/20',
-          'Mindfulness': 'bg-purple-500/10 text-purple-600 dark:text-purple-400 border-purple-500/20',
-          'Fitness': 'bg-amber-500/10 text-amber-600 dark:text-amber-400 border-amber-500/20',
-          'Learning': 'bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 border-indigo-500/20',
-        }[h.category] || 'bg-zinc-500/10 text-zinc-600 dark:text-zinc-400 border-zinc-500/20';
+      document.getElementById('count-morning').textContent = `(${morning.length})`;
+      document.getElementById('count-afternoon').textContent = `(${afternoon.length})`;
+      document.getElementById('count-evening').textContent = `(${evening.length})`;
+
+      const renderCard = (h) => {
+        const isCompletedToday = h.logs && h.logs.some(l => l.completed_at && l.completed_at.startsWith(todayDate));
+        const logCount = h.logs ? h.logs.length : 0;
+        const estMins = h.estimated_minutes || 15;
 
         return `
-          <div class="p-5 rounded-2xl bg-white dark:bg-zinc-900/90 border ${isCompletedToday ? 'border-emerald-500/40 shadow-sm shadow-emerald-500/5' : 'border-zinc-200 dark:border-zinc-800'} shadow-sm hover:border-zinc-300 dark:hover:border-zinc-700 transition-all flex flex-col justify-between group">
-            <div>
-              <div class="flex items-center justify-between mb-2">
-                <span class="text-xs font-mono font-semibold px-2 py-0.5 rounded-full border ${catBadgeColors}">
-                  ${h.category}
-                </span>
-                <div class="flex items-center gap-2">
-                  ${isCompletedToday ? `
-                    <span class="text-[11px] font-semibold px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20 flex items-center gap-1">
-                      <i class="ph-bold ph-check"></i> Done Today
-                    </span>
-                  ` : ''}
-                  <div class="opacity-0 group-hover:opacity-100 transition-opacity flex items-center gap-1">
-                    <button onclick="openEditHabitModal('${h.id}')" title="Edit Habit" class="p-1 text-zinc-400 hover:text-zinc-600 dark:hover:text-white rounded">
-                      <i class="ph ph-pencil-simple text-sm"></i>
-                    </button>
-                    <button onclick="deleteHabit('${h.id}')" title="Delete Habit" class="p-1 text-zinc-400 hover:text-rose-500 rounded">
-                      <i class="ph ph-trash text-sm"></i>
-                    </button>
+          <div class="bezel-card group transition-all duration-200 hover:border-slate-300">
+            <div class="bezel-inner p-4 flex flex-col justify-between h-full bg-white">
+              <div>
+                <div class="flex items-center justify-between mb-2">
+                  <span class="text-[10px] font-mono font-semibold px-2 py-0.5 rounded-full bg-slate-100 text-slate-700 border border-slate-200">
+                    ${h.category}
+                  </span>
+                  <div class="flex items-center gap-2">
+                    <span class="text-[10px] font-mono text-slate-400">${estMins}m</span>
+                    <div class="opacity-0 group-hover:opacity-100 transition-opacity flex items-center gap-1">
+                      <button onclick="openEditHabitModal('${h.id}')" title="Edit Habit" class="p-1 text-slate-400 hover:text-slate-700 rounded">
+                        <i class="ph ph-pencil-simple text-xs"></i>
+                      </button>
+                      <button onclick="deleteHabit('${h.id}')" title="Delete Habit" class="p-1 text-slate-400 hover:text-rose-600 rounded">
+                        <i class="ph ph-trash text-xs"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="flex items-start gap-3 my-2">
+                  <button onclick="quickToggleHabit('${h.id}')" class="w-5 h-5 mt-0.5 rounded-md border flex items-center justify-center transition-all ${isCompletedToday ? 'bg-slate-900 border-slate-900 text-white' : 'border-slate-300 hover:border-slate-900'}">
+                    ${isCompletedToday ? '<i class="ph-bold ph-check text-[10px]"></i>' : ''}
+                  </button>
+                  <div>
+                    <h4 class="font-bold text-xs sm:text-sm ${isCompletedToday ? 'line-through text-slate-400' : 'text-slate-900'}">${h.title}</h4>
+                    ${h.description ? `<p class="text-[11px] text-slate-500 mt-0.5 line-clamp-2">${h.description}</p>` : ''}
                   </div>
                 </div>
               </div>
-              <h3 class="font-bold text-base text-zinc-900 dark:text-white">${h.title}</h3>
-              ${h.description ? `<p class="text-xs text-zinc-500 dark:text-zinc-400 mt-1 line-clamp-2">${h.description}</p>` : ''}
-            </div>
 
-            <div class="mt-5 pt-3 border-t border-zinc-100 dark:border-zinc-800/80 flex items-center justify-between">
-              <div class="flex items-center gap-1.5 text-xs text-zinc-500 dark:text-zinc-400 font-mono">
-                <i class="ph-fill ph-check-circle text-emerald-500"></i>
-                <span>${logCount} check-ins</span>
+              <div class="mt-4 pt-2.5 border-t border-slate-100 flex items-center justify-between">
+                <span class="text-[10px] font-mono text-slate-400">${logCount} completions</span>
+                <button onclick="openLogHabitModal('${h.id}', '${escapeHtml(h.title)}')" class="text-[11px] font-semibold text-slate-600 hover:text-slate-900 flex items-center gap-1">
+                  Log Note →
+                </button>
               </div>
-              <button onclick="openLogHabitModal('${h.id}', '${escapeHtml(h.title)}')" class="px-3 py-1.5 text-xs font-semibold ${isCompletedToday ? 'bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 hover:bg-zinc-200' : 'bg-emerald-600 hover:bg-emerald-500 text-white'} rounded-xl shadow-sm transition-all flex items-center gap-1">
-                <i class="ph-bold ${isCompletedToday ? 'ph-check' : 'ph-plus'}"></i> ${isCompletedToday ? 'Log Again' : 'Log Today'}
-              </button>
             </div>
           </div>
         `;
-      }).join('');
+      };
 
-      // 2. Render Fast Checklist View
-      checklist.innerHTML = filtered.map(h => {
-        const isCompletedToday = h.logs && h.logs.some(l => l.completed_at && l.completed_at.startsWith(todayDate));
-        return `
-          <div class="p-4 rounded-2xl bg-white dark:bg-zinc-900/90 border border-zinc-200 dark:border-zinc-800 flex items-center justify-between gap-4">
-            <div class="flex items-center gap-3.5">
-              <button onclick="quickToggleHabit('${h.id}')" class="w-6 h-6 rounded-lg border-2 flex items-center justify-center transition-all ${isCompletedToday ? 'bg-emerald-500 border-emerald-500 text-white' : 'border-zinc-300 dark:border-zinc-700 hover:border-emerald-500'}">
-                ${isCompletedToday ? '<i class="ph-bold ph-check text-xs"></i>' : ''}
-              </button>
-              <div>
-                <h4 class="font-bold text-sm ${isCompletedToday ? 'line-through text-zinc-400 dark:text-zinc-500' : 'text-zinc-900 dark:text-white'}">${h.title}</h4>
-                <span class="text-xs text-zinc-400">${h.category} • ${h.frequency}</span>
-              </div>
-            </div>
-            <button onclick="openLogHabitModal('${h.id}', '${escapeHtml(h.title)}')" class="text-xs text-zinc-500 hover:text-emerald-500 font-medium">
-              Log Details →
-            </button>
-          </div>
-        `;
-      }).join('');
+      document.getElementById('habits-morning-container').innerHTML = morning.map(renderCard).join('') || '<p class="text-xs text-slate-400 italic col-span-full">No morning habits scheduled.</p>';
+      document.getElementById('habits-afternoon-container').innerHTML = afternoon.map(renderCard).join('') || '<p class="text-xs text-slate-400 italic col-span-full">No afternoon habits scheduled.</p>';
+      document.getElementById('habits-evening-container').innerHTML = evening.map(renderCard).join('') || '<p class="text-xs text-slate-400 italic col-span-full">No evening habits scheduled.</p>';
+      document.getElementById('habits-grid-view').innerHTML = filtered.map(renderCard).join('');
     }
 
-    function escapeHtml(text) {
-      return text.replace(/'/g, "\\'").replace(/"/g, '&quot;');
-    }
+    function escapeHtml(text) { return text.replace(/'/g, "\\'").replace(/"/g, '&quot;'); }
 
     async function quickToggleHabit(habitId) {
       if (!authToken) { openAuthModal('login'); return; }
       try {
+        playChimeSound();
         const res = await fetch(`/api/v1/habits/${habitId}/log`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${authToken}` },
-          body: JSON.stringify({ mood_score: 4, notes: 'Quick Check-in' })
+          body: JSON.stringify({ mood_score: 4, notes: 'Quick completion' })
         });
-        if (!res.ok) throw new Error('Failed to log');
-        showToast('Habit completed! +10 XP', 'success');
+        if (!res.ok) throw new Error('Failed to record');
+        showToast('Habit recorded (+10 XP)', 'success');
         triggerXPAnimation(10);
         await fetchHabits();
         await loadGamification();
       } catch (e) { showToast(e.message, 'error'); }
     }
 
-    // Presets modal
     function openPresetsModal() {
       if (!authToken) { openAuthModal('login'); return; }
       document.getElementById('modal-presets').classList.remove('hidden');
     }
-    function closePresetsModal() {
-      document.getElementById('modal-presets').classList.add('hidden');
-    }
+    function closePresetsModal() { document.getElementById('modal-presets').classList.add('hidden'); }
 
-    async function addPresetHabit(title, description, category, frequency) {
+    async function addPresetHabit(title, description, category, time_of_day, estMins) {
       try {
         const res = await fetch('/api/v1/habits/', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${authToken}` },
-          body: JSON.stringify({ title, description, category, frequency })
+          body: JSON.stringify({ title, description, category, frequency: 'daily', time_of_day, estimated_minutes: estMins, priority: 'medium' })
         });
-        if (!res.ok) throw new Error('Failed to add preset');
-        showToast(`Added '${title}'!`, 'success');
+        if (!res.ok) throw new Error('Failed to add');
+        showToast(`Added '${title}'`, 'success');
         closePresetsModal();
         await fetchHabits();
       } catch (err) { showToast(err.message, 'error'); }
     }
 
-    // Create habit
     function openCreateHabitModal() {
       if (!authToken) { openAuthModal('login'); return; }
       document.getElementById('modal-create-habit').classList.remove('hidden');
     }
-    function closeCreateHabitModal() {
-      document.getElementById('modal-create-habit').classList.add('hidden');
-    }
+    function closeCreateHabitModal() { document.getElementById('modal-create-habit').classList.add('hidden'); }
 
     async function handleCreateHabit(e) {
       e.preventDefault();
       const title = document.getElementById('habit-title').value.trim();
       const description = document.getElementById('habit-desc').value.trim();
       const category = document.getElementById('habit-cat').value;
-      const frequency = document.getElementById('habit-freq').value;
+      const time_of_day = document.getElementById('habit-time-of-day').value;
+      const estimated_minutes = parseInt(document.getElementById('habit-est-mins').value || 15);
 
       try {
         const res = await fetch('/api/v1/habits/', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${authToken}` },
-          body: JSON.stringify({ title, description, category, frequency })
+          body: JSON.stringify({ title, description, category, frequency: 'daily', time_of_day, estimated_minutes, priority: 'medium' })
         });
-
-        if (!res.ok) throw new Error('Failed to create habit');
-        showToast('New habit created!', 'success');
+        if (!res.ok) throw new Error('Failed to create');
+        showToast('Habit created', 'success');
         closeCreateHabitModal();
         document.getElementById('create-habit-form').reset();
         await fetchHabits();
       } catch (err) { showToast(err.message, 'error'); }
     }
 
-    // Edit habit
     function openEditHabitModal(habitId) {
       const habit = habitsList.find(h => h.id === habitId);
       if (!habit) return;
@@ -1469,12 +1514,11 @@
       document.getElementById('edit-habit-title').value = habit.title;
       document.getElementById('edit-habit-desc').value = habit.description || '';
       document.getElementById('edit-habit-cat').value = habit.category;
-      document.getElementById('edit-habit-freq').value = habit.frequency;
+      document.getElementById('edit-habit-time-of-day').value = habit.time_of_day || 'morning';
+      document.getElementById('edit-habit-est-mins').value = habit.estimated_minutes || 15;
       document.getElementById('modal-edit-habit').classList.remove('hidden');
     }
-    function closeEditHabitModal() {
-      document.getElementById('modal-edit-habit').classList.add('hidden');
-    }
+    function closeEditHabitModal() { document.getElementById('modal-edit-habit').classList.add('hidden'); }
 
     async function handleUpdateHabit(e) {
       e.preventDefault();
@@ -1482,46 +1526,42 @@
       const title = document.getElementById('edit-habit-title').value.trim();
       const description = document.getElementById('edit-habit-desc').value.trim();
       const category = document.getElementById('edit-habit-cat').value;
-      const frequency = document.getElementById('edit-habit-freq').value;
+      const time_of_day = document.getElementById('edit-habit-time-of-day').value;
+      const estimated_minutes = parseInt(document.getElementById('edit-habit-est-mins').value || 15);
 
       try {
         const res = await fetch(`/api/v1/habits/${habitId}`, {
           method: 'PUT',
           headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${authToken}` },
-          body: JSON.stringify({ title, description, category, frequency })
+          body: JSON.stringify({ title, description, category, time_of_day, estimated_minutes })
         });
-
-        if (!res.ok) throw new Error('Failed to update habit');
-        showToast('Habit updated!', 'success');
+        if (!res.ok) throw new Error('Failed to update');
+        showToast('Habit updated', 'success');
         closeEditHabitModal();
         await fetchHabits();
       } catch (err) { showToast(err.message, 'error'); }
     }
 
-    // Delete habit
     async function deleteHabit(habitId) {
-      if (!confirm('Are you sure you want to delete this habit?')) return;
+      if (!confirm('Delete this habit?')) return;
       try {
         const res = await fetch(`/api/v1/habits/${habitId}`, {
           method: 'DELETE',
           headers: { 'Authorization': `Bearer ${authToken}` }
         });
-        if (!res.ok) throw new Error('Failed to delete habit');
+        if (!res.ok) throw new Error('Failed to delete');
         showToast('Habit deleted', 'info');
         await fetchHabits();
       } catch (err) { showToast(err.message, 'error'); }
     }
 
-    // Log completion
     function openLogHabitModal(habitId, habitTitle) {
       if (!authToken) { openAuthModal('login'); return; }
       document.getElementById('log-habit-id').value = habitId;
-      document.getElementById('log-habit-title').textContent = `Record completion for "${habitTitle}"`;
+      document.getElementById('log-habit-title').textContent = `Record reflection for "${habitTitle}"`;
       document.getElementById('modal-log-habit').classList.remove('hidden');
     }
-    function closeLogHabitModal() {
-      document.getElementById('modal-log-habit').classList.add('hidden');
-    }
+    function closeLogHabitModal() { document.getElementById('modal-log-habit').classList.add('hidden'); }
 
     async function handleLogHabit(e) {
       e.preventDefault();
@@ -1535,9 +1575,8 @@
           headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${authToken}` },
           body: JSON.stringify({ mood_score, notes })
         });
-
-        if (!res.ok) throw new Error('Failed to log habit');
-        showToast('Habit completed! +10 XP earned', 'success');
+        if (!res.ok) throw new Error('Failed to log');
+        showToast('Completion logged (+10 XP)', 'success');
         triggerXPAnimation(10);
         closeLogHabitModal();
         document.getElementById('log-habit-form').reset();
@@ -1546,7 +1585,7 @@
       } catch (err) { showToast(err.message, 'error'); }
     }
 
-    // Calendar Exports
+    // Exports
     async function exportHabitsICS() {
       if (!authToken) { openAuthModal('login'); return; }
       window.open('/api/v1/habits/export/ics', '_blank');
@@ -1555,79 +1594,60 @@
     async function exportHabitsCSV() {
       if (!authToken) { openAuthModal('login'); return; }
       window.open('/api/v1/habits/export/csv', '_blank');
-      showToast('Exporting habits spreadsheet...', 'info');
+      showToast('Exporting CSV logs...', 'info');
     }
 
     // ==================== WEB AUDIO SYNTHESIZER ====================
     function getAudioContext() {
-      if (!audioCtx) {
-        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-      }
-      if (audioCtx.state === 'suspended') {
-        audioCtx.resume();
-      }
+      if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      if (audioCtx.state === 'suspended') audioCtx.resume();
       return audioCtx;
     }
 
     function setSoundType(type) {
       soundType = type;
       document.querySelectorAll('.sound-type-btn').forEach(btn => {
-        btn.className = 'sound-type-btn px-2 py-1.5 rounded-lg text-xs font-medium text-zinc-500 hover:text-zinc-900 dark:hover:text-white text-center transition-all';
+        btn.className = 'sound-type-btn px-2 py-1.5 rounded-lg text-xs font-medium text-slate-600 hover:bg-slate-100 text-center transition-all';
       });
       const activeBtn = document.getElementById(`sound-btn-${type}`);
-      if (activeBtn) {
-        activeBtn.className = 'sound-type-btn active px-2 py-1.5 rounded-lg text-xs font-medium bg-zinc-100 dark:bg-zinc-800 text-emerald-500 text-center transition-all';
-      }
-      if (soundPlaying) {
-        stopSoundscape();
-        startSoundscape();
-      }
+      if (activeBtn) activeBtn.className = 'sound-type-btn active px-2 py-1.5 rounded-lg text-xs font-medium bg-slate-900 text-white text-center transition-all';
+      if (soundPlaying) { stopSoundscape(); startSoundscape(); }
     }
 
     function setSoundVolume(val) {
-      if (masterGain) {
-        masterGain.gain.setValueAtTime(parseFloat(val) * 0.15, audioCtx.currentTime);
+      if (masterGain && audioCtx) {
+        masterGain.gain.setValueAtTime(parseFloat(val) * 0.12, audioCtx.currentTime);
       }
     }
 
     function toggleSoundscape() {
-      if (soundPlaying) {
-        stopSoundscape();
-      } else {
-        startSoundscape();
-      }
+      if (soundPlaying) stopSoundscape();
+      else startSoundscape();
     }
 
     function startSoundscape() {
       const ctx = getAudioContext();
       soundNodes = [];
-
       masterGain = ctx.createGain();
       const vol = parseFloat(document.getElementById('sound-volume').value || 0.5);
-      masterGain.gain.setValueAtTime(vol * 0.15, ctx.currentTime);
+      masterGain.gain.setValueAtTime(vol * 0.12, ctx.currentTime);
       masterGain.connect(ctx.destination);
 
       if (soundType === 'binaural') {
-        // 200Hz in Left ear, 240Hz in Right ear (40Hz Gamma wave difference)
         const merger = ctx.createChannelMerger(2);
-
         const oscL = ctx.createOscillator();
         oscL.type = 'sine';
         oscL.frequency.setValueAtTime(200, ctx.currentTime);
-
         const oscR = ctx.createOscillator();
         oscR.type = 'sine';
         oscR.frequency.setValueAtTime(240, ctx.currentTime);
-
         oscL.connect(merger, 0, 0);
         oscR.connect(merger, 0, 1);
         merger.connect(masterGain);
-
         oscL.start();
         oscR.start();
         soundNodes.push(oscL, oscR);
       } else if (soundType === 'brown') {
-        // Synthesized Brown Noise
         const bufferSize = ctx.sampleRate * 2;
         const noiseBuffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
         const output = noiseBuffer.getChannelData(0);
@@ -1641,32 +1661,24 @@
         const whiteNoise = ctx.createBufferSource();
         whiteNoise.buffer = noiseBuffer;
         whiteNoise.loop = true;
-
         const filter = ctx.createBiquadFilter();
         filter.type = 'lowpass';
         filter.frequency.setValueAtTime(400, ctx.currentTime);
-
         whiteNoise.connect(filter);
         filter.connect(masterGain);
         whiteNoise.start();
         soundNodes.push(whiteNoise);
       } else {
-        // Gentle Rain (Filtered White Noise with modulation)
         const bufferSize = ctx.sampleRate * 2;
         const noiseBuffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
         const output = noiseBuffer.getChannelData(0);
-        for (let i = 0; i < bufferSize; i++) {
-          output[i] = Math.random() * 2 - 1;
-        }
+        for (let i = 0; i < bufferSize; i++) output[i] = Math.random() * 2 - 1;
         const whiteNoise = ctx.createBufferSource();
         whiteNoise.buffer = noiseBuffer;
         whiteNoise.loop = true;
-
         const filter = ctx.createBiquadFilter();
         filter.type = 'bandpass';
         filter.frequency.setValueAtTime(1000, ctx.currentTime);
-        filter.Q.setValueAtTime(0.5, ctx.currentTime);
-
         whiteNoise.connect(filter);
         filter.connect(masterGain);
         whiteNoise.start();
@@ -1675,20 +1687,18 @@
 
       soundPlaying = true;
       document.getElementById('sound-btn-icon').className = 'ph-bold ph-pause';
-      document.getElementById('sound-btn-label').textContent = 'Pause Audio';
+      document.getElementById('sound-btn-label').textContent = 'Pause Sound';
     }
 
     function stopSoundscape() {
-      soundNodes.forEach(node => {
-        try { node.stop(); } catch (e) {}
-      });
+      soundNodes.forEach(node => { try { node.stop(); } catch(e) {} });
       soundNodes = [];
       soundPlaying = false;
       document.getElementById('sound-btn-icon').className = 'ph-bold ph-play';
-      document.getElementById('sound-btn-label').textContent = 'Play Audio';
+      document.getElementById('sound-btn-label').textContent = 'Play Sound';
     }
 
-    // ==================== FOCUS TIMER & AI ASSISTANT ====================
+    // ==================== FOCUS TIMER & SESSIONS ====================
     function setTimerDuration(mins) {
       timerDuration = mins * 60;
       timerRemaining = mins * 60;
@@ -1704,12 +1714,12 @@
         clearInterval(timerInterval);
         timerRunning = false;
         btnIcon.className = 'ph-bold ph-play';
-        btnLabel.textContent = 'Resume Focus';
+        btnLabel.textContent = 'Resume';
       } else {
         timerRunning = true;
         btnIcon.className = 'ph-bold ph-pause';
-        btnLabel.textContent = 'Pause Focus';
-        timerInterval = setInterval(() => {
+        btnLabel.textContent = 'Pause';
+        timerInterval = setInterval(async () => {
           if (timerRemaining > 0) {
             timerRemaining--;
             updateTimerDisplay();
@@ -1717,9 +1727,10 @@
             clearInterval(timerInterval);
             timerRunning = false;
             btnIcon.className = 'ph-bold ph-play';
-            btnLabel.textContent = 'Start Focus';
-            showToast('Focus session complete! +25 XP', 'success');
+            btnLabel.textContent = 'Start Session';
+            showToast('Focus session complete! (+25 XP)', 'success');
             triggerXPAnimation(25);
+            await recordFocusSession();
           }
         }, 1000);
       }
@@ -1730,7 +1741,7 @@
       timerRunning = false;
       timerRemaining = timerDuration;
       document.getElementById('timer-btn-icon').className = 'ph-bold ph-play';
-      document.getElementById('timer-btn-label').textContent = 'Start Focus';
+      document.getElementById('timer-btn-label').textContent = 'Start Session';
       updateTimerDisplay();
     }
 
@@ -1739,14 +1750,56 @@
       const secs = timerRemaining % 60;
       document.getElementById('timer-display').textContent = `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
       const circle = document.getElementById('timer-progress-circle');
-      const totalOffset = 264;
       const progress = timerRemaining / timerDuration;
-      circle.style.strokeDashoffset = (totalOffset * (1 - progress)).toString();
+      circle.style.strokeDashoffset = (264 * (1 - progress)).toString();
+    }
+
+    async function recordFocusSession() {
+      if (!authToken) return;
+      const taskTitle = document.getElementById('focus-task-input').value.trim() || 'Deep Focus Session';
+      const durationMins = Math.floor(timerDuration / 60);
+      try {
+        await fetch('/api/v1/analytics/focus-session', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${authToken}` },
+          body: JSON.stringify({ task_title: taskTitle, duration_minutes: durationMins, soundscape: soundType })
+        });
+        await loadFocusSessions();
+        await loadGamification();
+      } catch (e) {}
+    }
+
+    async function loadFocusSessions() {
+      if (!authToken) return;
+      try {
+        const res = await fetch('/api/v1/analytics/focus-sessions', {
+          headers: { 'Authorization': `Bearer ${authToken}` }
+        });
+        if (res.ok) {
+          const data = await res.json();
+          document.getElementById('total-focus-mins-label').textContent = `Total: ${data.total_focus_minutes} mins`;
+          const container = document.getElementById('focus-sessions-list');
+          if (data.sessions && data.sessions.length) {
+            container.innerHTML = data.sessions.map(s => `
+              <div class="p-2.5 rounded-lg bg-slate-50 border border-slate-100 flex items-center justify-between text-xs">
+                <span class="font-semibold text-slate-800">${s.task_title}</span>
+                <div class="flex items-center gap-2 text-slate-500 font-mono">
+                  <span>${s.duration_minutes}m</span>
+                  <span>•</span>
+                  <span>${s.soundscape}</span>
+                </div>
+              </div>
+            `).join('');
+          } else {
+            container.innerHTML = '<p class="text-xs text-slate-400 italic">No focus sessions logged yet today.</p>';
+          }
+        }
+      } catch (e) {}
     }
 
     async function generateFocusStrategy() {
       if (!authToken) { openAuthModal('login'); return; }
-      const taskTitle = document.getElementById('focus-task-input').value.trim() || 'Deep Work Session';
+      const taskTitle = document.getElementById('focus-task-input').value.trim() || 'Deep Focus Block';
       const btn = document.getElementById('btn-focus-strategy');
       btn.disabled = true;
       btn.innerHTML = '<i class="ph-bold ph-spinner animate-spin"></i> Strategizing...';
@@ -1757,22 +1810,17 @@
           headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${authToken}` },
           body: JSON.stringify({ task_title: taskTitle, duration_minutes: Math.floor(timerDuration / 60) })
         });
-
-        if (!res.ok) throw new Error('Failed to generate strategy');
+        if (!res.ok) throw new Error('Failed');
         const data = await res.json();
 
-        if (data.priming_steps && data.priming_steps.length) {
+        if (data.priming_steps) {
           document.getElementById('focus-priming-list').innerHTML = data.priming_steps.map(step => `
-            <li class="flex items-start gap-2"><i class="ph-bold ph-check text-emerald-500 mt-1 shrink-0"></i><span>${step}</span></li>
+            <li class="flex items-start gap-1.5"><i class="ph-bold ph-check text-emerald-600 mt-0.5"></i> ${step}</li>
           `).join('');
         }
-        if (data.anti_distraction_tip) {
-          document.getElementById('focus-defense-tip').textContent = data.anti_distraction_tip;
-        }
-        if (data.music_suggestion) {
-          document.getElementById('focus-music-tip').textContent = data.music_suggestion;
-        }
-        showToast('AI focus strategy prepared!', 'success');
+        if (data.anti_distraction_tip) document.getElementById('focus-defense-tip').textContent = data.anti_distraction_tip;
+        if (data.music_suggestion) document.getElementById('focus-music-tip').textContent = data.music_suggestion;
+        showToast('Strategy formulated', 'success');
       } catch (err) { showToast(err.message, 'error'); }
       finally {
         btn.disabled = false;
@@ -1797,20 +1845,20 @@
       if (sender === 'user') {
         msgWrapper.className = 'flex items-start justify-end gap-3';
         msgWrapper.innerHTML = `
-          <div class="p-4 rounded-2xl rounded-tr-sm bg-emerald-600 text-white max-w-xl text-sm">
+          <div class="p-3.5 rounded-2xl rounded-tr-sm bg-slate-900 text-white max-w-xl text-xs sm:text-sm">
             <p>${escapeHtml(text)}</p>
           </div>
-          <div class="w-8 h-8 rounded-xl bg-zinc-200 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 flex items-center justify-center font-bold text-sm shrink-0">
+          <div class="w-7 h-7 rounded-lg bg-slate-100 text-slate-700 flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">
             ${currentUser ? (currentUser.full_name || currentUser.email)[0].toUpperCase() : 'U'}
           </div>
         `;
       } else {
         msgWrapper.className = 'flex items-start gap-3';
         msgWrapper.innerHTML = `
-          <div class="w-8 h-8 rounded-xl bg-emerald-500/20 text-emerald-500 flex items-center justify-center font-bold text-sm shrink-0">
-            <i class="ph-bold ph-sparkle"></i>
+          <div class="w-7 h-7 rounded-lg bg-slate-900 text-white flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">
+            <i class="ph-bold ph-sparkle text-indigo-300"></i>
           </div>
-          <div class="chat-bubble p-4 rounded-2xl rounded-tl-sm bg-zinc-100 dark:bg-zinc-800/80 max-w-xl text-sm text-zinc-800 dark:text-zinc-200">
+          <div class="chat-bubble p-4 rounded-2xl bg-slate-50 border border-slate-200/80 max-w-xl text-xs sm:text-sm text-slate-800">
             <p>${formatMarkdown(text)}</p>
           </div>
         `;
@@ -1833,11 +1881,11 @@
           headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${authToken}` },
           body: JSON.stringify({ message: text })
         });
-        if (!res.ok) throw new Error('Coach reply failed');
+        if (!res.ok) throw new Error('Reply error');
         const data = await res.json();
         appendChatMessage('coach', data.response);
       } catch (err) {
-        appendChatMessage('coach', "I apologize, I'm having trouble formulating a response right now. Please check in a moment!");
+        appendChatMessage('coach', "I apologize, I could not formulate a response at this moment.");
       } finally {
         sendBtn.disabled = false;
         sendBtn.innerHTML = '<i class="ph-bold ph-paper-plane-right"></i> Send';
@@ -1853,9 +1901,7 @@
       sendCoachMessage(text);
     }
 
-    function sendQuickPrompt(promptText) {
-      sendCoachMessage(promptText);
-    }
+    function sendQuickPrompt(promptText) { sendCoachMessage(promptText); }
 
     // ==================== ANALYTICS & REVIEW ====================
     async function loadAnalytics() {
@@ -1871,7 +1917,7 @@
           document.getElementById('stat-completion-rate').textContent = `${data.completion_rate.toFixed(1)}%`;
           document.getElementById('stat-longest-streak').textContent = `${data.longest_streak} days`;
         }
-      } catch (err) { console.error(err); }
+      } catch (err) {}
     }
 
     async function loadMoodTrends() {
@@ -1885,16 +1931,16 @@
           const grid = document.getElementById('mood-category-grid');
           if (data.category_averages && Object.keys(data.category_averages).length) {
             grid.innerHTML = Object.entries(data.category_averages).map(([cat, score]) => `
-              <div class="p-3.5 rounded-xl bg-zinc-50 dark:bg-zinc-800/40 border border-zinc-200/80 dark:border-zinc-700/50 text-center">
-                <span class="text-xs text-zinc-500 dark:text-zinc-400 block">${cat}</span>
-                <span class="text-xl font-bold font-mono text-emerald-500 mt-1 block">${score} / 5.0</span>
+              <div class="p-3 rounded-xl bg-slate-50 border border-slate-200/80 text-center">
+                <span class="text-[11px] text-slate-500 block">${cat}</span>
+                <span class="text-base font-bold font-mono text-slate-900 mt-0.5 block">${score} / 5.0</span>
               </div>
             `).join('');
           } else {
-            grid.innerHTML = '<p class="text-xs text-zinc-400 col-span-full italic">Log habit completions with mood ratings to see your category energy breakdown.</p>';
+            grid.innerHTML = '<p class="text-xs text-slate-400 col-span-full italic">Log habit reflections to view your category energy index.</p>';
           }
         }
-      } catch (e) { console.error(e); }
+      } catch (e) {}
     }
 
     async function generateWeeklyReview() {
@@ -1908,8 +1954,7 @@
           method: 'POST',
           headers: { 'Authorization': `Bearer ${authToken}` }
         });
-
-        if (!res.ok) throw new Error('Failed to generate weekly review');
+        if (!res.ok) throw new Error('Failed');
         const data = await res.json();
 
         document.getElementById('review-sentiment-badge').textContent = `Sentiment: ${data.overall_sentiment || 'Positive'}`;
@@ -1917,19 +1962,19 @@
         document.getElementById('review-coach-note').textContent = `"${data.coach_note}"`;
 
         const winsList = document.getElementById('review-wins-list');
-        winsList.innerHTML = data.wins && data.wins.length ? data.wins.map(w => `<li class="flex items-start gap-2"><i class="ph-bold ph-check text-emerald-500 mt-1 shrink-0"></i><span>${w}</span></li>`).join('') : '<li class="text-zinc-400">Keep logging habits to unlock win highlights!</li>';
+        winsList.innerHTML = data.wins && data.wins.length ? data.wins.map(w => `<li class="flex items-start gap-1.5"><i class="ph-bold ph-check text-emerald-600 mt-0.5 shrink-0"></i> ${w}</li>`).join('') : '<li class="text-slate-400">Keep logging habits to unlock win highlights!</li>';
 
         const impList = document.getElementById('review-improvements-list');
-        impList.innerHTML = data.improvement_areas && data.improvement_areas.length ? data.improvement_areas.map(i => `<li class="flex items-start gap-2"><i class="ph-bold ph-arrow-right text-amber-500 mt-1 shrink-0"></i><span>${i}</span></li>`).join('') : '<li class="text-zinc-400">Great momentum this week!</li>';
+        impList.innerHTML = data.improvement_areas && data.improvement_areas.length ? data.improvement_areas.map(i => `<li class="flex items-start gap-1.5"><i class="ph-bold ph-arrow-right text-amber-600 mt-0.5 shrink-0"></i> ${i}</li>`).join('') : '<li class="text-slate-400">Great momentum this week!</li>';
 
         const goalsList = document.getElementById('review-goals-list');
-        goalsList.innerHTML = data.next_week_smart_goals && data.next_week_smart_goals.length ? data.next_week_smart_goals.map(g => `<li class="flex items-start gap-2"><i class="ph-bold ph-target text-blue-500 mt-1 shrink-0"></i><span>${g}</span></li>`).join('') : '<li class="text-zinc-400">Focus on daily consistency.</li>';
+        goalsList.innerHTML = data.next_week_smart_goals && data.next_week_smart_goals.length ? data.next_week_smart_goals.map(g => `<li class="flex items-start gap-1.5"><i class="ph-bold ph-target text-indigo-600 mt-0.5 shrink-0"></i> ${g}</li>`).join('') : '<li class="text-slate-400">Focus on daily consistency.</li>';
 
-        showToast('Weekly review synthesized!', 'success');
+        showToast('Weekly review synthesized', 'success');
       } catch (err) { showToast(err.message, 'error'); }
       finally {
         btn.disabled = false;
-        btn.innerHTML = '<i class="ph-bold ph-sparkle"></i> Generate Weekly Review';
+        btn.innerHTML = '<i class="ph-bold ph-sparkle text-indigo-300"></i> Generate AI Weekly Review';
       }
     }
 
@@ -1944,7 +1989,7 @@
           const data = await res.json();
           document.getElementById('user-badge').textContent = `Lvl ${data.level} • ${data.total_xp} XP`;
         }
-      } catch (err) { console.error(err); }
+      } catch (err) {}
     }
 
     async function loadGamification() {
@@ -1965,29 +2010,28 @@
           document.getElementById('game-xp-ratio').textContent = `${xpInLevel} / 250 XP`;
           document.getElementById('game-xp-bar').style.width = `${xpPercent}%`;
 
-          // Badges Grid
           const badgesGrid = document.getElementById('badges-grid');
           if (data.badges && data.badges.length) {
             badgesGrid.innerHTML = data.badges.map(b => {
               const isUnlocked = b.unlocked;
               return `
-                <div class="p-4 rounded-xl border ${isUnlocked ? 'bg-white dark:bg-zinc-900 border-emerald-500/40 shadow-sm shadow-emerald-500/5' : 'bg-zinc-50/50 dark:bg-zinc-900/30 border-zinc-200 dark:border-zinc-800/80 opacity-60'} flex items-center gap-3.5">
-                  <div class="w-12 h-12 rounded-xl flex items-center justify-center text-2xl ${isUnlocked ? 'bg-emerald-500/10 text-emerald-500' : 'bg-zinc-200 dark:bg-zinc-800 text-zinc-400'}">
+                <div class="p-3 rounded-xl border ${isUnlocked ? 'bg-white border-slate-300 shadow-sm' : 'bg-slate-50/50 border-slate-200/60 opacity-60'} flex items-center gap-3">
+                  <div class="w-10 h-10 rounded-lg flex items-center justify-center text-xl ${isUnlocked ? 'bg-slate-100 text-slate-900' : 'bg-slate-100 text-slate-400'}">
                     <span>${b.icon || '🏅'}</span>
                   </div>
                   <div>
-                    <h4 class="font-bold text-sm text-zinc-900 dark:text-white flex items-center gap-1.5">
+                    <h4 class="font-bold text-xs text-slate-900 flex items-center gap-1">
                       ${b.name}
-                      ${isUnlocked ? '<i class="ph-fill ph-check-circle text-emerald-500 text-xs"></i>' : '<i class="ph ph-lock text-zinc-400 text-xs"></i>'}
+                      ${isUnlocked ? '<i class="ph-fill ph-check-circle text-emerald-600 text-[10px]"></i>' : '<i class="ph ph-lock text-slate-400 text-[10px]"></i>'}
                     </h4>
-                    <p class="text-xs text-zinc-500 dark:text-zinc-400 mt-0.5">${b.description}</p>
+                    <p class="text-[10px] text-slate-500 mt-0.5">${b.description}</p>
                   </div>
                 </div>
               `;
             }).join('');
           }
         }
-      } catch (err) { console.error(err); }
+      } catch (err) {}
     }
 
     async function loadQuests() {
@@ -2000,23 +2044,23 @@
           const quests = await res.json();
           const container = document.getElementById('quests-container');
           container.innerHTML = quests.map(q => `
-            <div class="p-4 rounded-2xl bg-white dark:bg-zinc-900/90 border border-zinc-200 dark:border-zinc-800 flex items-center justify-between gap-4">
+            <div class="p-3.5 rounded-xl bg-white border border-slate-200 flex items-center justify-between gap-4">
               <div class="flex items-center gap-3">
-                <div class="w-9 h-9 rounded-xl ${q.is_completed ? 'bg-emerald-500/20 text-emerald-500' : 'bg-zinc-100 dark:bg-zinc-800 text-zinc-400'} flex items-center justify-center font-bold">
+                <div class="w-8 h-8 rounded-lg ${q.is_completed ? 'bg-emerald-50 text-emerald-700' : 'bg-slate-100 text-slate-400'} flex items-center justify-center font-bold">
                   <i class="ph-bold ${q.is_completed ? 'ph-check' : 'ph-clock'}"></i>
                 </div>
                 <div>
-                  <h4 class="font-bold text-sm text-zinc-900 dark:text-white">${q.title}</h4>
-                  <span class="text-xs text-emerald-600 dark:text-emerald-400 font-mono font-semibold">+${q.xp_reward} XP Reward</span>
+                  <h4 class="font-bold text-xs text-slate-900">${q.title}</h4>
+                  <span class="text-[10px] text-indigo-600 font-mono font-semibold">+${q.xp_reward} XP Reward</span>
                 </div>
               </div>
               <div>
                 ${q.is_completed ? `
-                  <button onclick="claimQuest('${q.id}', ${q.xp_reward})" class="px-3.5 py-1.5 text-xs font-bold bg-emerald-600 hover:bg-emerald-500 text-white rounded-xl shadow-sm transition-all flex items-center gap-1">
-                    <i class="ph-bold ph-gift"></i> Claim XP
+                  <button onclick="claimQuest('${q.id}', ${q.xp_reward})" class="px-3 py-1 text-xs font-bold bg-slate-900 hover:bg-slate-800 text-white rounded-lg shadow-sm transition-all flex items-center gap-1">
+                    <i class="ph-bold ph-gift"></i> Claim
                   </button>
                 ` : `
-                  <span class="text-xs font-semibold px-3 py-1.5 rounded-xl bg-zinc-100 dark:bg-zinc-800 text-zinc-400">
+                  <span class="text-[10px] font-semibold px-2.5 py-1 rounded-lg bg-slate-100 text-slate-400">
                     In Progress
                   </span>
                 `}
@@ -2024,7 +2068,7 @@
             </div>
           `).join('');
         }
-      } catch (err) { console.error(err); }
+      } catch (err) {}
     }
 
     async function claimQuest(questId, xp) {
