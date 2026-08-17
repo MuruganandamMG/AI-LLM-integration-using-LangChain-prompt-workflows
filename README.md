@@ -1,40 +1,39 @@
-# Aura AI — Intelligent Self-Improvement & Habit Coaching Platform
+# Aura AI — Intentional Habit Architecture & Focus Suite
 
-An intelligent self-improvement platform and productivity suite built with **FastAPI**, **LangChain**, and **Async SQLAlchemy 2.0**, featuring dual LLM orchestration (**Google Gemini** & **OpenAI**). 
+A high-performance personal growth operating system and productivity suite built with **FastAPI**, **LangChain**, and **Async SQLAlchemy 2.0**, featuring dual LLM orchestration (**Google Gemini** & **OpenAI**).
 
-The platform combines a **modern interactive Web UI**, habit tracking, deep-work Pomodoro timers, 30-day consistency heatmaps, calendar exports, gamification milestones, and automated AI weekly coaching debriefs.
+Designed with a **clean, agency-tier white theme**, time-block habit architecture, deep-work Pomodoro studio with synthesized binaural audio, 30-day activity heatmaps, live AI conversational mentoring, and automated weekly debriefs.
 
 ---
 
 ## ✨ Key Features
 
-### 🖥️ Interactive Web UI Dashboard
-- **Single Page Application (SPA)**: Served directly from `/` with light/dark theme toggle, smooth micro-interactions, and instant **1-Click Demo Login**.
-- **Daily AI Motivational Quote**: Dynamically generated coaching reflections and prompts tailored to user goals and streaks.
-- **30-Day Activity Heatmap**: GitHub-style consistency grid visualizing daily check-in intensity and streaks.
+### 🖥️ High-End White Theme Web UI
+- **Light/White Aesthetic**: Crisp white canvas, double-bezel card structure, subtle slate typography, and zero generic AI bloat.
+- **Time-Block Routine Architecture**: Group habits into **Morning Rituals**, **Afternoon Deep Work**, and **Evening Wind-Down** with estimated durations and priority levels.
+- **One-Click Rapid Completion**: Subtle synthesized audio chimes and instant check-ins.
+- **30-Day Activity Heatmap**: Visual consistency grid mapping daily check-in intensity and streaks.
 
-### ⏱️ AI Focus Mode & Pomodoro Timer
+### ⏱️ Focus Studio & Audio Synthesizer
 - **Interactive Timer**: 25m Focus, 50m Deep Work, and 5m Break presets with dynamic countdown animation.
-- **AI Focus Strategy Assistant**: Generates customized priming sequences, anti-distraction psychological defense tips, and acoustic soundscape recommendations for any given task.
+- **Synthesized Ambient Soundscapes**: Pure Web Audio API generators for **40Hz Binaural Beats**, **Deep Brown Noise**, and **Gentle Rain Drone** with volume controls.
+- **Session Logging & History**: Records actual focus minutes to the backend (`POST /api/v1/analytics/focus-session`).
+- **AI Focus Strategy**: Customized priming sequences, anti-distraction psychological defense tips, and acoustic recommendations.
+
+### 💬 AI Growth Mentor (Live Chat)
+- **Real-Time Conversational Coaching (`/api/v1/coach/chat`)**: Context-aware AI mentor with access to your active routines, streaks, and focus metrics.
+- **Quick-Prompt Shortcuts**: Unblock procrastination, optimize morning routines, and audit current habits.
 
 ### 📋 Habit Management & Calendar Sync
-- **Full Habit CRUD**: Create, view, edit, and delete habits across categories (*Productivity, Health, Mindfulness, Fitness, Learning*).
-- **Daily Reflection & Mood Logging**: Record completions with 1–5 mood score and notes.
+- **Full Habit Lifecycle**: Create, edit, and delete habits across categories (*Productivity, Health, Mindfulness, Fitness, Learning*).
 - **Calendar & Spreadsheet Export**:
   - **iCalendar (`.ics`)**: One-click sync to Google Calendar, Apple Calendar, and Outlook.
   - **CSV Export**: Download complete habit logs as spreadsheets.
 
-### 🤖 LangChain AI Workflows & Dual LLM Orchestration
-- **Growth Recommendations (`growth_chain.py`)**: Analyzes habits and generates structured action protocols and scientific reasoning.
-- **Productivity Analytics (`analytics_chain.py`)**: Synthesizes 30-day metrics, detects consistency bottlenecks, and flags burnout risks.
-- **Weekly Coaching Reviews (`weekly_review_chain.py`)**: AI debrief generating overall sentiment, key wins, focus areas, and next week's SMART goals.
-- **Motivational Reflections (`quote_chain.py`)**: Context-aware daily inspiration.
-- **Dual LLM Provider with Auto-Fallback**: Seamlessly toggles between Google Gemini (`gemini-1.5-flash`) and OpenAI (`gpt-4o-mini`).
-
-### 🎮 Gamification & XP System
-- **Leveling Engine**: Earn +10 XP per habit completion and +25 XP per focus session.
-- **Tiers**: Progress from *Bronze Explorer* to *Silver*, *Gold*, and *Diamond*.
-- **Achievement Badges**: Unlock consistency milestones (e.g. *Streak Starter*, *Mindful Master*, *Centurion*).
+### 🎮 Gamification & Daily Quests
+- **Leveling Engine**: Earn XP per habit check-in, focus session, and quest completion.
+- **Dynamic Daily Quests (`/api/v1/gamification/quests`)**: Real-time quest tracking with claimable XP rewards.
+- **Achievement Badges**: Milestone unlock system (*First Step*, *Consistency Champion*, *Habit Architect*, *Centurion*).
 
 ---
 
@@ -43,12 +42,12 @@ The platform combines a **modern interactive Web UI**, habit tracking, deep-work
 | Layer | Technology |
 |---|---|
 | **Backend Framework** | **FastAPI** (Python 3.10–3.13) with Async Routes & Correlation IDs |
-| **AI Orchestration** | **LangChain**, Prompt Templates, JSON Output Parsers |
+| **AI Orchestration** | **LangChain**, Prompt Templates, Output Parsers |
 | **LLM Providers** | **Google Gemini** (`gemini-1.5-flash`) & **OpenAI** (`gpt-4o-mini`) |
 | **Database & ORM** | **SQLite + Async SQLAlchemy 2.0** (`aiosqlite`) |
 | **Authentication** | OAuth2 Bearer Tokens, **JWT**, Bcrypt Hashing |
-| **Frontend UI** | **Tailwind CSS**, Phosphor Icons, Vanilla ES6+ SPA |
-| **Testing & CI/CD** | **Pytest** (32 automated tests), GitHub Actions matrix (3.10, 3.11, 3.12) |
+| **Frontend UI** | **Tailwind CSS**, Phosphor Icons, Web Audio API, Vanilla ES6+ SPA |
+| **Testing & CI/CD** | **Pytest** (36 automated tests), GitHub Actions matrix (3.10, 3.11, 3.12) |
 
 ---
 
@@ -87,7 +86,7 @@ uvicorn app.main:app --host 127.0.0.1 --port 8000 --reload
 ### 🔐 Authentication (`/api/v1/auth`)
 | Method | Endpoint | Description |
 |---|---|---|
-| `POST` | `/api/v1/auth/register` | Register a new user |
+| `POST` | `/api/v1/auth/register` | Register a new user account |
 | `POST` | `/api/v1/auth/login` | Authenticate and obtain JWT access token |
 | `GET` | `/api/v1/auth/me` | Retrieve profile of authenticated user |
 
@@ -95,7 +94,7 @@ uvicorn app.main:app --host 127.0.0.1 --port 8000 --reload
 | Method | Endpoint | Description |
 |---|---|---|
 | `GET` | `/api/v1/habits/` | List all habits for current user |
-| `POST` | `/api/v1/habits/` | Create a new habit |
+| `POST` | `/api/v1/habits/` | Create a new habit with time_of_day and duration |
 | `GET` | `/api/v1/habits/{id}` | Get habit details and completion history |
 | `PUT` | `/api/v1/habits/{id}` | Update habit title, category, or schedule |
 | `DELETE` | `/api/v1/habits/{id}` | Delete a habit |
@@ -103,19 +102,27 @@ uvicorn app.main:app --host 127.0.0.1 --port 8000 --reload
 | `GET` | `/api/v1/habits/export/ics` | Export habits as iCalendar (`.ics`) file |
 | `GET` | `/api/v1/habits/export/csv` | Export habits as CSV spreadsheet |
 
-### 🧠 AI Growth Coach (`/api/v1/recommendations`)
+### 💬 AI Conversational Mentor (`/api/v1/coach`)
+| Method | Endpoint | Description |
+|---|---|---|
+| `POST` | `/api/v1/coach/chat` | Context-aware conversational AI coach chat |
+
+### 🧠 AI Growth Recommendations (`/api/v1/recommendations`)
 | Method | Endpoint | Description |
 |---|---|---|
 | `POST` | `/api/v1/recommendations/generate` | Generate AI growth recommendation via LangChain |
 | `GET` | `/api/v1/recommendations/` | List previous recommendations |
 
-### 📊 Analytics & Focus Mode (`/api/v1/analytics`)
+### 📊 Analytics & Focus Sessions (`/api/v1/analytics`)
 | Method | Endpoint | Description |
 |---|---|---|
 | `GET` | `/api/v1/analytics/summary` | Get completion rates, total logs, and longest streak |
+| `GET` | `/api/v1/analytics/mood-trends` | Category-by-category mood & energy impact metrics |
+| `POST` | `/api/v1/analytics/focus-session` | Log completed focus timer session |
+| `GET` | `/api/v1/analytics/focus-sessions` | Get user focus session logs and total focus minutes |
+| `POST` | `/api/v1/analytics/focus-strategy` | Generate AI priming steps and distraction defense |
 | `POST` | `/api/v1/analytics/generate-report` | Generate comprehensive AI productivity report |
 | `GET` | `/api/v1/analytics/reports` | List past productivity reports |
-| `POST` | `/api/v1/analytics/focus-strategy` | Generate AI priming steps and distraction defense |
 
 ### 🎯 AI Reviews & Motivation (`/api/v1/reviews`)
 | Method | Endpoint | Description |
@@ -123,10 +130,12 @@ uvicorn app.main:app --host 127.0.0.1 --port 8000 --reload
 | `POST` | `/api/v1/reviews/weekly` | Synthesize weekly progress into wins and SMART goals |
 | `GET` | `/api/v1/reviews/quote` | Generate dynamic motivational reflection quote |
 
-### 🏆 Gamification (`/api/v1/gamification`)
+### 🏆 Gamification & Quests (`/api/v1/gamification`)
 | Method | Endpoint | Description |
 |---|---|---|
 | `GET` | `/api/v1/gamification/profile` | Get XP score, rank tier, level, and badge showcase |
+| `GET` | `/api/v1/gamification/quests` | List active daily quests and completion status |
+| `POST` | `/api/v1/gamification/quests/{id}/claim` | Claim quest reward and earn XP |
 
 ---
 
