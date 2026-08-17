@@ -29,12 +29,6 @@
               500: '#10b981',
               600: '#059669',
               700: '#047857',
-            },
-            dark: {
-              bg: '#09090b',
-              surface: '#121216',
-              elevated: '#18181f',
-              border: '#27272a',
             }
           }
         }
@@ -46,11 +40,7 @@
   <script src="https://unpkg.com/@phosphor-icons/web"></script>
 
   <style>
-    body {
-      font-family: 'Plus Jakarta Sans', sans-serif;
-    }
-    
-    /* Custom Scrollbar */
+    body { font-family: 'Plus Jakarta Sans', sans-serif; }
     ::-webkit-scrollbar { width: 6px; height: 6px; }
     ::-webkit-scrollbar-track { background: rgba(0,0,0,0.02); }
     .dark ::-webkit-scrollbar-track { background: #09090b; }
@@ -58,27 +48,26 @@
     .dark ::-webkit-scrollbar-thumb { background: #27272a; }
     ::-webkit-scrollbar-thumb:hover { background: rgba(160,160,160,0.5); }
 
-    /* Float / XP Popup animation */
     @keyframes float-up {
       0% { opacity: 0; transform: translateY(10px) scale(0.9); }
       20% { opacity: 1; transform: translateY(0) scale(1.05); }
       80% { opacity: 1; transform: translateY(-12px) scale(1); }
       100% { opacity: 0; transform: translateY(-24px) scale(0.95); }
     }
-    .animate-float-up {
-      animation: float-up 1.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-    }
+    .animate-float-up { animation: float-up 1.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
 
-    /* Heatmap cell */
-    .heatmap-cell {
-      width: 13px;
-      height: 13px;
-      border-radius: 3px;
-      transition: transform 0.15s ease;
-    }
-    .heatmap-cell:hover {
-      transform: scale(1.3);
-    }
+    .heatmap-cell { width: 13px; height: 13px; border-radius: 3px; transition: transform 0.15s ease; }
+    .heatmap-cell:hover { transform: scale(1.3); }
+
+    /* Chat bubble markdown styling */
+    .chat-bubble p { margin-bottom: 0.5rem; }
+    .chat-bubble p:last-child { margin-bottom: 0; }
+    .chat-bubble ul, .chat-bubble ol { margin-left: 1.25rem; margin-bottom: 0.5rem; }
+    .chat-bubble ul { list-style-type: disc; }
+    .chat-bubble ol { list-style-type: decimal; }
+    .chat-bubble li { margin-bottom: 0.25rem; }
+    .chat-bubble strong { font-weight: 700; }
+    .chat-bubble em { font-style: italic; }
   </style>
 </head>
 <body class="bg-zinc-50 dark:bg-[#09090b] text-zinc-900 dark:text-zinc-100 min-h-screen transition-colors duration-200 flex flex-col antialiased">
@@ -114,11 +103,11 @@
         <button onclick="switchTab('focus')" class="tab-btn px-3.5 py-1.5 rounded-lg text-sm font-medium text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-all" data-tab="focus">
           <i class="ph ph-timer mr-1.5"></i> Focus & Timer
         </button>
-        <button onclick="switchTab('analytics')" class="tab-btn px-3.5 py-1.5 rounded-lg text-sm font-medium text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-all" data-tab="analytics">
-          <i class="ph ph-chart-line-up mr-1.5"></i> Analytics & Review
+        <button onclick="switchTab('coach-chat')" class="tab-btn px-3.5 py-1.5 rounded-lg text-sm font-medium text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-all" data-tab="coach-chat">
+          <i class="ph ph-chat-circle-dots mr-1.5"></i> AI Live Coach
         </button>
-        <button onclick="switchTab('coach')" class="tab-btn px-3.5 py-1.5 rounded-lg text-sm font-medium text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-all" data-tab="coach">
-          <i class="ph ph-brain mr-1.5"></i> AI Coach
+        <button onclick="switchTab('analytics')" class="tab-btn px-3.5 py-1.5 rounded-lg text-sm font-medium text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-all" data-tab="analytics">
+          <i class="ph ph-chart-line-up mr-1.5"></i> Analytics
         </button>
         <button onclick="switchTab('gamification')" class="tab-btn px-3.5 py-1.5 rounded-lg text-sm font-medium text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-all" data-tab="gamification">
           <i class="ph ph-trophy mr-1.5"></i> Quests & XP
@@ -127,7 +116,6 @@
 
       <!-- Right Controls: Theme Toggle & User Auth -->
       <div class="flex items-center gap-2.5">
-        <!-- Theme Toggle -->
         <button onclick="toggleDarkMode()" title="Toggle Theme" class="p-2 rounded-xl text-zinc-600 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors">
           <i id="theme-icon" class="ph ph-sun text-lg"></i>
         </button>
@@ -162,23 +150,23 @@
 
     <!-- Mobile Nav Bar -->
     <div class="md:hidden flex items-center justify-around border-t border-zinc-200 dark:border-zinc-800/80 py-1.5 px-2 bg-zinc-100/60 dark:bg-zinc-900/60">
-      <button onclick="switchTab('habits')" class="tab-btn active flex flex-col items-center gap-0.5 text-[11px] font-medium py-1 px-2.5 rounded-lg" data-tab="habits">
+      <button onclick="switchTab('habits')" class="tab-btn active flex flex-col items-center gap-0.5 text-[11px] font-medium py-1 px-2 rounded-lg" data-tab="habits">
         <i class="ph ph-check-circle text-lg"></i>
         <span>Habits</span>
       </button>
-      <button onclick="switchTab('focus')" class="tab-btn flex flex-col items-center gap-0.5 text-[11px] font-medium text-zinc-500 dark:text-zinc-400 py-1 px-2.5 rounded-lg" data-tab="focus">
+      <button onclick="switchTab('focus')" class="tab-btn flex flex-col items-center gap-0.5 text-[11px] font-medium text-zinc-500 dark:text-zinc-400 py-1 px-2 rounded-lg" data-tab="focus">
         <i class="ph ph-timer text-lg"></i>
         <span>Focus</span>
       </button>
-      <button onclick="switchTab('analytics')" class="tab-btn flex flex-col items-center gap-0.5 text-[11px] font-medium text-zinc-500 dark:text-zinc-400 py-1 px-2.5 rounded-lg" data-tab="analytics">
+      <button onclick="switchTab('coach-chat')" class="tab-btn flex flex-col items-center gap-0.5 text-[11px] font-medium text-zinc-500 dark:text-zinc-400 py-1 px-2 rounded-lg" data-tab="coach-chat">
+        <i class="ph ph-chat-circle-dots text-lg"></i>
+        <span>AI Coach</span>
+      </button>
+      <button onclick="switchTab('analytics')" class="tab-btn flex flex-col items-center gap-0.5 text-[11px] font-medium text-zinc-500 dark:text-zinc-400 py-1 px-2 rounded-lg" data-tab="analytics">
         <i class="ph ph-chart-line-up text-lg"></i>
-        <span>Review</span>
+        <span>Analytics</span>
       </button>
-      <button onclick="switchTab('coach')" class="tab-btn flex flex-col items-center gap-0.5 text-[11px] font-medium text-zinc-500 dark:text-zinc-400 py-1 px-2.5 rounded-lg" data-tab="coach">
-        <i class="ph ph-brain text-lg"></i>
-        <span>Coach</span>
-      </button>
-      <button onclick="switchTab('gamification')" class="tab-btn flex flex-col items-center gap-0.5 text-[11px] font-medium text-zinc-500 dark:text-zinc-400 py-1 px-2.5 rounded-lg" data-tab="gamification">
+      <button onclick="switchTab('gamification')" class="tab-btn flex flex-col items-center gap-0.5 text-[11px] font-medium text-zinc-500 dark:text-zinc-400 py-1 px-2 rounded-lg" data-tab="gamification">
         <i class="ph ph-trophy text-lg"></i>
         <span>Quests</span>
       </button>
@@ -195,7 +183,7 @@
           <i class="ph-bold ph-lightning text-emerald-500"></i> Welcome to Aura AI Platform
         </h2>
         <p class="text-sm text-zinc-600 dark:text-zinc-400 mt-1 max-w-2xl">
-          Powered by LangChain & dual LLMs (Gemini & OpenAI). Build consistency, run focus sessions, and receive automated AI weekly reviews and growth plans.
+          Powered by LangChain & dual LLMs (Gemini & OpenAI). Build consistency, chat with your AI coach, run audio-enhanced focus sessions, and level up your productivity rank.
         </p>
       </div>
       <div class="flex items-center gap-2 flex-wrap">
@@ -215,7 +203,7 @@
           <blockquote id="quote-text" class="text-sm sm:text-base font-semibold text-zinc-900 dark:text-zinc-100 italic">
             "We are what we repeatedly do. Excellence, then, is not an act, but a habit."
           </blockquote>
-          <div class="flex items-center gap-2 mt-1 text-xs text-zinc-500 dark:text-zinc-400">
+          <div class="flex items-center gap-2 mt-1 text-xs text-zinc-500 dark:text-zinc-400 flex-wrap">
             <span id="quote-author" class="font-medium">— Will Durant</span>
             <span>•</span>
             <span id="quote-reflection" class="italic text-emerald-600 dark:text-emerald-400">What small step can you take today?</span>
@@ -237,24 +225,27 @@
           <p class="text-sm text-zinc-500 dark:text-zinc-400">Track daily consistency, log reflections, and sync to your calendar.</p>
         </div>
         
-        <div class="flex items-center gap-2.5 flex-wrap">
-          <!-- Search input -->
-          <div class="relative">
-            <i class="ph ph-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-zinc-400"></i>
-            <input 
-              type="text" 
-              id="habit-search" 
-              placeholder="Search habits..." 
-              oninput="filterHabits()"
-              class="pl-9 pr-3 py-2 text-sm rounded-xl bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 focus:outline-none focus:ring-2 focus:ring-emerald-500/50 w-36 sm:w-48 transition-all"
-            >
+        <div class="flex items-center gap-2 flex-wrap">
+          <!-- View Toggle (Grid vs Checklist) -->
+          <div class="flex items-center bg-zinc-100 dark:bg-zinc-900 p-1 rounded-xl border border-zinc-200 dark:border-zinc-800">
+            <button id="view-mode-grid" onclick="setViewMode('grid')" title="Card Grid View" class="px-2.5 py-1 text-xs font-semibold rounded-lg bg-white dark:bg-zinc-800 text-zinc-900 dark:text-white shadow-sm transition-all">
+              <i class="ph-bold ph-squares-four"></i> Grid
+            </button>
+            <button id="view-mode-checklist" onclick="setViewMode('checklist')" title="Today's Fast Checklist View" class="px-2.5 py-1 text-xs font-semibold rounded-lg text-zinc-500 hover:text-zinc-900 dark:hover:text-white transition-all">
+              <i class="ph-bold ph-list-checks"></i> Checklist
+            </button>
           </div>
+
+          <!-- Quick Templates Button -->
+          <button onclick="openPresetsModal()" class="px-3 py-2 text-xs font-semibold rounded-xl bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 text-zinc-700 dark:text-zinc-300 hover:text-emerald-500 transition-colors flex items-center gap-1">
+            <i class="ph-bold ph-sparkle text-amber-500"></i> Templates
+          </button>
 
           <!-- Category filter -->
           <select 
             id="habit-category-filter" 
             onchange="filterHabits()"
-            class="px-3 py-2 text-sm rounded-xl bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 focus:outline-none focus:ring-2 focus:ring-emerald-500/50 transition-all"
+            class="px-3 py-2 text-xs rounded-xl bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 focus:outline-none focus:ring-2 focus:ring-emerald-500/50 transition-all"
           >
             <option value="">All Categories</option>
             <option value="Productivity">Productivity</option>
@@ -267,16 +258,16 @@
 
           <!-- Export Dropdown -->
           <div class="flex items-center gap-1 bg-zinc-100 dark:bg-zinc-900 p-1 rounded-xl border border-zinc-200 dark:border-zinc-800">
-            <button onclick="exportHabitsICS()" title="Export to Apple/Google/Outlook Calendar (.ics)" class="px-2.5 py-1 text-xs font-semibold text-zinc-600 dark:text-zinc-300 hover:text-emerald-500 flex items-center gap-1 transition-colors">
+            <button onclick="exportHabitsICS()" title="Export to Apple/Google/Outlook Calendar (.ics)" class="px-2 py-1 text-xs font-semibold text-zinc-600 dark:text-zinc-300 hover:text-emerald-500 flex items-center gap-1 transition-colors">
               <i class="ph-bold ph-calendar-plus text-sm"></i> .ICS
             </button>
-            <button onclick="exportHabitsCSV()" title="Export to CSV Spreadsheet" class="px-2.5 py-1 text-xs font-semibold text-zinc-600 dark:text-zinc-300 hover:text-emerald-500 flex items-center gap-1 transition-colors">
+            <button onclick="exportHabitsCSV()" title="Export to CSV Spreadsheet" class="px-2 py-1 text-xs font-semibold text-zinc-600 dark:text-zinc-300 hover:text-emerald-500 flex items-center gap-1 transition-colors">
               <i class="ph-bold ph-file-csv text-sm"></i> .CSV
             </button>
           </div>
 
           <!-- New Habit Button -->
-          <button onclick="openCreateHabitModal()" class="px-4 py-2 text-sm font-semibold bg-emerald-600 hover:bg-emerald-500 text-white rounded-xl shadow-sm shadow-emerald-600/20 transition-all flex items-center gap-1.5 whitespace-nowrap">
+          <button onclick="openCreateHabitModal()" class="px-3.5 py-2 text-xs font-semibold bg-emerald-600 hover:bg-emerald-500 text-white rounded-xl shadow-sm shadow-emerald-600/20 transition-all flex items-center gap-1 whitespace-nowrap">
             <i class="ph-bold ph-plus"></i> New Habit
           </button>
         </div>
@@ -291,15 +282,14 @@
           </div>
           <span class="text-xs font-mono text-zinc-400" id="heatmap-streak-label">Active Streak: 0 days</span>
         </div>
-        <div id="activity-heatmap" class="flex flex-wrap gap-1.5 items-center">
-          <!-- Populated dynamically via JS -->
-        </div>
+        <div id="activity-heatmap" class="flex flex-wrap gap-1.5 items-center"></div>
       </div>
 
-      <!-- Habits Grid -->
-      <div id="habits-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-        <!-- Habit cards dynamically rendered here -->
-      </div>
+      <!-- Habits Grid View -->
+      <div id="habits-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5"></div>
+
+      <!-- Habits Fast Checklist View (Hidden by default) -->
+      <div id="habits-checklist" class="hidden space-y-3"></div>
 
       <!-- Empty State -->
       <div id="habits-empty" class="hidden py-16 text-center rounded-2xl border border-dashed border-zinc-300 dark:border-zinc-800 bg-white/40 dark:bg-zinc-900/40">
@@ -307,9 +297,9 @@
           <i class="ph ph-target text-2xl"></i>
         </div>
         <h3 class="text-base font-semibold">No habits found</h3>
-        <p class="text-sm text-zinc-500 dark:text-zinc-400 mt-1 mb-4">Start your journey by creating your first daily or weekly habit.</p>
-        <button onclick="openCreateHabitModal()" class="px-4 py-2 text-sm font-semibold bg-emerald-600 hover:bg-emerald-500 text-white rounded-xl shadow-sm transition-all">
-          Create Habit
+        <p class="text-sm text-zinc-500 dark:text-zinc-400 mt-1 mb-4">Start your journey by choosing a template or creating a new habit.</p>
+        <button onclick="openPresetsModal()" class="px-4 py-2 text-sm font-semibold bg-emerald-600 hover:bg-emerald-500 text-white rounded-xl shadow-sm transition-all">
+          Browse Templates
         </button>
       </div>
     </section>
@@ -318,16 +308,15 @@
     <section id="tab-focus" class="tab-content hidden space-y-6">
       <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 class="text-2xl font-bold tracking-tight">AI Deep Work & Focus Timer</h1>
-          <p class="text-sm text-zinc-500 dark:text-zinc-400">Pomodoro flow state paired with AI distraction defense strategies.</p>
+          <h1 class="text-2xl font-bold tracking-tight">AI Deep Work & Focus Studio</h1>
+          <p class="text-sm text-zinc-500 dark:text-zinc-400">Pomodoro flow state paired with synthesized ambient soundscapes & AI strategy.</p>
         </div>
       </div>
 
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
         <!-- Timer Card (5 Cols) -->
         <div class="lg:col-span-5 p-6 sm:p-8 rounded-2xl bg-white dark:bg-zinc-900/90 border border-zinc-200 dark:border-zinc-800 shadow-sm flex flex-col items-center justify-center text-center">
-          <div class="relative w-56 h-56 flex items-center justify-center my-4">
-            <!-- Progress circle -->
+          <div class="relative w-56 h-56 flex items-center justify-center my-2">
             <svg class="w-full h-full transform -rotate-90" viewBox="0 0 100 100">
               <circle cx="50" cy="50" r="42" stroke="currentColor" stroke-width="6" class="text-zinc-100 dark:text-zinc-800" fill="transparent"></circle>
               <circle id="timer-progress-circle" cx="50" cy="50" r="42" stroke="currentColor" stroke-width="6" stroke-dasharray="264" stroke-dashoffset="0" stroke-linecap="round" class="text-emerald-500 transition-all duration-1000" fill="transparent"></circle>
@@ -339,7 +328,7 @@
           </div>
 
           <!-- Controls -->
-          <div class="flex items-center gap-3 mt-4">
+          <div class="flex items-center gap-3 mt-3">
             <button id="btn-timer-toggle" onclick="toggleFocusTimer()" class="px-6 py-2.5 rounded-xl font-bold text-sm bg-emerald-600 hover:bg-emerald-500 text-white shadow-md shadow-emerald-600/20 transition-all flex items-center gap-1.5">
               <i class="ph-bold ph-play" id="timer-btn-icon"></i> <span id="timer-btn-label">Start Focus</span>
             </button>
@@ -348,10 +337,34 @@
             </button>
           </div>
 
-          <div class="flex items-center gap-2 mt-6">
+          <div class="flex items-center gap-2 mt-4">
             <button onclick="setTimerDuration(25)" class="px-3 py-1 text-xs rounded-lg bg-zinc-100 dark:bg-zinc-800 font-mono font-medium hover:text-emerald-500">25m</button>
             <button onclick="setTimerDuration(50)" class="px-3 py-1 text-xs rounded-lg bg-zinc-100 dark:bg-zinc-800 font-mono font-medium hover:text-emerald-500">50m</button>
             <button onclick="setTimerDuration(5)" class="px-3 py-1 text-xs rounded-lg bg-zinc-100 dark:bg-zinc-800 font-mono font-medium hover:text-emerald-500">5m break</button>
+          </div>
+
+          <!-- Ambient Soundscapes Synthesizer -->
+          <div class="w-full mt-6 pt-5 border-t border-zinc-200 dark:border-zinc-800 text-left">
+            <div class="flex items-center justify-between mb-3">
+              <span class="text-xs font-bold uppercase tracking-wider text-zinc-500 dark:text-zinc-400 flex items-center gap-1.5">
+                <i class="ph-bold ph-headphones text-purple-500"></i> Ambient Soundscape
+              </span>
+              <button id="btn-sound-toggle" onclick="toggleSoundscape()" class="px-2.5 py-1 text-xs font-semibold rounded-lg bg-purple-500/10 text-purple-600 dark:text-purple-400 border border-purple-500/20 hover:bg-purple-500/20 transition-all flex items-center gap-1">
+                <i class="ph-bold ph-play" id="sound-btn-icon"></i> <span id="sound-btn-label">Play Audio</span>
+              </button>
+            </div>
+            
+            <div class="grid grid-cols-3 gap-2 mb-3">
+              <button onclick="setSoundType('binaural')" id="sound-btn-binaural" class="sound-type-btn active px-2 py-1.5 rounded-lg text-xs font-medium bg-zinc-100 dark:bg-zinc-800 text-emerald-500 text-center transition-all">40Hz Binaural</button>
+              <button onclick="setSoundType('brown')" id="sound-btn-brown" class="sound-type-btn px-2 py-1.5 rounded-lg text-xs font-medium text-zinc-500 hover:text-zinc-900 dark:hover:text-white text-center transition-all">Brown Noise</button>
+              <button onclick="setSoundType('rain')" id="sound-btn-rain" class="sound-type-btn px-2 py-1.5 rounded-lg text-xs font-medium text-zinc-500 hover:text-zinc-900 dark:hover:text-white text-center transition-all">Gentle Rain</button>
+            </div>
+
+            <div class="flex items-center gap-2">
+              <i class="ph ph-speaker-low text-zinc-400 text-sm"></i>
+              <input type="range" id="sound-volume" min="0" max="1" step="0.05" value="0.5" oninput="setSoundVolume(this.value)" class="w-full accent-emerald-500 h-1.5 bg-zinc-200 dark:bg-zinc-700 rounded-lg cursor-pointer">
+              <i class="ph ph-speaker-high text-zinc-400 text-sm"></i>
+            </div>
           </div>
         </div>
 
@@ -407,11 +420,66 @@
       </div>
     </section>
 
-    <!-- ==================== TAB 3: ANALYTICS & REVIEW ==================== -->
+    <!-- ==================== TAB 3: AI LIVE COACH CHAT ==================== -->
+    <section id="tab-coach-chat" class="tab-content hidden space-y-6">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div>
+          <h1 class="text-2xl font-bold tracking-tight">AI Growth Coach — Live Mentor</h1>
+          <p class="text-sm text-zinc-500 dark:text-zinc-400">Contextual advice, behavioral psychology, and routine adjustments in real time.</p>
+        </div>
+      </div>
+
+      <div class="p-6 rounded-2xl bg-white dark:bg-zinc-900/90 border border-zinc-200 dark:border-zinc-800 shadow-sm flex flex-col h-[600px]">
+        <!-- Chat messages container -->
+        <div id="chat-messages" class="flex-1 overflow-y-auto space-y-4 pr-2">
+          <!-- Initial greeting message -->
+          <div class="flex items-start gap-3">
+            <div class="w-8 h-8 rounded-xl bg-emerald-500/20 text-emerald-500 flex items-center justify-center font-bold text-sm shrink-0">
+              <i class="ph-bold ph-sparkle"></i>
+            </div>
+            <div class="chat-bubble p-4 rounded-2xl rounded-tl-sm bg-zinc-100 dark:bg-zinc-800/80 max-w-xl text-sm text-zinc-800 dark:text-zinc-200">
+              <p>Hello! I'm Aura, your personal growth mentor. I have full context on your active habits, streak, and progress metrics.</p>
+              <p class="mt-1">How can I help you today? Choose a prompt below or ask me anything about optimizing your discipline and routines!</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Quick prompts chips -->
+        <div class="flex items-center gap-2 py-3 overflow-x-auto text-xs shrink-0">
+          <button onclick="sendQuickPrompt('How do I stop procrastinating and start right now?')" class="px-3 py-1.5 rounded-xl bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 hover:border-emerald-500 border border-transparent transition-all whitespace-nowrap">
+            ⚡ Beat Procrastination
+          </button>
+          <button onclick="sendQuickPrompt('How can I optimize my early morning wake-up routine?')" class="px-3 py-1.5 rounded-xl bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 hover:border-emerald-500 border border-transparent transition-all whitespace-nowrap">
+            🌅 Morning Routine Tips
+          </button>
+          <button onclick="sendQuickPrompt('Review my active habits and suggest 1 high-leverage improvement.')" class="px-3 py-1.5 rounded-xl bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 hover:border-emerald-500 border border-transparent transition-all whitespace-nowrap">
+            🎯 Review My Habits
+          </button>
+          <button onclick="sendQuickPrompt('Teach me how to stack habits effectively using the 2-minute rule.')" class="px-3 py-1.5 rounded-xl bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 hover:border-emerald-500 border border-transparent transition-all whitespace-nowrap">
+            📚 Habit Stacking Rule
+          </button>
+        </div>
+
+        <!-- Input Box -->
+        <form onsubmit="handleChatSubmit(event)" class="flex gap-2 pt-2 border-t border-zinc-200 dark:border-zinc-800 shrink-0">
+          <input 
+            type="text" 
+            id="chat-input" 
+            placeholder="Ask your coach anything (e.g. 'I feel low on energy today, what should I do?')..." 
+            class="flex-1 px-4 py-2.5 rounded-xl bg-zinc-50 dark:bg-zinc-800/80 border border-zinc-200 dark:border-zinc-700 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500"
+          >
+          <button type="submit" id="chat-send-btn" class="px-5 py-2.5 bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-sm rounded-xl shadow-md shadow-emerald-600/20 transition-all flex items-center gap-1.5">
+            <i class="ph-bold ph-paper-plane-right"></i> Send
+          </button>
+        </form>
+      </div>
+    </section>
+
+    <!-- ==================== TAB 4: ANALYTICS & REVIEW ==================== -->
     <section id="tab-analytics" class="tab-content hidden space-y-6">
       <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 class="text-2xl font-bold tracking-tight">Productivity Analytics & Review</h1>
+          <h1 class="text-2xl font-bold tracking-tight">Productivity Analytics & Mood Insights</h1>
           <p class="text-sm text-zinc-500 dark:text-zinc-400">AI-driven trends, streak calculations, and weekly synthesis.</p>
         </div>
         <div class="flex items-center gap-2">
@@ -460,6 +528,16 @@
         </div>
       </div>
 
+      <!-- Mood & Category Analytics Breakdown -->
+      <div class="p-6 rounded-2xl bg-white dark:bg-zinc-900/90 border border-zinc-200 dark:border-zinc-800 shadow-sm">
+        <h3 class="text-base font-bold mb-4 flex items-center gap-2">
+          <i class="ph-bold ph-smiley text-amber-500"></i> Category Mood Impact & Energy Index
+        </h3>
+        <div id="mood-category-grid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3">
+          <!-- Dynamically populated via loadMoodTrends() -->
+        </div>
+      </div>
+
       <!-- Weekly Review Showcase Card -->
       <div id="weekly-review-card" class="p-6 sm:p-8 rounded-2xl bg-gradient-to-br from-white to-zinc-50 dark:from-zinc-900 dark:to-zinc-900/60 border border-zinc-200 dark:border-zinc-800 shadow-sm">
         <div class="flex items-center justify-between mb-4 border-b border-zinc-200 dark:border-zinc-800 pb-4">
@@ -478,7 +556,6 @@
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
-          <!-- Wins -->
           <div class="p-4 rounded-xl bg-zinc-50 dark:bg-zinc-800/40 border border-zinc-200/80 dark:border-zinc-700/50">
             <h4 class="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400 flex items-center gap-1.5 mb-2">
               <i class="ph-bold ph-check"></i> Key Wins
@@ -488,7 +565,6 @@
             </ul>
           </div>
 
-          <!-- Improvements -->
           <div class="p-4 rounded-xl bg-zinc-50 dark:bg-zinc-800/40 border border-zinc-200/80 dark:border-zinc-700/50">
             <h4 class="text-xs font-bold uppercase tracking-wider text-amber-600 dark:text-amber-400 flex items-center gap-1.5 mb-2">
               <i class="ph-bold ph-trend-up"></i> Focus Areas
@@ -499,7 +575,6 @@
           </div>
         </div>
 
-        <!-- Next Week SMART Goals -->
         <div class="mt-4 p-4 rounded-xl bg-zinc-50 dark:bg-zinc-800/40 border border-zinc-200/80 dark:border-zinc-700/50">
           <h4 class="text-xs font-bold uppercase tracking-wider text-blue-600 dark:text-blue-400 flex items-center gap-1.5 mb-2">
             <i class="ph-bold ph-target"></i> Next Week SMART Goals
@@ -509,11 +584,8 @@
           </ul>
         </div>
 
-        <!-- Coach Note -->
         <div class="mt-4 p-4 rounded-xl bg-emerald-500/5 border border-emerald-500/20">
-          <h4 class="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400 mb-1">
-            Coach's Perspective
-          </h4>
+          <h4 class="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400 mb-1">Coach's Perspective</h4>
           <p id="review-coach-note" class="text-sm text-zinc-700 dark:text-zinc-300">
             "Consistency is the compound interest of self-improvement. Click the button above to synthesize your latest habit entries."
           </p>
@@ -521,30 +593,12 @@
       </div>
     </section>
 
-    <!-- ==================== TAB 4: AI COACH ==================== -->
-    <section id="tab-coach" class="tab-content hidden space-y-6">
-      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-        <div>
-          <h1 class="text-2xl font-bold tracking-tight">AI Growth Coach</h1>
-          <p class="text-sm text-zinc-500 dark:text-zinc-400">Intelligent recommendations generated tailored to your habits.</p>
-        </div>
-        <button onclick="generateRecommendation()" id="btn-generate-recom" class="px-4 py-2 text-sm font-semibold bg-emerald-600 hover:bg-emerald-500 text-white rounded-xl shadow-md shadow-emerald-600/20 transition-all flex items-center gap-1.5">
-          <i class="ph-bold ph-magic-wand"></i> Get New Recommendation
-        </button>
-      </div>
-
-      <!-- Recommendation Cards List -->
-      <div id="recommendations-container" class="space-y-4">
-        <!-- Dynamic Recommendation items -->
-      </div>
-    </section>
-
-    <!-- ==================== TAB 5: GAMIFICATION ==================== -->
+    <!-- ==================== TAB 5: GAMIFICATION & QUESTS ==================== -->
     <section id="tab-gamification" class="tab-content hidden space-y-6">
       <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
           <h1 class="text-2xl font-bold tracking-tight">Quests & XP Milestones</h1>
-          <p class="text-sm text-zinc-500 dark:text-zinc-400">Level up your productivity rank with daily consistency.</p>
+          <p class="text-sm text-zinc-500 dark:text-zinc-400">Complete daily quests, earn XP bonuses, and unlock achievement tiers.</p>
         </div>
       </div>
 
@@ -578,11 +632,10 @@
           </div>
         </div>
 
-        <!-- Progress Bar -->
         <div class="mt-6 relative z-10">
           <div class="flex justify-between text-xs text-zinc-300 mb-1.5 font-medium">
             <span>XP Progress to Next Level</span>
-            <span id="game-xp-ratio" class="font-mono">0 / 100 XP</span>
+            <span id="game-xp-ratio" class="font-mono">0 / 250 XP</span>
           </div>
           <div class="w-full h-3 rounded-full bg-zinc-950/60 p-0.5 border border-zinc-700">
             <div id="game-xp-bar" class="h-full rounded-full bg-gradient-to-r from-emerald-500 to-teal-400 transition-all duration-500" style="width: 0%"></div>
@@ -590,20 +643,64 @@
         </div>
       </div>
 
+      <!-- Daily Quests Grid -->
+      <div>
+        <h3 class="text-lg font-bold mb-3 flex items-center gap-2">
+          <i class="ph-bold ph-lightning text-emerald-500"></i> Daily Quests
+        </h3>
+        <div id="quests-container" class="space-y-3"></div>
+      </div>
+
       <!-- Badges Showcase Grid -->
       <div>
         <h3 class="text-lg font-bold mb-3 flex items-center gap-2">
           <i class="ph-bold ph-medal text-amber-500"></i> Achievement Badges
         </h3>
-        <div id="badges-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          <!-- Dynamically filled badges -->
-        </div>
+        <div id="badges-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"></div>
       </div>
     </section>
 
   </main>
 
   <!-- ==================== MODALS ==================== -->
+
+  <!-- Habit Presets Modal -->
+  <div id="modal-presets" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden flex items-center justify-center p-4">
+    <div class="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-2xl w-full max-w-lg p-6 shadow-2xl relative">
+      <button onclick="closePresetsModal()" class="absolute top-4 right-4 p-2 text-zinc-400 hover:text-zinc-600 dark:hover:text-white rounded-lg">
+        <i class="ph ph-x text-lg"></i>
+      </button>
+      <h3 class="text-lg font-bold mb-1">Popular Habit Presets</h3>
+      <p class="text-xs text-zinc-500 dark:text-zinc-400 mb-4">Click any template to add it directly to your tracking routine.</p>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+        <button onclick="addPresetHabit('💧 Drink 2.5L Water', 'Hydration target throughout the day', 'Health', 'daily')" class="p-3.5 rounded-xl border border-zinc-200 dark:border-zinc-800 hover:border-emerald-500 text-left transition-all">
+          <h4 class="font-bold text-sm">💧 Drink 2.5L Water</h4>
+          <p class="text-xs text-zinc-500 mt-1">Health • Daily target</p>
+        </button>
+        <button onclick="addPresetHabit('💻 30m Deep Coding Sprint', 'Focused single-task programming block', 'Productivity', 'daily')" class="p-3.5 rounded-xl border border-zinc-200 dark:border-zinc-800 hover:border-emerald-500 text-left transition-all">
+          <h4 class="font-bold text-sm">💻 30m Deep Coding</h4>
+          <p class="text-xs text-zinc-500 mt-1">Productivity • Daily target</p>
+        </button>
+        <button onclick="addPresetHabit('🧘 10m Mindful Meditation', 'Breathwork and mental clarity', 'Mindfulness', 'daily')" class="p-3.5 rounded-xl border border-zinc-200 dark:border-zinc-800 hover:border-emerald-500 text-left transition-all">
+          <h4 class="font-bold text-sm">🧘 10m Meditation</h4>
+          <p class="text-xs text-zinc-500 mt-1">Mindfulness • Daily target</p>
+        </button>
+        <button onclick="addPresetHabit('🏃 10,000 Steps Daily', 'Physical movement and walk breaks', 'Fitness', 'daily')" class="p-3.5 rounded-xl border border-zinc-200 dark:border-zinc-800 hover:border-emerald-500 text-left transition-all">
+          <h4 class="font-bold text-sm">🏃 10,000 Steps</h4>
+          <p class="text-xs text-zinc-500 mt-1">Fitness • Daily target</p>
+        </button>
+        <button onclick="addPresetHabit('📖 Read 20 Pages Non-Fiction', 'Books on business, engineering, or psychology', 'Learning', 'daily')" class="p-3.5 rounded-xl border border-zinc-200 dark:border-zinc-800 hover:border-emerald-500 text-left transition-all">
+          <h4 class="font-bold text-sm">📖 Read 20 Pages</h4>
+          <p class="text-xs text-zinc-500 mt-1">Learning • Daily target</p>
+        </button>
+        <button onclick="addPresetHabit('✍️ Evening Reflection & Journal', '3 key wins and gratitude log', 'Mindfulness', 'daily')" class="p-3.5 rounded-xl border border-zinc-200 dark:border-zinc-800 hover:border-emerald-500 text-left transition-all">
+          <h4 class="font-bold text-sm">✍️ Evening Journal</h4>
+          <p class="text-xs text-zinc-500 mt-1">Mindfulness • Daily target</p>
+        </button>
+      </div>
+    </div>
+  </div>
 
   <!-- Auth Modal -->
   <div id="modal-auth" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden flex items-center justify-center p-4">
@@ -706,7 +803,6 @@
       <button onclick="closeEditHabitModal()" class="absolute top-4 right-4 p-2 text-zinc-400 hover:text-zinc-600 dark:hover:text-white rounded-lg">
         <i class="ph ph-x text-lg"></i>
       </button>
-
       <h3 class="text-lg font-bold mb-1">Edit Habit</h3>
       <p class="text-xs text-zinc-500 dark:text-zinc-400 mb-4">Modify your habit title, category, or schedule.</p>
 
@@ -827,12 +923,20 @@
     let currentUser = null;
     let habitsList = [];
     let activeTab = 'habits';
+    let viewMode = 'grid'; // 'grid' | 'checklist'
 
     // Focus Timer State
     let timerDuration = 25 * 60;
     let timerRemaining = 25 * 60;
     let timerInterval = null;
     let timerRunning = false;
+
+    // Web Audio Synthesizer State
+    let audioCtx = null;
+    let soundPlaying = false;
+    let soundType = 'binaural'; // 'binaural' | 'brown' | 'rain'
+    let soundNodes = [];
+    let masterGain = null;
 
     // Initialization
     document.addEventListener('DOMContentLoaded', async () => {
@@ -872,7 +976,6 @@
       const activeEl = document.getElementById(`tab-${tabId}`);
       if (activeEl) activeEl.classList.remove('hidden');
 
-      // Update button styles
       document.querySelectorAll('.tab-btn').forEach(btn => {
         if (btn.dataset.tab === tabId) {
           btn.className = 'tab-btn active px-3.5 py-1.5 rounded-lg text-sm font-medium bg-white dark:bg-zinc-800 text-zinc-900 dark:text-white shadow-sm transition-all';
@@ -881,9 +984,35 @@
         }
       });
 
-      if (tabId === 'analytics') loadAnalytics();
-      if (tabId === 'coach') loadRecommendations();
-      if (tabId === 'gamification') loadGamification();
+      if (tabId === 'analytics') {
+        loadAnalytics();
+        loadMoodTrends();
+      }
+      if (tabId === 'gamification') {
+        loadGamification();
+        loadQuests();
+      }
+    }
+
+    function setViewMode(mode) {
+      viewMode = mode;
+      const gridBtn = document.getElementById('view-mode-grid');
+      const checkBtn = document.getElementById('view-mode-checklist');
+      const gridEl = document.getElementById('habits-grid');
+      const checkEl = document.getElementById('habits-checklist');
+
+      if (mode === 'grid') {
+        gridBtn.className = 'px-2.5 py-1 text-xs font-semibold rounded-lg bg-white dark:bg-zinc-800 text-zinc-900 dark:text-white shadow-sm transition-all';
+        checkBtn.className = 'px-2.5 py-1 text-xs font-semibold rounded-lg text-zinc-500 hover:text-zinc-900 dark:hover:text-white transition-all';
+        gridEl.classList.remove('hidden');
+        checkEl.classList.add('hidden');
+      } else {
+        checkBtn.className = 'px-2.5 py-1 text-xs font-semibold rounded-lg bg-white dark:bg-zinc-800 text-zinc-900 dark:text-white shadow-sm transition-all';
+        gridBtn.className = 'px-2.5 py-1 text-xs font-semibold rounded-lg text-zinc-500 hover:text-zinc-900 dark:hover:text-white transition-all';
+        checkEl.classList.remove('hidden');
+        gridEl.classList.add('hidden');
+      }
+      renderHabits();
     }
 
     // Toast notifications
@@ -897,9 +1026,7 @@
       toast.innerHTML = `<i class="ph-bold ${icon} text-lg"></i> <span>${message}</span>`;
       
       container.appendChild(toast);
-      requestAnimationFrame(() => {
-        toast.classList.remove('translate-y-2', 'opacity-0');
-      });
+      requestAnimationFrame(() => toast.classList.remove('translate-y-2', 'opacity-0'));
 
       setTimeout(() => {
         toast.classList.add('opacity-0', 'translate-y-2');
@@ -907,7 +1034,6 @@
       }, 3500);
     }
 
-    // XP popup particle animation
     function triggerXPAnimation(amount = 10) {
       const container = document.getElementById('xp-floating-container');
       const badge = document.createElement('div');
@@ -1088,9 +1214,8 @@
     async function refreshAllData() {
       if (!authToken) return;
       await fetchHabits();
-      if (activeTab === 'analytics') await loadAnalytics();
-      if (activeTab === 'coach') await loadRecommendations();
-      if (activeTab === 'gamification') await loadGamification();
+      if (activeTab === 'analytics') { loadAnalytics(); loadMoodTrends(); }
+      if (activeTab === 'gamification') { loadGamification(); loadQuests(); }
     }
 
     // ==================== DAILY QUOTE ====================
@@ -1106,9 +1231,7 @@
           if (data.author) document.getElementById('quote-author').textContent = `— ${data.author}`;
           if (data.reflection_prompt) document.getElementById('quote-reflection').textContent = data.reflection_prompt;
         }
-      } catch (e) {
-        console.error(e);
-      }
+      } catch (e) { console.error(e); }
     }
 
     // ==================== 30-DAY HEATMAP ====================
@@ -1173,24 +1296,23 @@
 
     function renderHabits() {
       const grid = document.getElementById('habits-grid');
+      const checklist = document.getElementById('habits-checklist');
       const empty = document.getElementById('habits-empty');
-      const search = (document.getElementById('habit-search')?.value || '').toLowerCase();
       const cat = document.getElementById('habit-category-filter')?.value || '';
       const todayDate = new Date().toISOString().split('T')[0];
 
-      const filtered = habitsList.filter(h => {
-        const matchesSearch = h.title.toLowerCase().includes(search) || (h.description && h.description.toLowerCase().includes(search));
-        const matchesCat = !cat || h.category === cat;
-        return matchesSearch && matchesCat;
-      });
+      const filtered = habitsList.filter(h => !cat || h.category === cat);
 
       if (!filtered.length) {
         grid.innerHTML = '';
+        checklist.innerHTML = '';
         empty.classList.remove('hidden');
         return;
       }
 
       empty.classList.add('hidden');
+
+      // 1. Render Grid View
       grid.innerHTML = filtered.map(h => {
         const logCount = h.logs ? h.logs.length : 0;
         const isCompletedToday = h.logs && h.logs.some(l => l.completed_at && l.completed_at.startsWith(todayDate));
@@ -1216,7 +1338,6 @@
                       <i class="ph-bold ph-check"></i> Done Today
                     </span>
                   ` : ''}
-                  <!-- Edit & Delete buttons -->
                   <div class="opacity-0 group-hover:opacity-100 transition-opacity flex items-center gap-1">
                     <button onclick="openEditHabitModal('${h.id}')" title="Edit Habit" class="p-1 text-zinc-400 hover:text-zinc-600 dark:hover:text-white rounded">
                       <i class="ph ph-pencil-simple text-sm"></i>
@@ -1243,24 +1364,77 @@
           </div>
         `;
       }).join('');
-    }
 
-    function filterHabits() {
-      renderHabits();
+      // 2. Render Fast Checklist View
+      checklist.innerHTML = filtered.map(h => {
+        const isCompletedToday = h.logs && h.logs.some(l => l.completed_at && l.completed_at.startsWith(todayDate));
+        return `
+          <div class="p-4 rounded-2xl bg-white dark:bg-zinc-900/90 border border-zinc-200 dark:border-zinc-800 flex items-center justify-between gap-4">
+            <div class="flex items-center gap-3.5">
+              <button onclick="quickToggleHabit('${h.id}')" class="w-6 h-6 rounded-lg border-2 flex items-center justify-center transition-all ${isCompletedToday ? 'bg-emerald-500 border-emerald-500 text-white' : 'border-zinc-300 dark:border-zinc-700 hover:border-emerald-500'}">
+                ${isCompletedToday ? '<i class="ph-bold ph-check text-xs"></i>' : ''}
+              </button>
+              <div>
+                <h4 class="font-bold text-sm ${isCompletedToday ? 'line-through text-zinc-400 dark:text-zinc-500' : 'text-zinc-900 dark:text-white'}">${h.title}</h4>
+                <span class="text-xs text-zinc-400">${h.category} • ${h.frequency}</span>
+              </div>
+            </div>
+            <button onclick="openLogHabitModal('${h.id}', '${escapeHtml(h.title)}')" class="text-xs text-zinc-500 hover:text-emerald-500 font-medium">
+              Log Details →
+            </button>
+          </div>
+        `;
+      }).join('');
     }
 
     function escapeHtml(text) {
       return text.replace(/'/g, "\\'").replace(/"/g, '&quot;');
     }
 
-    function openCreateHabitModal() {
-      if (!authToken) {
-        openAuthModal('login');
-        return;
-      }
-      document.getElementById('modal-create-habit').classList.remove('hidden');
+    async function quickToggleHabit(habitId) {
+      if (!authToken) { openAuthModal('login'); return; }
+      try {
+        const res = await fetch(`/api/v1/habits/${habitId}/log`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${authToken}` },
+          body: JSON.stringify({ mood_score: 4, notes: 'Quick Check-in' })
+        });
+        if (!res.ok) throw new Error('Failed to log');
+        showToast('Habit completed! +10 XP', 'success');
+        triggerXPAnimation(10);
+        await fetchHabits();
+        await loadGamification();
+      } catch (e) { showToast(e.message, 'error'); }
     }
 
+    // Presets modal
+    function openPresetsModal() {
+      if (!authToken) { openAuthModal('login'); return; }
+      document.getElementById('modal-presets').classList.remove('hidden');
+    }
+    function closePresetsModal() {
+      document.getElementById('modal-presets').classList.add('hidden');
+    }
+
+    async function addPresetHabit(title, description, category, frequency) {
+      try {
+        const res = await fetch('/api/v1/habits/', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${authToken}` },
+          body: JSON.stringify({ title, description, category, frequency })
+        });
+        if (!res.ok) throw new Error('Failed to add preset');
+        showToast(`Added '${title}'!`, 'success');
+        closePresetsModal();
+        await fetchHabits();
+      } catch (err) { showToast(err.message, 'error'); }
+    }
+
+    // Create habit
+    function openCreateHabitModal() {
+      if (!authToken) { openAuthModal('login'); return; }
+      document.getElementById('modal-create-habit').classList.remove('hidden');
+    }
     function closeCreateHabitModal() {
       document.getElementById('modal-create-habit').classList.add('hidden');
     }
@@ -1275,10 +1449,7 @@
       try {
         const res = await fetch('/api/v1/habits/', {
           method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${authToken}`
-          },
+          headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${authToken}` },
           body: JSON.stringify({ title, description, category, frequency })
         });
 
@@ -1287,9 +1458,7 @@
         closeCreateHabitModal();
         document.getElementById('create-habit-form').reset();
         await fetchHabits();
-      } catch (err) {
-        showToast(err.message, 'error');
-      }
+      } catch (err) { showToast(err.message, 'error'); }
     }
 
     // Edit habit
@@ -1303,7 +1472,6 @@
       document.getElementById('edit-habit-freq').value = habit.frequency;
       document.getElementById('modal-edit-habit').classList.remove('hidden');
     }
-
     function closeEditHabitModal() {
       document.getElementById('modal-edit-habit').classList.add('hidden');
     }
@@ -1319,10 +1487,7 @@
       try {
         const res = await fetch(`/api/v1/habits/${habitId}`, {
           method: 'PUT',
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${authToken}`
-          },
+          headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${authToken}` },
           body: JSON.stringify({ title, description, category, frequency })
         });
 
@@ -1330,9 +1495,7 @@
         showToast('Habit updated!', 'success');
         closeEditHabitModal();
         await fetchHabits();
-      } catch (err) {
-        showToast(err.message, 'error');
-      }
+      } catch (err) { showToast(err.message, 'error'); }
     }
 
     // Delete habit
@@ -1346,22 +1509,16 @@
         if (!res.ok) throw new Error('Failed to delete habit');
         showToast('Habit deleted', 'info');
         await fetchHabits();
-      } catch (err) {
-        showToast(err.message, 'error');
-      }
+      } catch (err) { showToast(err.message, 'error'); }
     }
 
     // Log completion
     function openLogHabitModal(habitId, habitTitle) {
-      if (!authToken) {
-        openAuthModal('login');
-        return;
-      }
+      if (!authToken) { openAuthModal('login'); return; }
       document.getElementById('log-habit-id').value = habitId;
       document.getElementById('log-habit-title').textContent = `Record completion for "${habitTitle}"`;
       document.getElementById('modal-log-habit').classList.remove('hidden');
     }
-
     function closeLogHabitModal() {
       document.getElementById('modal-log-habit').classList.add('hidden');
     }
@@ -1375,10 +1532,7 @@
       try {
         const res = await fetch(`/api/v1/habits/${habitId}/log`, {
           method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${authToken}`
-          },
+          headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${authToken}` },
           body: JSON.stringify({ mood_score, notes })
         });
 
@@ -1389,28 +1543,149 @@
         document.getElementById('log-habit-form').reset();
         await fetchHabits();
         await loadGamification();
-      } catch (err) {
-        showToast(err.message, 'error');
-      }
+      } catch (err) { showToast(err.message, 'error'); }
     }
 
-    // Calendar & CSV Exports
+    // Calendar Exports
     async function exportHabitsICS() {
-      if (!authToken) {
-        openAuthModal('login');
-        return;
-      }
+      if (!authToken) { openAuthModal('login'); return; }
       window.open('/api/v1/habits/export/ics', '_blank');
       showToast('Exporting iCalendar schedule...', 'info');
     }
-
     async function exportHabitsCSV() {
-      if (!authToken) {
-        openAuthModal('login');
-        return;
-      }
+      if (!authToken) { openAuthModal('login'); return; }
       window.open('/api/v1/habits/export/csv', '_blank');
       showToast('Exporting habits spreadsheet...', 'info');
+    }
+
+    // ==================== WEB AUDIO SYNTHESIZER ====================
+    function getAudioContext() {
+      if (!audioCtx) {
+        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      }
+      if (audioCtx.state === 'suspended') {
+        audioCtx.resume();
+      }
+      return audioCtx;
+    }
+
+    function setSoundType(type) {
+      soundType = type;
+      document.querySelectorAll('.sound-type-btn').forEach(btn => {
+        btn.className = 'sound-type-btn px-2 py-1.5 rounded-lg text-xs font-medium text-zinc-500 hover:text-zinc-900 dark:hover:text-white text-center transition-all';
+      });
+      const activeBtn = document.getElementById(`sound-btn-${type}`);
+      if (activeBtn) {
+        activeBtn.className = 'sound-type-btn active px-2 py-1.5 rounded-lg text-xs font-medium bg-zinc-100 dark:bg-zinc-800 text-emerald-500 text-center transition-all';
+      }
+      if (soundPlaying) {
+        stopSoundscape();
+        startSoundscape();
+      }
+    }
+
+    function setSoundVolume(val) {
+      if (masterGain) {
+        masterGain.gain.setValueAtTime(parseFloat(val) * 0.15, audioCtx.currentTime);
+      }
+    }
+
+    function toggleSoundscape() {
+      if (soundPlaying) {
+        stopSoundscape();
+      } else {
+        startSoundscape();
+      }
+    }
+
+    function startSoundscape() {
+      const ctx = getAudioContext();
+      soundNodes = [];
+
+      masterGain = ctx.createGain();
+      const vol = parseFloat(document.getElementById('sound-volume').value || 0.5);
+      masterGain.gain.setValueAtTime(vol * 0.15, ctx.currentTime);
+      masterGain.connect(ctx.destination);
+
+      if (soundType === 'binaural') {
+        // 200Hz in Left ear, 240Hz in Right ear (40Hz Gamma wave difference)
+        const merger = ctx.createChannelMerger(2);
+
+        const oscL = ctx.createOscillator();
+        oscL.type = 'sine';
+        oscL.frequency.setValueAtTime(200, ctx.currentTime);
+
+        const oscR = ctx.createOscillator();
+        oscR.type = 'sine';
+        oscR.frequency.setValueAtTime(240, ctx.currentTime);
+
+        oscL.connect(merger, 0, 0);
+        oscR.connect(merger, 0, 1);
+        merger.connect(masterGain);
+
+        oscL.start();
+        oscR.start();
+        soundNodes.push(oscL, oscR);
+      } else if (soundType === 'brown') {
+        // Synthesized Brown Noise
+        const bufferSize = ctx.sampleRate * 2;
+        const noiseBuffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
+        const output = noiseBuffer.getChannelData(0);
+        let lastOut = 0.0;
+        for (let i = 0; i < bufferSize; i++) {
+          const white = Math.random() * 2 - 1;
+          output[i] = (lastOut + (0.02 * white)) / 1.02;
+          lastOut = output[i];
+          output[i] *= 3.5;
+        }
+        const whiteNoise = ctx.createBufferSource();
+        whiteNoise.buffer = noiseBuffer;
+        whiteNoise.loop = true;
+
+        const filter = ctx.createBiquadFilter();
+        filter.type = 'lowpass';
+        filter.frequency.setValueAtTime(400, ctx.currentTime);
+
+        whiteNoise.connect(filter);
+        filter.connect(masterGain);
+        whiteNoise.start();
+        soundNodes.push(whiteNoise);
+      } else {
+        // Gentle Rain (Filtered White Noise with modulation)
+        const bufferSize = ctx.sampleRate * 2;
+        const noiseBuffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
+        const output = noiseBuffer.getChannelData(0);
+        for (let i = 0; i < bufferSize; i++) {
+          output[i] = Math.random() * 2 - 1;
+        }
+        const whiteNoise = ctx.createBufferSource();
+        whiteNoise.buffer = noiseBuffer;
+        whiteNoise.loop = true;
+
+        const filter = ctx.createBiquadFilter();
+        filter.type = 'bandpass';
+        filter.frequency.setValueAtTime(1000, ctx.currentTime);
+        filter.Q.setValueAtTime(0.5, ctx.currentTime);
+
+        whiteNoise.connect(filter);
+        filter.connect(masterGain);
+        whiteNoise.start();
+        soundNodes.push(whiteNoise);
+      }
+
+      soundPlaying = true;
+      document.getElementById('sound-btn-icon').className = 'ph-bold ph-pause';
+      document.getElementById('sound-btn-label').textContent = 'Pause Audio';
+    }
+
+    function stopSoundscape() {
+      soundNodes.forEach(node => {
+        try { node.stop(); } catch (e) {}
+      });
+      soundNodes = [];
+      soundPlaying = false;
+      document.getElementById('sound-btn-icon').className = 'ph-bold ph-play';
+      document.getElementById('sound-btn-label').textContent = 'Play Audio';
     }
 
     // ==================== FOCUS TIMER & AI ASSISTANT ====================
@@ -1443,7 +1718,7 @@
             timerRunning = false;
             btnIcon.className = 'ph-bold ph-play';
             btnLabel.textContent = 'Start Focus';
-            showToast('Focus session complete! Take a mindful breath.', 'success');
+            showToast('Focus session complete! +25 XP', 'success');
             triggerXPAnimation(25);
           }
         }, 1000);
@@ -1463,8 +1738,6 @@
       const mins = Math.floor(timerRemaining / 60);
       const secs = timerRemaining % 60;
       document.getElementById('timer-display').textContent = `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
-
-      // Update circle stroke
       const circle = document.getElementById('timer-progress-circle');
       const totalOffset = 264;
       const progress = timerRemaining / timerDuration;
@@ -1472,10 +1745,7 @@
     }
 
     async function generateFocusStrategy() {
-      if (!authToken) {
-        openAuthModal('login');
-        return;
-      }
+      if (!authToken) { openAuthModal('login'); return; }
       const taskTitle = document.getElementById('focus-task-input').value.trim() || 'Deep Work Session';
       const btn = document.getElementById('btn-focus-strategy');
       btn.disabled = true;
@@ -1484,10 +1754,7 @@
       try {
         const res = await fetch('/api/v1/analytics/focus-strategy', {
           method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${authToken}`
-          },
+          headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${authToken}` },
           body: JSON.stringify({ task_title: taskTitle, duration_minutes: Math.floor(timerDuration / 60) })
         });
 
@@ -1506,12 +1773,88 @@
           document.getElementById('focus-music-tip').textContent = data.music_suggestion;
         }
         showToast('AI focus strategy prepared!', 'success');
-      } catch (err) {
-        showToast(err.message, 'error');
-      } finally {
+      } catch (err) { showToast(err.message, 'error'); }
+      finally {
         btn.disabled = false;
         btn.innerHTML = '<i class="ph-bold ph-brain"></i> Strategize';
       }
+    }
+
+    // ==================== AI COACH CHAT ====================
+    function formatMarkdown(text) {
+      return text
+        .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+        .replace(/\*(.*?)\*/g, '<em>$1</em>')
+        .replace(/\n\n/g, '</p><p>')
+        .replace(/\n- (.*?)/g, '<li>$1</li>')
+        .replace(/\n\d+\. (.*?)/g, '<li>$1</li>');
+    }
+
+    function appendChatMessage(sender, text) {
+      const container = document.getElementById('chat-messages');
+      const msgWrapper = document.createElement('div');
+
+      if (sender === 'user') {
+        msgWrapper.className = 'flex items-start justify-end gap-3';
+        msgWrapper.innerHTML = `
+          <div class="p-4 rounded-2xl rounded-tr-sm bg-emerald-600 text-white max-w-xl text-sm">
+            <p>${escapeHtml(text)}</p>
+          </div>
+          <div class="w-8 h-8 rounded-xl bg-zinc-200 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 flex items-center justify-center font-bold text-sm shrink-0">
+            ${currentUser ? (currentUser.full_name || currentUser.email)[0].toUpperCase() : 'U'}
+          </div>
+        `;
+      } else {
+        msgWrapper.className = 'flex items-start gap-3';
+        msgWrapper.innerHTML = `
+          <div class="w-8 h-8 rounded-xl bg-emerald-500/20 text-emerald-500 flex items-center justify-center font-bold text-sm shrink-0">
+            <i class="ph-bold ph-sparkle"></i>
+          </div>
+          <div class="chat-bubble p-4 rounded-2xl rounded-tl-sm bg-zinc-100 dark:bg-zinc-800/80 max-w-xl text-sm text-zinc-800 dark:text-zinc-200">
+            <p>${formatMarkdown(text)}</p>
+          </div>
+        `;
+      }
+      container.appendChild(msgWrapper);
+      container.scrollTop = container.scrollHeight;
+    }
+
+    async function sendCoachMessage(text) {
+      if (!authToken) { openAuthModal('login'); return; }
+      appendChatMessage('user', text);
+
+      const sendBtn = document.getElementById('chat-send-btn');
+      sendBtn.disabled = true;
+      sendBtn.innerHTML = '<i class="ph-bold ph-spinner animate-spin"></i>';
+
+      try {
+        const res = await fetch('/api/v1/coach/chat', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${authToken}` },
+          body: JSON.stringify({ message: text })
+        });
+        if (!res.ok) throw new Error('Coach reply failed');
+        const data = await res.json();
+        appendChatMessage('coach', data.response);
+      } catch (err) {
+        appendChatMessage('coach', "I apologize, I'm having trouble formulating a response right now. Please check in a moment!");
+      } finally {
+        sendBtn.disabled = false;
+        sendBtn.innerHTML = '<i class="ph-bold ph-paper-plane-right"></i> Send';
+      }
+    }
+
+    function handleChatSubmit(e) {
+      e.preventDefault();
+      const input = document.getElementById('chat-input');
+      const text = input.value.trim();
+      if (!text) return;
+      input.value = '';
+      sendCoachMessage(text);
+    }
+
+    function sendQuickPrompt(promptText) {
+      sendCoachMessage(promptText);
     }
 
     // ==================== ANALYTICS & REVIEW ====================
@@ -1528,16 +1871,34 @@
           document.getElementById('stat-completion-rate').textContent = `${data.completion_rate.toFixed(1)}%`;
           document.getElementById('stat-longest-streak').textContent = `${data.longest_streak} days`;
         }
-      } catch (err) {
-        console.error(err);
-      }
+      } catch (err) { console.error(err); }
+    }
+
+    async function loadMoodTrends() {
+      if (!authToken) return;
+      try {
+        const res = await fetch('/api/v1/analytics/mood-trends', {
+          headers: { 'Authorization': `Bearer ${authToken}` }
+        });
+        if (res.ok) {
+          const data = await res.json();
+          const grid = document.getElementById('mood-category-grid');
+          if (data.category_averages && Object.keys(data.category_averages).length) {
+            grid.innerHTML = Object.entries(data.category_averages).map(([cat, score]) => `
+              <div class="p-3.5 rounded-xl bg-zinc-50 dark:bg-zinc-800/40 border border-zinc-200/80 dark:border-zinc-700/50 text-center">
+                <span class="text-xs text-zinc-500 dark:text-zinc-400 block">${cat}</span>
+                <span class="text-xl font-bold font-mono text-emerald-500 mt-1 block">${score} / 5.0</span>
+              </div>
+            `).join('');
+          } else {
+            grid.innerHTML = '<p class="text-xs text-zinc-400 col-span-full italic">Log habit completions with mood ratings to see your category energy breakdown.</p>';
+          }
+        }
+      } catch (e) { console.error(e); }
     }
 
     async function generateWeeklyReview() {
-      if (!authToken) {
-        openAuthModal('login');
-        return;
-      }
+      if (!authToken) { openAuthModal('login'); return; }
       const btn = document.getElementById('btn-generate-review');
       btn.disabled = true;
       btn.innerHTML = '<i class="ph-bold ph-spinner animate-spin"></i> Synthesizing...';
@@ -1565,94 +1926,14 @@
         goalsList.innerHTML = data.next_week_smart_goals && data.next_week_smart_goals.length ? data.next_week_smart_goals.map(g => `<li class="flex items-start gap-2"><i class="ph-bold ph-target text-blue-500 mt-1 shrink-0"></i><span>${g}</span></li>`).join('') : '<li class="text-zinc-400">Focus on daily consistency.</li>';
 
         showToast('Weekly review synthesized!', 'success');
-      } catch (err) {
-        showToast(err.message, 'error');
-      } finally {
+      } catch (err) { showToast(err.message, 'error'); }
+      finally {
         btn.disabled = false;
         btn.innerHTML = '<i class="ph-bold ph-sparkle"></i> Generate Weekly Review';
       }
     }
 
-    // ==================== AI COACH & RECOMMENDATIONS ====================
-    async function loadRecommendations() {
-      if (!authToken) return;
-      const container = document.getElementById('recommendations-container');
-      try {
-        const res = await fetch('/api/v1/recommendations/', {
-          headers: { 'Authorization': `Bearer ${authToken}` }
-        });
-        if (res.ok) {
-          const list = await res.json();
-          if (!list.length) {
-            container.innerHTML = `
-              <div class="py-12 text-center rounded-2xl border border-dashed border-zinc-300 dark:border-zinc-800 bg-white/40 dark:bg-zinc-900/40">
-                <i class="ph ph-magic-wand text-3xl text-zinc-400 mb-2"></i>
-                <p class="text-sm font-semibold">No AI recommendations yet</p>
-                <p class="text-xs text-zinc-500 mt-0.5">Click "Get New Recommendation" to receive intelligent habit coaching.</p>
-              </div>
-            `;
-            return;
-          }
-          container.innerHTML = list.map(rec => `
-            <div class="p-6 rounded-2xl bg-white dark:bg-zinc-900/90 border border-zinc-200 dark:border-zinc-800 shadow-sm">
-              <div class="flex items-center justify-between mb-3">
-                <span class="text-xs font-mono font-bold px-2.5 py-0.5 rounded-full bg-purple-500/10 text-purple-600 dark:text-purple-400 border border-purple-500/20">
-                  ${rec.category}
-                </span>
-                <span class="text-xs text-zinc-400 font-mono">
-                  ${rec.llm_provider ? rec.llm_provider.toUpperCase() : 'AI'} • ${new Date(rec.created_at).toLocaleDateString()}
-                </span>
-              </div>
-              <h3 class="text-lg font-bold text-zinc-900 dark:text-white mb-2">${rec.title}</h3>
-              <p class="text-sm text-zinc-600 dark:text-zinc-300 mb-4">${rec.reasoning}</p>
-
-              <div class="p-4 rounded-xl bg-zinc-50 dark:bg-zinc-800/50 border border-zinc-200/60 dark:border-zinc-700/60">
-                <h4 class="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400 mb-2 flex items-center gap-1.5">
-                  <i class="ph-bold ph-list-checks"></i> Actionable Protocol
-                </h4>
-                <ul class="space-y-1.5 text-sm">
-                  ${rec.action_items.map(item => `
-                    <li class="flex items-start gap-2">
-                      <i class="ph-bold ph-check text-emerald-500 mt-1 shrink-0"></i>
-                      <span>${item}</span>
-                    </li>
-                  `).join('')}
-                </ul>
-              </div>
-            </div>
-          `).join('');
-        }
-      } catch (err) {
-        console.error(err);
-      }
-    }
-
-    async function generateRecommendation() {
-      if (!authToken) {
-        openAuthModal('login');
-        return;
-      }
-      const btn = document.getElementById('btn-generate-recom');
-      btn.disabled = true;
-      btn.innerHTML = '<i class="ph-bold ph-spinner animate-spin"></i> Formulating...';
-
-      try {
-        const res = await fetch('/api/v1/recommendations/generate', {
-          method: 'POST',
-          headers: { 'Authorization': `Bearer ${authToken}` }
-        });
-        if (!res.ok) throw new Error('Failed to generate recommendation');
-        showToast('New AI recommendation generated!', 'success');
-        await loadRecommendations();
-      } catch (err) {
-        showToast(err.message, 'error');
-      } finally {
-        btn.disabled = false;
-        btn.innerHTML = '<i class="ph-bold ph-magic-wand"></i> Get New Recommendation';
-      }
-    }
-
-    // ==================== GAMIFICATION ====================
+    // ==================== GAMIFICATION & QUESTS ====================
     async function loadGamificationHeader() {
       if (!authToken) return;
       try {
@@ -1663,9 +1944,7 @@
           const data = await res.json();
           document.getElementById('user-badge').textContent = `Lvl ${data.level} • ${data.total_xp} XP`;
         }
-      } catch (err) {
-        console.error(err);
-      }
+      } catch (err) { console.error(err); }
     }
 
     async function loadGamification() {
@@ -1681,10 +1960,9 @@
           document.getElementById('game-total-xp').textContent = data.total_xp;
           document.getElementById('game-streak-days').textContent = data.streak_days;
 
-          // XP bar calculation (100 XP per level)
-          const xpInLevel = data.total_xp % 100;
-          const xpPercent = Math.min(100, Math.max(5, (xpInLevel / 100) * 100));
-          document.getElementById('game-xp-ratio').textContent = `${xpInLevel} / 100 XP`;
+          const xpInLevel = data.total_xp % 250;
+          const xpPercent = Math.min(100, Math.max(5, (xpInLevel / 250) * 100));
+          document.getElementById('game-xp-ratio').textContent = `${xpInLevel} / 250 XP`;
           document.getElementById('game-xp-bar').style.width = `${xpPercent}%`;
 
           // Badges Grid
@@ -1709,9 +1987,58 @@
             }).join('');
           }
         }
-      } catch (err) {
-        console.error(err);
-      }
+      } catch (err) { console.error(err); }
+    }
+
+    async function loadQuests() {
+      if (!authToken) return;
+      try {
+        const res = await fetch('/api/v1/gamification/quests', {
+          headers: { 'Authorization': `Bearer ${authToken}` }
+        });
+        if (res.ok) {
+          const quests = await res.json();
+          const container = document.getElementById('quests-container');
+          container.innerHTML = quests.map(q => `
+            <div class="p-4 rounded-2xl bg-white dark:bg-zinc-900/90 border border-zinc-200 dark:border-zinc-800 flex items-center justify-between gap-4">
+              <div class="flex items-center gap-3">
+                <div class="w-9 h-9 rounded-xl ${q.is_completed ? 'bg-emerald-500/20 text-emerald-500' : 'bg-zinc-100 dark:bg-zinc-800 text-zinc-400'} flex items-center justify-center font-bold">
+                  <i class="ph-bold ${q.is_completed ? 'ph-check' : 'ph-clock'}"></i>
+                </div>
+                <div>
+                  <h4 class="font-bold text-sm text-zinc-900 dark:text-white">${q.title}</h4>
+                  <span class="text-xs text-emerald-600 dark:text-emerald-400 font-mono font-semibold">+${q.xp_reward} XP Reward</span>
+                </div>
+              </div>
+              <div>
+                ${q.is_completed ? `
+                  <button onclick="claimQuest('${q.id}', ${q.xp_reward})" class="px-3.5 py-1.5 text-xs font-bold bg-emerald-600 hover:bg-emerald-500 text-white rounded-xl shadow-sm transition-all flex items-center gap-1">
+                    <i class="ph-bold ph-gift"></i> Claim XP
+                  </button>
+                ` : `
+                  <span class="text-xs font-semibold px-3 py-1.5 rounded-xl bg-zinc-100 dark:bg-zinc-800 text-zinc-400">
+                    In Progress
+                  </span>
+                `}
+              </div>
+            </div>
+          `).join('');
+        }
+      } catch (err) { console.error(err); }
+    }
+
+    async function claimQuest(questId, xp) {
+      try {
+        const res = await fetch(`/api/v1/gamification/quests/${questId}/claim`, {
+          method: 'POST',
+          headers: { 'Authorization': `Bearer ${authToken}` }
+        });
+        if (!res.ok) throw new Error('Claim failed');
+        showToast(`Claimed +${xp} Quest XP!`, 'success');
+        triggerXPAnimation(xp);
+        await loadGamification();
+        await loadQuests();
+      } catch (e) { showToast(e.message, 'error'); }
     }
   </script>
 </body>
